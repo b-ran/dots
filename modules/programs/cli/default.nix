@@ -1,0 +1,9 @@
+[
+  ./bat.nix
+  ./git.nix
+  ./exa.nix
+  ./htop.nix
+  ./lazygit.nix
+  ./tmux.nix
+  ./starship.nix
+]
