@@ -24,6 +24,7 @@
       ncdu
       rsync
       cava
+      just
     ];
   };
 

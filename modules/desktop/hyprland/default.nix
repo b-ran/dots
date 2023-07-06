@@ -11,6 +11,7 @@
     };
 
     nvidiaPatches = true;
+
   };
 
   xdg.portal = {
