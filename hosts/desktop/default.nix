@@ -19,7 +19,22 @@
 
   environment.systemPackages = with pkgs; [
     kitty
+    feh
     firefox-wayland
     wofi
+  ];
+
+  fonts.fonts = with pkgs; [                # Fonts
+    carlito                                 # NixOS
+    vegur                                   # NixOS
+    source-code-pro
+    jetbrains-mono
+    font-awesome                            # Icons
+    corefonts                               # MS
+    (nerdfonts.override {                   # Nerdfont Icons override
+      fonts = [
+        "JetBrainsMono"
+      ];
+    })
   ];
 }
