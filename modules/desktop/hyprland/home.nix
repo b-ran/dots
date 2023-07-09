@@ -21,6 +21,7 @@
 
       # Execute your favorite apps at launch
       # exec-once = waybar & hyprpaper & firefox
+      exec-once=waybar
 
       # Source a file (multi-file configs)
       # source = ~/.config/hypr/myColors.conf
@@ -128,6 +129,7 @@
       bind = $mainMod, D, exec, wofi --show drun
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
+      bind = $mainMod, F, fullscreen,
 
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, movefocus, l
