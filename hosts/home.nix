@@ -24,6 +24,9 @@
       ncdu
       rsync
       just
+
+      # sound
+      pavucontrol
     ];
   };
 
