@@ -23,7 +23,6 @@
       ranger
       ncdu
       rsync
-      cava
       just
     ];
   };

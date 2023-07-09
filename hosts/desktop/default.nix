@@ -4,8 +4,8 @@
   imports =
     [(import ./hardware-configuration.nix)] ++
     [(import ../../modules/editors/jetbrains)] ++
-    [(import ../../modules/hardware/sound)] ++
     [(import ../../modules/hardware/nvidia)] ++
+    [(import ../../modules/hardware/sound)] ++
     [(import ../../modules/boot/efi)] ++
     [(import ../../modules/boot/grub)] ++
     [(import ../../modules/desktop/hyprland)];

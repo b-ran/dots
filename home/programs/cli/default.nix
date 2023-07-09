@@ -1,5 +1,6 @@
 [
   ./bat.nix
+  ./cava.nix
   ./git.nix
   ./exa.nix
   ./htop.nix
