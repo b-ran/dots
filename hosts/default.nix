@@ -5,7 +5,7 @@
       config.allowUnfree = true;
     };
   in {
-    brandon = nixpkgs.lib.nixosSystem {
+    ${user} = nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
         inherit pkgs hyprland user system;
