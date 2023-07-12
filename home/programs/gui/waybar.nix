@@ -65,7 +65,6 @@
 
       settings.mainBar = {
         layer = "top";
-        position = "left";
         modules-left = [ "wlr/workspaces" ];
         modules-right = [ "pulseaudio" "cpu" "memory" "network" "clock" "tray" ];
 
@@ -90,11 +89,11 @@
         };
 
         pulseaudio = {
-          format = "{volume}% {icon} {format_source}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
+          format = "{icon} {volume}% {format_source}";
+          format-bluetooth = "{icon} {volume}% {format_source}";
           format-bluetooth-muted = "{icon} {format_source}";
           format-muted = "{format_source}";
-          format-source = "{volume}% ";
+          format-source = " {volume}%";
           format-source-muted = "";
           format-icons = {
             default = [ "" "" "" ];
@@ -102,46 +101,47 @@
           on-click = "pavucontrol";
         };
 
-        clock = {
-          format = "{:%H:%M} 󰅐";
-          format-alt = "{:%A, %B %d, %Y (%R)} 󰅐";
-          tooltip-format = "<tt><small>{calendar}</small></tt>";
-          calendar = {
-            mode = "month";
-            format = {
-              months = "<span color='#ffead3'><b>{}</b></span>";
-              days = "<span color='#ecc6d9'><b>{}</b></span>";
-              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
-            };
-          };
-          actions = {
-            on-click-right = "mode";
-          };
+        cpu = {
+          format = "󰘚 {usage}%";
+          tooltip = true;
         };
 
+        memory = {
+          format = " {}%";
+          tooltip = true;
+        };
 
         network = {
-          format-wifi = "{essid}ff ({signalStrength}%) ";
+          format-wifi = "  {signalStrength}%";
           format-ethernet = "󰈀";
           tooltip-format = "{ifname} via {gwaddr}";
           format-linked = "{ifname} (No IP)";
-          format-disconnected = "Disconnected ⚠";
+          format-disconnected = "⚠";
           format-alt = "{ifname}: {ipaddr}/{cidr}";
+        };
+
+        clock = {
+          format = "󰅐 {:%H:%M}";
+          format-alt = "󰅐 {:%A, %B %d, %Y (%R)}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          actions = {
+            on-click-right = "mode";
+          };
+          calendar = {
+            mode = "month";
+            format = {
+              months = "<span color='#f38ba8'><b>{}</b></span>";
+              weekdays = "<span color='#f2cdcd'><b>{}</b></span>";
+              weeks = "<span color='#f9e2af'><b>W{}</b></span>";
+              days = "<span color='#74c7ec'><b>{}</b></span>";
+              today = "<span color='#a6e3a1'><b>{}</b></span>";
+            };
+          };
         };
 
         tray = {
           spacing = 10;
         };
-        cpu = {
-          format = "{usage}% 󰘚";
-          tooltip = false;
-        };
-        memory = {
-          format = "{}% ";
-        };
-
 
       };
       style = ''
@@ -178,106 +178,103 @@
         @define-color rosewater #f5e0dc;
 
         * {
-           font-family: JetBrainsMono Nerd Font, sans-serif;
-           font-size: 16px;
-           color: @text;
+         font-family: JetBrainsMono Nerd Font, sans-serif;
+         font-size: 17px;
+         min-height: 0;
         }
 
-        window#waybar {
-           background-color: rgba(0, 0, 0, 0);
+        #waybar {
+         background: transparent;
+         color: @text;
+         margin: 5px 5px;
         }
 
+        #workspaces {
+          border-radius: 1rem;
+          margin: 5px;
+          background-color: @surface0;
+          margin-left: 1rem;
+        }
 
+        #workspaces button {
+         color: @lavender;
+         border-radius: 1rem;
+         padding: 0 5px;
+         margin: 0 5px;
+        }
 
-           button {
-               /* Use box-shadow instead of border so the text isn't offset */
-               /* Avoid rounded borders under each button name */
-               border: none;
-               border-radius: 0;
-           }
+        #workspaces button.active {
+         color: @sky;
+         border-radius: 1rem;
+        }
 
-           button:hover {
-               background: inherit;
-               box-shadow: inset 0 -3px #ffffff;
-           }
+        #workspaces button:hover {
+         color: @sapphire;
+         border-radius: 1rem;
+        }
 
-           #workspaces button {
-               padding: 5px;
-               background-color: transparent;
-               color: #cba6f7;
-           }
+        #tray,
+        #network,
+        #backlight,
+        #clock,
+        #battery,
+        #pulseaudio,
+        #memory,
+        #cpu {
+          background-color: @surface0;
+          padding: 0.5rem 1rem;
+          margin: 5px 0
+        }
 
-           #workspaces button:hover {
-               background: rgba(0, 0, 0, 0.2);
-           }
+        #clock {
+          color: @lavender;
+          border-radius: 0 1rem 1rem 0;
+          margin-right: 1rem;
+        }
 
-           #workspaces button.active{
-               color: #cba6f7;
-               border-radius: 10px;
-               box-shadow: inset 0 -3px #cba6f7;
-           }
+        #network {
+          color: @flamingo;
+        }
 
-           #workspaces button.urgent {
-               background-color: #eb4d4b;
-           }
+        #pulseaudio {
+         color: @pink;
+         border-radius: 1rem 0 0 1rem;
+         margin-left: 1rem;
+        }
 
-           #mode {
-               background-color: #64727D;
-               border-bottom: 3px solid #ffffff;
-           }
+        #pulseaudio.muted {
+          color: @red;
+        }
 
-           #clock,
-           #battery,
-           #cpu,
-           #memory,
-           #disk,
-           #temperature,
-           #backlight,
-           #network,
-           #pulseaudio,
-           #wireplumber,
-           #custom-media,
-           #tray,
-           #mode,
-           #idle_inhibitor,
-           #scratchpad,
-           #mpd,
-           #window,
-           #workspaces {
-               margin-top: .70rem;
-               background: #11111B;
-               opacity: .85;
-               padding: 0 1rem;
-               border-radius: .75rem;
-           }
-           #battery{
-               padding-right: 1.75rem;
-           }
-           #network{
-               padding-right: 1.5rem;
-           }
-           #memory,
-           #cpu{
-               padding-right: 1.25rem;
-           }
-           #tray{
-               margin-right: .5rem;
-           }
-           /* If workspaces is the leftmost module, omit left margin */
-           .modules-left > widget:first-child > #workspaces {
-               margin-left: .9rem;
-           }
+        #cpu {
+         color: @green;
+        }
 
-           .modules-right{
-               margin-right: .70rem;
-           }
+        #memory {
+         color: @yellow;
+        }
 
-           /* If workspaces is the rightmost module, omit right margin */
-           .modules-right > widget:last-child > #workspaces {
-               margin-right: .9rem;
-           }
+        #custom-power {
+         border-radius: 1rem;
+         color: @red;
+         margin-bottom: 1rem;
+        }
 
-           '';
+        #tray {
+          margin-right: 1rem;
+          border-radius: 1rem;
+        }
+
+        tooltip {
+         background: @surface0;
+         border: 1px solid @pink;
+        }
+
+        tooltip label {
+         color: @text;
+        }
+
+        '';
     };
   };
 
