@@ -12,3 +12,6 @@ garbage-collect:
 
 update:
     nix flake update
+
+format:
+    nixpkgs-fmt .
