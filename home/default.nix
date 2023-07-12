@@ -1,3 +1,4 @@
 [
   ./cursor.nix
+  ./gtk.nix
 ]
