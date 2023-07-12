@@ -16,22 +16,15 @@
       env = BROWSER,firefox
       env = MOZ_ENABLE_WAYLAND,1
 
-      # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor=,preferred,auto,1
       monitor=DP-1, 3840x2160@144, 0x0, 1
       monitor=HDMI-A-1, 2560x1440@75, 3840x360, 1
 
-      # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-
-      # Execute your favorite apps at launch
-      # exec-once = waybar & hyprpaper & firefox
       exec-once=waybar
 
-      # Source a file (multi-file configs)
-      # source = ~/.config/hypr/myColors.conf
 
       # Some default env vars.
-      env = XCURSOR_SIZE,24
+
 
       # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
       input {

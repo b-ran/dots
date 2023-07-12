@@ -2,8 +2,9 @@
 
 {
   imports =
-    [ (import ../../home/programs/gui/waybar.nix) ] ++
+    [ (import ../../home/programs/desktop/waybar.nix) ] ++
     [ (import ../../modules/desktop/hyprland/home.nix) ] ++
+    (import ../../home) ++
     (import ../../home/programs/cli);
 
 
@@ -15,14 +16,6 @@
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
       BROWSER = "firefox";
-    };
-
-    pointerCursor = {
-      # This will set cursor system-wide so applications can not choose their own
-      gtk.enable = true;
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 24;
     };
 
   };
