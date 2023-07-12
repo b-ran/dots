@@ -2,13 +2,13 @@
 
 {
   imports =
-    [(import ./hardware-configuration.nix)] ++
-    [(import ../../modules/editors/jetbrains)] ++
-    [(import ../../modules/hardware/nvidia)] ++
-    [(import ../../modules/hardware/sound)] ++
-    [(import ../../modules/boot/efi)] ++
-    [(import ../../modules/boot/grub)] ++
-    [(import ../../modules/desktop/hyprland)];
+    [ (import ./hardware-configuration.nix) ] ++
+    [ (import ../../modules/editors/jetbrains) ] ++
+    [ (import ../../modules/hardware/nvidia) ] ++
+    [ (import ../../modules/hardware/sound) ] ++
+    [ (import ../../modules/boot/efi) ] ++
+    [ (import ../../modules/boot/grub) ] ++
+    [ (import ../../modules/desktop/hyprland) ];
 
 
   networking.hostName = "nixos";
@@ -20,18 +20,19 @@
   environment.systemPackages = with pkgs; [
     kitty
     feh
-    firefox-wayland
     wofi
   ];
 
-  fonts.fonts = with pkgs; [                # Fonts
-    carlito                                 # NixOS
-    vegur                                   # NixOS
+  fonts.fonts = with pkgs; [
+    # Fonts
+    carlito # NixOS
+    vegur # NixOS
     source-code-pro
     jetbrains-mono
-    font-awesome                            # Icons
-    corefonts                               # MS
-    (nerdfonts.override {                   # Nerdfont Icons override
+    font-awesome # Icons
+    corefonts # MS
+    (nerdfonts.override {
+      # Nerdfont Icons override
       fonts = [
         "JetBrainsMono"
       ];

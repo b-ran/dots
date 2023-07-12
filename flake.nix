@@ -20,5 +20,5 @@
           inherit inputs nixpkgs home-manager hyprland user system;
         }
       );
-  };
+    };
 }

@@ -11,6 +11,10 @@
       env = GBM_BACKEND,nvidia-drm
       env = __GLX_VENDOR_LIBRARY_NAME,nvidia
       env = WLR_NO_HARDWARE_CURSORS,1
+      env = XDG_CURRENT_DESKTOP,Hyprland
+      env = XDG_SESSION_DESKTOP,Hyprland
+      env = BROWSER,firefox
+      env = MOZ_ENABLE_WAYLAND,1
 
       # See https://wiki.hyprland.org/Configuring/Monitors/
       monitor=,preferred,auto,1
@@ -168,8 +172,6 @@
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
-
-      env = BROWSER, firefox
     '';
   };
 }

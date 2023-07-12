@@ -2,7 +2,7 @@
 
 {
   boot.loader.efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot";
   };
 }
