@@ -25,8 +25,26 @@
       rsync
       just
 
+      #build
+      gcc
+      gnumake
+      openssl
+      zlib
+      libffi
+      readline
+      sqlite
+      xz
+      bzip2
+
+      #dev
+      python311
+#      python310
+#      python39
+#      python38
+
       # sound
       pavucontrol
+
     ];
   };
 

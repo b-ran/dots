@@ -17,15 +17,15 @@
           on-click = "activate";
           sort-by-number = true;
           format-icons = {
-            "1" = "";
+            "1" = "󰈹";
             "2" = "";
             "3" = "";
             "4" = "󰌃";
             "5" = "󰭹";
             "6" = "";
             "7" = "";
-            "8" = "";
-            "9" = "";
+            "8" = "󰈹";
+            "9" = "󰈹";
             "urgent" = "";
             "default" = "";
           };
@@ -129,21 +129,18 @@
         #waybar {
          background: transparent;
          color: @text;
-         margin: 5px 5px;
+         margin: 5px 5px 0 5px;
         }
 
         #workspaces {
           border-radius: 1rem;
-          margin: 5px;
+          margin: 5px 5px 0 5px;
           background-color: @surface0;
-          margin-left: 1rem;
         }
 
         #workspaces button {
          color: @lavender;
          border-radius: 1rem;
-         padding: 0 5px;
-         margin: 0 5px;
         }
 
         #workspaces button.active {
@@ -152,8 +149,9 @@
         }
 
         #workspaces button:hover {
-         color: @sapphire;
-         border-radius: 1rem;
+         background: rgba(0, 0, 0, 0.3);
+         border-color: rgba(0, 0, 0, 0.3);
+         box-shadow: none;
         }
 
         #tray,
@@ -166,7 +164,7 @@
         #cpu {
           background-color: @surface0;
           padding: 0.5rem 1rem;
-          margin: 5px 0
+          margin-top: 5px;
         }
 
         #clock {

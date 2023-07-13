@@ -5,30 +5,7 @@
     [ (import ../../home/programs/desktop/waybar.nix) ] ++
     [ (import ../../modules/desktop/hyprland/home.nix) ] ++
     (import ../../home) ++
+    (import ../../home/programs/apps) ++
     (import ../../home/programs/cli);
-
-
-  home = {
-    sessionVariables = {
-      WLR_NO_HARDWARE_CURSORS = 1;
-      MOZ_ENABLE_WAYLAND = 1;
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      BROWSER = "firefox";
-    };
-
-  };
-
-  programs.firefox = {
-    enable = true;
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      extraPolicies = {
-        ExtensionSettings = { };
-      };
-    };
-  };
-
-
 
 }
