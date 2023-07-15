@@ -19,6 +19,7 @@
   };
 
   security.polkit.enable = true;
+  services.udisks2.enable = true;
 
   nix = {
     settings.auto-optimise-store = true;

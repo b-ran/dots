@@ -135,7 +135,7 @@
         #workspaces {
           border-radius: 1rem;
           margin: 5px 5px 0 5px;
-          background-color: @surface0;
+          background-color: @base;
         }
 
         #workspaces button {
@@ -162,7 +162,7 @@
         #pulseaudio,
         #memory,
         #cpu {
-          background-color: @surface0;
+          background-color: @base;
           padding: 0.5rem 1rem;
           margin-top: 5px;
         }

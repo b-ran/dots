@@ -6,7 +6,6 @@
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
-#    dotDirs = [ ".zshrc" ];
 
     shellAliases = {
       reload = "source ~/.zshrc";

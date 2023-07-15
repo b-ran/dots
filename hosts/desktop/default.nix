@@ -58,6 +58,10 @@
     gparted
     gnome.gnome-system-monitor
 
+    # system
+    xdg_utils
+    libnotify
+
     # sound
     pavucontrol
 

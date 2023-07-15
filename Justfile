@@ -15,3 +15,6 @@ update:
 
 format:
     nixpkgs-fmt .
+
+test-notifications:
+    notify-send "Hello world! 00"
