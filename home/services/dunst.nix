@@ -32,7 +32,7 @@
           mouse_right_click = "do_action, close_current";
 
           frame_color = "#89B4FA";
-          separator_color= "rgba(0,0,0,0)";
+          separator_color = "rgba(0,0,0,0)";
         };
         experimental = {
           per_monitor_dpi = true;
