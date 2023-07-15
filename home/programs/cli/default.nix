@@ -7,4 +7,6 @@
   ./lazygit.nix
   ./tmux.nix
   ./starship.nix
+  ./k9s.nix
+  ./zsh.nix
 ]

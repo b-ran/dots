@@ -118,7 +118,7 @@
       $mainMod = SUPER
 
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-      bind = $mainMod, Return, exec, kitty
+      bind = $mainMod, Return, exec, alacritty
       bind = $mainMod, C, killactive,
       bind = $mainMod, M, exit,
       bind = $mainMod, E, exec, dolphin
