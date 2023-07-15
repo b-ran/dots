@@ -12,6 +12,7 @@
           separator_height = 0;
           gap_size = 10;
           frame_width = 1;
+          corner_radius = 10;
           format = "<b>%s</b>\n%b";
           alignment = "left";
           vertical_alignment = "center";
