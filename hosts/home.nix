@@ -7,6 +7,19 @@
     home-manager.enable = true;
   };
 
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
+    mimeApps.defaultApplications = {
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "application/pdf" = "zathura.desktop";
+
+    };
+  };
+
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
