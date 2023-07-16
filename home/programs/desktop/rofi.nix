@@ -194,6 +194,4 @@
     package = pkgs.rofi-wayland;
     font = "JetBrainsMono Nerd Font 12";
   };
-
-
 }

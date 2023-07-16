@@ -8,5 +8,4 @@
     (import ../../home/programs/apps) ++
     (import ../../home/programs/desktop) ++
     (import ../../home/programs/cli);
-
 }

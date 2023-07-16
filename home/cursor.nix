@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-
   home.pointerCursor = {
     gtk.enable = true;
     name = "Catppuccin-Mocha-Dark-Cursors";

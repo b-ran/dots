@@ -1,6 +1,5 @@
 { config, pkgs, lib, hyprland, ... }:
 {
-
   programs = {
     waybar = {
       enable = true;
@@ -218,5 +217,4 @@
         '';
     };
   };
-
 }

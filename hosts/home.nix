@@ -2,7 +2,6 @@
 { config, lib, pkgs, user, ... }:
 
 {
-
   programs = {
     home-manager.enable = true;
   };
@@ -32,10 +31,6 @@
     # Shared home packages
     packages = with pkgs; [
 
-
     ];
   };
-
-
-
 }

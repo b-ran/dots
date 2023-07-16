@@ -2,7 +2,6 @@
 
 {
   home = {
-
     file.".config/cava/config".text = ''
       [color]
 
@@ -21,9 +20,5 @@
     packages = with pkgs; [
       cava
     ];
-
   };
-
-
-
 }

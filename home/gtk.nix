@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-
   gtk = {
     enable = true;
     theme = {
@@ -20,5 +19,4 @@
       name = "JetBrains Mono Medium";
     };
   };
-
 }
