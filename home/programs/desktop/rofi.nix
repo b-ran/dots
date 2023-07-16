@@ -11,11 +11,12 @@
         yellow:   #f9e2afff;
       }
     '';
-    file.".config/rofi/themes/launcher.rasi".text = ''
+
+    file.".config/rofi/themes/combi.rasi".text = ''
       configuration {
         show-icons: true;
-        display-drun: "";
-        drun-display-format: "{icon} {name}";
+        display-combi: "";
+        combi-display-format: "{text}";
         disable-history: false;
         click-to-exit: true;
         location: 0;
@@ -156,6 +157,37 @@
         color: @text;
       }
     '';
+
+    file.".config/rofi/menus/powermenu.sh" = {
+      executable = true;
+      text = ''
+        get_options() {
+          echo -en "Shutdown\0icon\x1fsystem-shutdown\n"
+          echo -en "Reboot\0icon\x1fsystem-reboot\n"
+          echo -en "Suspend\0icon\x1fsystem-suspend\n"
+          echo -en "Logout\0icon\x1fsystem-log-out\n"
+          echo -en "Hibernate\0icon\x1fsystem-hibernate\n"
+          echo -en "Lock\0icon\x1fsystem-lock-screen\n"
+        }
+
+        if [ x"$*" = x"Shutdown" ]; then
+          systemctl poweroff
+        elif [ x"$*" = x"Reboot" ]; then
+          systemctl reboot
+        elif [ x"$*" = x"Suspend" ]; then
+          systemctl suspend
+        elif [ x"$*" = x"Logout" ]; then
+          loginctl terminate-user "$(whoami)"
+        elif [ x"$*" = x"Hibernate" ]; then
+          systemctl hibernate
+        elif [ x"$*" = x"Lock" ]; then
+          swaylock -f && exit
+        fi
+
+        get_options
+      '';
+    };
+
   };
   programs.rofi = {
     enable = true;

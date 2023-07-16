@@ -124,7 +124,7 @@
       bind = $mainMod, M, exit,
       bind = $mainMod, E, exec, dolphin
       bind = $mainMod, V, togglefloating,
-      bind = $mainMod, D, exec, rofi -show drun -show-icons -theme ~/.config/rofi/themes/launcher.rasi
+      bind = $mainMod, D, exec, rofi -combi-modi "drun,Power Menu:~/.config/rofi/menus/powermenu.sh" -show combi -theme ~/.config/rofi/themes/combi.rasi
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, F, fullscreen,
