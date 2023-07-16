@@ -16,11 +16,13 @@
       env = BROWSER,firefox
       env = MOZ_ENABLE_WAYLAND,1
 
-      monitor=,preferred,auto,1
-      monitor=DP-1, 3840x2160@144, 0x0, 1
-      monitor=HDMI-A-1, 2560x1440@75, 3840x360, 1
+      monitor = ,preferred,auto,1
+      monitor = DP-1, 3840x2160@144, 0x0, 1
+      monitor = HDMI-A-1, 2560x1440@75, 3840x360, 1
 
-      exec-once=waybar
+      exec-once = waybar
+      exec-once = swayidle -w timeout 10 'if pgrep -x swaylock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
+
 
       # Some default env vars.
 
@@ -126,7 +128,7 @@
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, F, fullscreen,
-      bind = $mainMod, L, exec, swaylock -C ~/.config/swaylock/config
+      bind = $mainMod, L, exec, swaylock
 
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, movefocus, l

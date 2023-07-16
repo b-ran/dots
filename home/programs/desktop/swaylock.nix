@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+
   programs.swaylock =
   let
     base = "1e1e2e";
@@ -39,4 +40,8 @@
       datestr = "%A, %d %B";
     };
   };
+
+  home.packages = [
+    pkgs.swayidle
+  ];
 }
