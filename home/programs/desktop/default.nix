@@ -1,3 +1,4 @@
 [
   ./waybar.nix
+  ./swaylock.nix
 ]

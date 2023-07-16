@@ -22,7 +22,6 @@
 
       exec-once=waybar
 
-
       # Some default env vars.
 
 
@@ -45,7 +44,7 @@
 
       general {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
+          cursor_inactive_timeout = 30
           gaps_in = 5
           gaps_out = 20
           border_size = 2
@@ -127,6 +126,7 @@
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, F, fullscreen,
+      bind = $mainMod, L, exec, swaylock -C ~/.config/swaylock/config
 
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, movefocus, l

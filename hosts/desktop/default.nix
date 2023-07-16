@@ -15,6 +15,11 @@
   networking.networkmanager.enable = true;
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
+  security.pam.services.swaylock = {};
+  security.pam.services.swaylock.text = ''
+  auth include login
+  '';
+
   time.timeZone = "Pacific/Auckland";
 
   environment.systemPackages = with pkgs; [
