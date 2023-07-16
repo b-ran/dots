@@ -8,6 +8,7 @@
     [ (import ../../modules/hardware/sound) ] ++
     [ (import ../../modules/boot/efi) ] ++
     [ (import ../../modules/boot/grub) ] ++
+    [ (import ../../modules/virtualisation/docker.nix) ] ++
     [ (import ../../modules/desktop/hyprland) ];
 
 
@@ -61,6 +62,7 @@
     ventoy-full
     gparted
     gnome.gnome-system-monitor
+    transmission-gtk
 
     # system
     xdg_utils
