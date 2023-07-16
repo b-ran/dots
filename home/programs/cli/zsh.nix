@@ -10,19 +10,26 @@
       reload = "source ~/.zshrc";
       lg = "lazygit";
       neo = "neofetch";
-      dstop = "docker stop $(docker ps -a -q) 2>/dev/null";
-      k = "kubectl $@";
 
-      # Modern Unix
-      cat = "bat $@";
-      ls = "exa -l --icons $@";
-      watch = "viddy $@";
+      # Unix
+      cat = "bat";
+      ls = "exa -l --icons";
+      watch = "viddy";
 
       # Git
       gp = "git push";
       gpl = "git pull";
       gc = "git commit -m";
       gco = "git checkout";
+
+      # Kubernetes
+      k = "kubectl";
+      kp = "kubectl get pods";
+      kc = "kubectx";
+      kn = "kubens";
+
+      # Docker
+      dstop = "docker stop $(docker ps -a -q) 2>/dev/null";
 
     };
 
