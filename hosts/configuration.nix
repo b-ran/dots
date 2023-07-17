@@ -13,14 +13,22 @@
     shell = pkgs.zsh;
   };
 
+    security.polkit.enable = true;
+
+    services.udisks2.enable = true;
+
+    networking.networkmanager = {
+      enable = true;
+    };
+
   environment = {
     shells = [ pkgs.zsh ];
     pathsToLink = [ "/share/zsh" ];
+    systemPackages = with pkgs; [
+     networkmanagerapplet
+     networkmanager-openvpn
+   ];
   };
-
-  security.polkit.enable = true;
-
-  services.udisks2.enable = true;
 
   nix = {
     settings.auto-optimise-store = true;

@@ -60,6 +60,7 @@
           format-linked = "{ifname} (No IP)";
           format-disconnected = "⚠";
           format-alt = "{ifname}: {ipaddr}/{cidr}";
+          on-click = "nm-connection-editor";
         };
 
         clock = {
