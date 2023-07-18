@@ -3,11 +3,15 @@
 {
   home = {
     file.".config/rofi/themes/colors.rasi".text = ''
+
       * {
         base:     #1e1e2eff;
         sky:      #89dcebff;
         text:     #cdd6f4ff;
         red:      #f38ba8ff;
+        maroon:   #eba0acff;
+        pink:     #f5c2e7ff;
+        mauve:    #cba6f7ff;
         yellow:   #f9e2afff;
       }
     '';
@@ -15,6 +19,7 @@
     file.".config/rofi/themes/combi.rasi".text = ''
       configuration {
         show-icons: true;
+        terminal: "alacritty";
         display-combi: "";
         combi-display-format: "{text}";
         disable-history: false;
@@ -38,10 +43,7 @@
       }
 
       prompt {
-        enabled: true;
-        padding: 8px;
-        background-color: @base;
-        text-color: @yellow;
+        enabled: false;
       }
 
       textbox-prompt-colon {
@@ -158,6 +160,35 @@
       }
     '';
 
+    file.".config/rofi/themes/network.rasi".text = ''
+    @import "colors.rasi"
+    @import "combi.rasi"
+
+    window {
+      border-color: @mauve;
+    }
+
+    inputbar {
+      border-color: @mauve;
+    }
+
+    element normal.active,
+    element alternate.active {
+      background-color: @mauve;
+      text-color: @base;
+    }
+
+    element selected {
+      background-color: @mauve;
+      border-color: @mauve;
+    }
+
+    element selected.active {
+      background-color: @mauve;
+      text-color: @base;
+    }
+    '';
+
     file.".config/rofi/menus/powermenu.sh" = {
       executable = true;
       text = ''
@@ -187,6 +218,23 @@
         get_options
       '';
     };
+
+    file.".config/networkmanager-dmenu/config.ini".text = ''
+      [dmenu]
+      dmenu_command = rofi -dmenu -i -theme ~/.config/rofi/themes/network.rasi
+      rofi_highlight = True
+      compact = True
+      wifi_chars = 󰤟󰤢󰤥󰤨
+
+      [editor]
+      terminal = alacritty
+      gui_if_available = True
+    '';
+
+    packages = with pkgs; [
+      dmenu
+      networkmanager_dmenu
+    ];
 
   };
   programs.rofi = {

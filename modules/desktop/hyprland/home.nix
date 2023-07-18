@@ -125,6 +125,7 @@
       bind = $mainMod, E, exec, dolphin
       bind = $mainMod, V, togglefloating,
       bind = $mainMod, D, exec, rofi -combi-modi "drun,Power Menu:~/.config/rofi/menus/powermenu.sh" -show combi -theme ~/.config/rofi/themes/combi.rasi
+      bind = $mainMod, N, exec, networkmanager_dmenu
       bind = $mainMod, P, pseudo, # dwindle
       bind = $mainMod, J, togglesplit, # dwindle
       bind = $mainMod, F, fullscreen,
