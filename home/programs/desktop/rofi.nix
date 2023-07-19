@@ -161,32 +161,32 @@
     '';
 
     file.".config/rofi/themes/network.rasi".text = ''
-    @import "colors.rasi"
-    @import "combi.rasi"
+      @import "colors.rasi"
+      @import "combi.rasi"
 
-    window {
-      border-color: @mauve;
-    }
+      window {
+        border-color: @mauve;
+      }
 
-    inputbar {
-      border-color: @mauve;
-    }
+      inputbar {
+        border-color: @mauve;
+      }
 
-    element normal.active,
-    element alternate.active {
-      background-color: @mauve;
-      text-color: @base;
-    }
+      element normal.active,
+      element alternate.active {
+        background-color: @mauve;
+        text-color: @base;
+      }
 
-    element selected {
-      background-color: @mauve;
-      border-color: @mauve;
-    }
+      element selected {
+        background-color: @mauve;
+        border-color: @mauve;
+      }
 
-    element selected.active {
-      background-color: @mauve;
-      text-color: @base;
-    }
+      element selected.active {
+        background-color: @mauve;
+        text-color: @base;
+      }
     '';
 
     file.".config/rofi/menus/powermenu.sh" = {

@@ -1,4 +1,4 @@
-{ pkgs, lib, user, ... }:
+{ pkgs, home-manager, hyprland, lib, user, ... }:
 
 {
   imports =
@@ -9,6 +9,7 @@
     [ (import ../../modules/boot/efi) ] ++
     [ (import ../../modules/boot/grub) ] ++
     [ (import ../../modules/virtualisation/docker.nix) ] ++
+    [ (import ../../modules/services/sddm.nix) ] ++
     [ (import ../../modules/desktop/hyprland) ];
 
 

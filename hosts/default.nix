@@ -9,7 +9,7 @@ in
   ${user} = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs hyprland user system;
+      inherit pkgs home-manager hyprland user system;
     };
     modules = [
       hyprland.nixosModules.default
