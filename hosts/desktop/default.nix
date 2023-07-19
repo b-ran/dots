@@ -1,28 +1,12 @@
-{ pkgs, home-manager, hyprland, lib, user, ... }:
+{ lib, pkgs, home-manager, hyprland, user, ... }:
 
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++
-    [ (import ../../modules/editors/jetbrains) ] ++
-    [ (import ../../modules/hardware/nvidia) ] ++
-    [ (import ../../modules/hardware/sound) ] ++
-    [ (import ../../modules/boot/efi) ] ++
-    [ (import ../../modules/boot/grub) ] ++
-    [ (import ../../modules/virtualisation/docker.nix) ] ++
-    [ (import ../../modules/services/sddm.nix) ] ++
-    [ (import ../../modules/desktop/hyprland) ];
+    (import ../../modules);
 
 
   networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
-  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
-
-  security.pam.services.swaylock = { };
-  security.pam.services.swaylock.text = ''
-    auth include login
-  '';
-
-  time.timeZone = "Pacific/Auckland";
 
   environment.systemPackages = with pkgs; [
     feh
@@ -72,21 +56,5 @@
     # sound
     pavucontrol
 
-  ];
-
-  fonts.fonts = with pkgs; [
-    # Fonts
-    carlito # NixOS
-    vegur # NixOS
-    source-code-pro
-    jetbrains-mono
-    font-awesome # Icons
-    corefonts # MS
-    (nerdfonts.override {
-      # Nerdfont Icons override
-      fonts = [
-        "JetBrainsMono"
-      ];
-    })
   ];
 }

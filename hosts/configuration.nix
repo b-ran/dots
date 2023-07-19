@@ -1,7 +1,8 @@
-{ config, lib, pkgs, inputs, user, ... }:
+{ pkgs, user, ... }:
 
 {
   system.stateVersion = "23.11";
+  time.timeZone = "Pacific/Auckland";
 
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
@@ -13,13 +14,22 @@
     shell = pkgs.zsh;
   };
 
-  security.polkit.enable = true;
+  fonts.fonts = with pkgs; [
+    carlito
+    vegur
+    source-code-pro
+    jetbrains-mono
+    font-awesome
+    corefonts
+    (nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+      ];
+    })
+  ];
 
-  services.udisks2.enable = true;
-
-  networking.networkmanager = {
-    enable = true;
-  };
+  networking.networkmanager.enable = true;
+  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
   environment = {
     shells = [ pkgs.zsh ];
@@ -29,6 +39,13 @@
       networkmanager-openvpn
     ];
   };
+
+  security.pam.services.swaylock = { };
+  security.pam.services.swaylock.text = ''
+    auth include login
+  '';
+  security.polkit.enable = true;
+  services.udisks2.enable = true;
 
   nix = {
     settings.auto-optimise-store = true;

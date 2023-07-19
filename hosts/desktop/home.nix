@@ -2,7 +2,6 @@
 
 {
   imports =
-    [ (import ../../modules/desktop/hyprland/home.nix) ] ++
     (import ../../home) ++
     (import ../../home/services) ++
     (import ../../home/programs/apps) ++

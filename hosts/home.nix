@@ -1,5 +1,4 @@
-# Shared home manager configuration
-{ config, lib, pkgs, user, ... }:
+{ pkgs, user, ... }:
 
 {
   programs = {
@@ -28,7 +27,6 @@
     homeDirectory = "/home/${user}";
     stateVersion = "23.11";
 
-    # Shared home packages
     packages = with pkgs; [
 
     ];

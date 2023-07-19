@@ -1,0 +1,10 @@
+[
+  ./docker.nix
+  ./efi.nix
+  ./grub.nix
+  ./hyprland.nix
+  ./jetbrains.nix
+  ./nvidia.nix
+  ./pipewire.nix
+  ./sddm.nix
+]
