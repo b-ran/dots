@@ -2,12 +2,14 @@
   ./bat.nix
   ./btop.nix
   ./cava.nix
-  ./git.nix
   ./exa.nix
+  ./fzf.nix
+  ./git.nix
   ./htop.nix
-  ./lazygit.nix
-  ./tmux.nix
-  ./starship.nix
   ./k9s.nix
+  ./lazygit.nix
+  ./ripgrep.nix
+  ./starship.nix
+  ./tmux.nix
   ./zsh.nix
 ]
