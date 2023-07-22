@@ -48,6 +48,8 @@
     gparted
     gnome.gnome-system-monitor
     transmission-gtk
+    spotifywm
+    spotify
 
     # system
     xdg_utils

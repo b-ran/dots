@@ -41,6 +41,7 @@
 
         exec-once = waybar
         exec-once = swayidle -w timeout 10 'if pgrep -x swaylock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
+        exec-once = discord-krisp-patch & discord --start-minimized
 
         windowrulev2=noinitialfocus,class:^jetbrains-(?!toolbox),floating:1
 

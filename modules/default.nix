@@ -1,4 +1,5 @@
 [
+  ./discord.nix
   ./docker.nix
   ./efi.nix
   ./grub.nix
