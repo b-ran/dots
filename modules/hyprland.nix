@@ -55,7 +55,7 @@ in
 
         exec-once = waybar
         exec-once = swayidle -w timeout 10 'if pgrep -x swaylock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
-        # exec-once = discord-krisp-patch & discord --start-minimized
+        exec-once = discord-krisp-patch & discord --start-minimized
         exec-once=${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
