@@ -1,4 +1,4 @@
-{ pkgs, home-manager, hyprland, hyprland-contrib, user,  ... }:
+{ pkgs, home-manager, hyprland, hyprland-contrib, user, ... }:
 
 let
   catppuccinHyprland = pkgs.fetchFromGitHub {
