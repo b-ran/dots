@@ -11,7 +11,7 @@
           line_height = 10;
           separator_height = 0;
           gap_size = 10;
-          frame_width = 1;
+          frame_width = 2;
           corner_radius = 10;
           format = "<b>%s</b>\n%b";
           alignment = "left";
@@ -20,7 +20,7 @@
           ellipsize = "middle";
           ignore_newline = "no";
           stack_duplicates = true;
-          hide_duplicate_count = false;
+          hide_duplicate_count = true;
           show_indicators = "no";
 
           enable_recursive_icon_lookup = true;
@@ -32,7 +32,9 @@
           mouse_middle_click = "close_all";
           mouse_right_click = "do_action, close_current";
 
-          frame_color = "#89B4FA";
+          frame_color = "#89DCEB";
+          highlight = "#89DCEB";
+          progress_bar_corner_radius = 5;
           separator_color = "rgba(0,0,0,0)";
         };
         experimental = {

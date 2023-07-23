@@ -29,14 +29,9 @@
         bs-hl-color = "${red}";
         verif-color = "${base}";
         wrong-color = "${mauve}";
-        font = "JetBrainsMono Nerd Font";
-        font-size = 24;
         indicator-radius = 140;
         indicator-thickness = 10;
-        clock = true;
         indicator = true;
-        timestr = "%I:%M %p";
-        datestr = "%A, %d %B";
       };
     };
 

@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, hyprland, user, system }:
+{ lib, inputs, nixpkgs, home-manager, hyprland, hyprland-contrib, user, system }:
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -9,7 +9,7 @@ in
   ${user} = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs home-manager hyprland user system;
+      inherit pkgs home-manager hyprland hyprland-contrib user system;
     };
     modules = [
       hyprland.nixosModules.default
@@ -34,4 +34,3 @@ in
     ];
   };
 }
-

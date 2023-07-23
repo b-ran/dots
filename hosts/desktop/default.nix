@@ -30,6 +30,15 @@
     dive
     awscli2
 
+    #util
+    jq
+    playerctl
+    brightnessctl
+    pamixer
+    qt6.qtwayland
+    qt6.full
+    speechd
+
     # build
     gcc
     gnumake
@@ -48,7 +57,6 @@
     gparted
     gnome.gnome-system-monitor
     transmission-gtk
-    spotifywm
     spotify
 
     # system

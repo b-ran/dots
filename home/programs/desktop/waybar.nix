@@ -16,8 +16,8 @@
           on-click = "activate";
           sort-by-number = true;
           format-icons = {
-            "1" = "󰈹";
-            "2" = "";
+            "1" = "";
+            "2" = "󰈹";
             "3" = "";
             "4" = "󰌃";
             "5" = "󰭹";
@@ -25,6 +25,7 @@
             "7" = "";
             "8" = "󰈹";
             "9" = "󰈹";
+            "0" = "󰈹";
             "urgent" = "";
             "default" = "";
           };
@@ -60,7 +61,7 @@
           format-linked = "{ifname} (No IP)";
           format-disconnected = "⚠";
           format-alt = "{ifname}: {ipaddr}/{cidr}";
-          on-click = "nm-connection-editor";
+          on-click-right = "nm-connection-editor";
         };
 
         clock = {
@@ -88,7 +89,6 @@
 
       };
       style = ''
-
         @define-color base   #1e1e2e;
         @define-color mantle #181825;
         @define-color crust  #11111b;
@@ -135,7 +135,7 @@
         #workspaces {
           border-radius: 1rem;
           margin: 5px 5px 0 5px;
-          background-color: @base;
+          background-color: @crust;
         }
 
         #workspaces button {
@@ -162,23 +162,13 @@
         #pulseaudio,
         #memory,
         #cpu {
-          background-color: @base;
+          background-color: @crust;
           padding: 0.5rem 1rem;
           margin-top: 5px;
         }
 
-        #clock {
-          color: @lavender;
-          border-radius: 0 1rem 1rem 0;
-          margin-right: 1rem;
-        }
-
-        #network {
-          color: @flamingo;
-        }
-
         #pulseaudio {
-         color: @pink;
+         color: @mauve;
          border-radius: 1rem 0 0 1rem;
          margin-left: 1rem;
         }
@@ -192,13 +182,17 @@
         }
 
         #memory {
-         color: @yellow;
+         color: @peach;
         }
 
-        #custom-power {
-         border-radius: 1rem;
-         color: @red;
-         margin-bottom: 1rem;
+        #network {
+          color: @yellow;
+        }
+
+        #clock {
+          color: @sky;
+          border-radius: 0 1rem 1rem 0;
+          margin-right: 1rem;
         }
 
         #tray {
@@ -214,8 +208,7 @@
         tooltip label {
          color: @text;
         }
-
-        '';
+      '';
     };
   };
 }
