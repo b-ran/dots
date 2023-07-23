@@ -1,4 +1,5 @@
 [
+  ./blueman.nix
   ./discord.nix
   ./docker.nix
   ./efi.nix
@@ -8,4 +9,5 @@
   ./nvidia.nix
   ./pipewire.nix
   ./sddm.nix
+  ./thunar.nix
 ]

@@ -6,10 +6,9 @@
 
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
-
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "scanner" "kvm" ];
     initialPassword = "password";
     shell = pkgs.zsh;
   };
@@ -41,11 +40,10 @@
   };
 
   security.pam.services.swaylock = { };
-  security.pam.services.swaylock.text = ''
-    auth include login
-  '';
+  security.rtkit.enable = true;
   security.polkit.enable = true;
   services.udisks2.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   nix = {
     settings.auto-optimise-store = true;

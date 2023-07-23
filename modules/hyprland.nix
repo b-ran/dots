@@ -9,7 +9,7 @@ let
   };
 in
 {
-  security.polkit.enable = true;
+
   programs = {
     dconf.enable = true;
     xwayland.enable = true;
@@ -27,7 +27,6 @@ in
     wl-clipboard
     hyprland-contrib.packages.${pkgs.system}.grimblast
     polkit-kde-agent
-    webcord-vencord
   ];
 
   home-manager.users.${user} = {
