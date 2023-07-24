@@ -96,6 +96,9 @@
   };
 
   security.pam.services.swaylock = { };
+  security.pam.services.swaylock.text = ''
+    auth include login
+  '';
   security.rtkit.enable = true;
   security.polkit.enable = true;
   services.udisks2.enable = true;
