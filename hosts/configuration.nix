@@ -64,6 +64,7 @@
       networkmanagerapplet
       networkmanager-openvpn
       feh
+      polkit-kde-agent
 
       # build
       gcc

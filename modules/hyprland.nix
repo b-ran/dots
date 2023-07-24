@@ -37,7 +37,6 @@ in
     hyprpaper
     wl-clipboard
     hyprland-contrib.packages.${pkgs.system}.grimblast
-    polkit-kde-agent
   ];
 
   home-manager.users.${user} = {
@@ -66,10 +65,10 @@ in
         exec-once=${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
-        windowrulev2 = workspace 7, title:Spotify
+        # windowrulev2 = workspace 7, title:Spotify
         windowrulev2 = opacity 0.90 override 0.90 override, title:Spotify
-        windowrulev2 = workspace 4, class:jetbrains-idea
-        windowrulev2 = workspace 3, class:discord
+        # windowrulev2 = workspace 4, class:jetbrains-idea
+        # windowrulev2 = workspace 3, class:discord
         windowrulev2= workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
 
         windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
