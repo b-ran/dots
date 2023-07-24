@@ -1,4 +1,4 @@
-{ pkgs, home-manager, hyprland, hyprland-contrib, user, ... }:
+{ pkgs, home-manager, hyprland, hyprland-contrib, user, host, ... }:
 
 let
   catppuccinHyprland = pkgs.fetchFromGitHub {
@@ -7,9 +7,20 @@ let
     rev = "99a88fd21fac270bd999d4a26cf0f4a4222c58be";
     sha256 = "sha256-07B5QmQmsUKYf38oWU3+2C6KO4JvinuTwmW1Pfk8CT8=";
   };
+
+  monitors = with host;
+    if name == "desktop" then ''
+      monitor = ${toString fristMonitor}, 3840x2160@144, 0x0, 1
+      monitor = ${toString secondMonitor}, 2560x1440@75, 3840x360, 1
+    '' else if name == "work" then ''
+      monitor = ${toString fristMonitor}, 1920x1080@60, 0x0, 1
+      monitor = ${toString secondMonitor}, 1920x1080@60, 1920x0, 1
+      monitor = ${toString thirdMonitor}, 1920x10800@60, 3840x0, 1
+    '' else ''
+      monitor = ,preferred,auto,1
+    '';
 in
 {
-
   programs = {
     dconf.enable = true;
     xwayland.enable = true;
@@ -38,6 +49,7 @@ in
       recommendedEnvironment = true;
 
       extraConfig = ''
+        ${monitors}
         source=~/.config/hypr/catppuccin.conf
 
         env = LIBVA_DRIVER_NAME,nvidia
@@ -48,10 +60,6 @@ in
         env = BROWSER,firefox
         env = MOZ_ENABLE_WAYLAND,1
 
-        monitor = ,preferred,auto,1
-        monitor = DP-1, 3840x2160@144, 0x0, 1
-        monitor = HDMI-A-1, 2560x1440@75, 3840x360, 1
-
         exec-once = waybar
         exec-once = swayidle -w timeout 10 'if pgrep -x swaylock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
         exec-once = discord-krisp-patch & discord --start-minimized
@@ -60,8 +68,8 @@ in
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
         windowrulev2 = workspace 7, title:Spotify
         windowrulev2 = opacity 0.90 override 0.90 override, title:Spotify
-        windowrulev2 = workspace 3, class:jetbrains-idea
-        windowrulev2 = workspace 5, class:discord
+        windowrulev2 = workspace 4, class:jetbrains-idea
+        windowrulev2 = workspace 3, class:discord
         windowrulev2= workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
 
         windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$

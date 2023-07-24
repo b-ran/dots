@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [glib]; # gsettings
+  xdg.systemDirs.data = let
+    schema = pkgs.gsettings-desktop-schemas;
+  in ["${schema}/share/gsettings-schemas/${schema.name}"];
+
   gtk = {
     enable = true;
     theme = {
@@ -16,7 +21,7 @@
       package = pkgs.papirus-icon-theme;
     };
     font = {
-      name = "JetBrains Mono Medium";
+      name = "JetBrainsMono Nerd Font";
     };
   };
 }
