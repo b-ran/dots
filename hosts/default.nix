@@ -9,7 +9,7 @@ in
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs home-manager hyprland hyprland-contrib user system;
+      inherit pkgs home-manager hyprland-contrib user system;
       host = {
         name = "desktop";
         fristMonitor = "DP-1";
@@ -17,7 +17,6 @@ in
       };
     };
     modules = [
-      hyprland.nixosModules.default
       ./configuration.nix
       ./desktop
 
@@ -35,7 +34,6 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            hyprland.homeManagerModules.default
             ./home.nix
             desktop/home.nix
           ];
@@ -47,7 +45,7 @@ in
   work = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs home-manager hyprland hyprland-contrib user system;
+      inherit pkgs home-manager hyprland-contrib user system;
       host = {
         name = "work";
         fristMonitor = "DVI-I-1";
@@ -56,7 +54,6 @@ in
       };
     };
     modules = [
-      hyprland.nixosModules.default
       ./configuration.nix
       ./work
 
@@ -75,7 +72,6 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            hyprland.homeManagerModules.default
             ./home.nix
             work/home.nix
           ];
