@@ -13,7 +13,7 @@
     shell = pkgs.zsh;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     carlito
     vegur
     source-code-pro
