@@ -55,6 +55,8 @@
 
       #util
       jq
+      zip
+      tree
       playerctl
       brightnessctl
       pamixer
