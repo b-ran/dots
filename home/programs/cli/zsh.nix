@@ -6,6 +6,11 @@
     enableAutosuggestions = true;
     enableCompletion = true;
 
+    localVariables = {
+      ENHANCD_ENABLE_HOME = false;
+      ENHANCD_ENABLE_DOUBLE_DOT = false;
+    };
+
     shellAliases = {
       reload = "source ~/.zshrc";
       lg = "lazygit";
@@ -59,8 +64,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "b4b4r07";
           repo = "enhancd";
-          rev = "v2.5.1";
-          sha256 = "kaintLXSfLH7zdLtcoZfVNobCJCap0S/Ldq85wd3krI=";
+          rev = "230695f8da8463b18121f58d748851a67be19a00";
+          sha256 = "sha256-XJl0XVtfi/NTysRMWant84uh8+zShTRwd7t2cxUk+qU=";
         };
       }
     ];

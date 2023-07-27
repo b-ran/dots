@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ pkgs, old-nixpkgs, user, system, ... }:
 
 {
   system.stateVersion = "23.11";
@@ -13,7 +13,7 @@
     shell = pkgs.zsh;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     carlito
     vegur
     source-code-pro
@@ -28,12 +28,11 @@
   ];
 
   networking.networkmanager.enable = true;
-  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
   environment = {
     shells = [ pkgs.zsh ];
     pathsToLink = [ "/share/zsh" ];
-    systemPackages = with pkgs; [
+    systemPackages = with pkgs; ([
       # cli
       wget
       cbonsai
@@ -52,9 +51,12 @@
       kops
       dive
       awscli2
+      postgresql_15
 
       #util
       jq
+      zip
+      tree
       playerctl
       brightnessctl
       pamixer
@@ -81,7 +83,6 @@
       freerdp
       slack
       ventoy-full
-      gparted
       gnome.gnome-system-monitor
       transmission-gtk
       spotify
@@ -92,8 +93,14 @@
 
       # sound
       pavucontrol
-    ];
+    ])  ++ (with old-nixpkgs.legacyPackages.${system}; [
+      # <https://discourse.nixos.org/t/python3-8-sphinx-build-failure-on-unstable/29102/11?u=stianlagstad>
+      python38
+      python39
+    ]);
   };
+
+  networking.firewall.enable = false;
 
   security.pam.services.swaylock = { };
   security.pam.services.swaylock.text = ''

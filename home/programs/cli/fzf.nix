@@ -35,10 +35,6 @@
     fileWidgetOptions = [
       "--preview 'bat --color=always --style=header,grid --line-range :100 {}'"
     ];
-    changeDirWidgetCommand = "fd --type d";
-    changeDirWidgetOptions = [
-      "--preview tree -C {} | head -100"
-    ];
   };
 
 }
