@@ -1,10 +1,12 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [glib]; # gsettings
-  xdg.systemDirs.data = let
-    schema = pkgs.gsettings-desktop-schemas;
-  in ["${schema}/share/gsettings-schemas/${schema.name}"];
+  home.packages = with pkgs; [ glib ]; # gsettings
+  xdg.systemDirs.data =
+    let
+      schema = pkgs.gsettings-desktop-schemas;
+    in
+    [ "${schema}/share/gsettings-schemas/${schema.name}" ];
 
   gtk = {
     enable = true;

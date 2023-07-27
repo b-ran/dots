@@ -9,7 +9,7 @@ in
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-nixpkgs  home-manager hyprland-contrib user system;
+      inherit pkgs old-nixpkgs home-manager hyprland-contrib user system;
       host = {
         name = "desktop";
         fristMonitor = "DP-1";

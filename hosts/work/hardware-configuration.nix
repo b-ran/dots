@@ -37,14 +37,14 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-#  networking = {
-#    enableIPv6 = false;
-#    interfaces = {
-#      eno1 = {
-#        useDHCP = true;
-#      };
-#    };
-#    defaultGateway = "192.168.128.1";
-#    nameservers = [ "10.1.0.3" ];
-#  };
+  #  networking = {
+  #    enableIPv6 = false;
+  #    interfaces = {
+  #      eno1 = {
+  #        useDHCP = true;
+  #      };
+  #    };
+  #    defaultGateway = "192.168.128.1";
+  #    nameservers = [ "10.1.0.3" ];
+  #  };
 }

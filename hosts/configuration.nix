@@ -93,7 +93,7 @@
 
       # sound
       pavucontrol
-    ])  ++ (with old-nixpkgs.legacyPackages.${system}; [
+    ]) ++ (with old-nixpkgs.legacyPackages.${system}; [
       # <https://discourse.nixos.org/t/python3-8-sphinx-build-failure-on-unstable/29102/11?u=stianlagstad>
       python38
       python39
