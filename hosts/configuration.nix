@@ -1,8 +1,13 @@
-{ pkgs, old-nixpkgs, user, system, ... }:
+{ config, pkgs, old-nixpkgs, agenix, user, system, ... }:
 
 {
   system.stateVersion = "23.11";
   time.timeZone = "Pacific/Auckland";
+
+  age.identityPaths = [ "/home/${user}/.ssh/agenix" ];
+  age.secrets.hello = {
+    file = ../secrets/hello.age;
+  };
 
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
@@ -67,6 +72,7 @@
       networkmanager-openvpn
       feh
       polkit-kde-agent
+      agenix.packages.${system}.default
 
       # build
       gcc
@@ -99,6 +105,8 @@
       python39
     ]);
   };
+
+
 
   networking.firewall.enable = false;
 

@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, old-nixpkgs, home-manager, hyprland, hyprland-contrib, user, system }:
+{ lib, inputs, nixpkgs, old-nixpkgs, home-manager, hyprland, hyprland-contrib, agenix, user, system }:
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -9,7 +9,7 @@ in
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-nixpkgs home-manager hyprland-contrib user system;
+      inherit pkgs old-nixpkgs home-manager hyprland-contrib agenix user system;
       host = {
         name = "desktop";
         fristMonitor = "DP-1";
@@ -19,7 +19,7 @@ in
     modules = [
       ./configuration.nix
       ./desktop
-
+      agenix.nixosModules.default
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -45,7 +45,7 @@ in
   work = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-nixpkgs home-manager hyprland-contrib user system;
+      inherit pkgs old-nixpkgs home-manager hyprland-contrib agenix user system;
       host = {
         name = "work";
         fristMonitor = "DVI-I-1";
@@ -56,7 +56,7 @@ in
     modules = [
       ./configuration.nix
       ./work
-
+      agenix.nixosModules.default
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
