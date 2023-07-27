@@ -57,6 +57,7 @@ in
         env = QT_QPA_PLATFORM=wayland
         env = BROWSER,firefox
         env = MOZ_ENABLE_WAYLAND,1
+        env = _JAVA_AWT_WM_NONREPARENTING,1
 
         exec-once = waybar
         exec-once = swayidle -w timeout 10 'if pgrep -x swaylock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
@@ -70,10 +71,18 @@ in
         # windowrulev2 = workspace 4, class:jetbrains-idea
         # windowrulev2 = workspace 3, class:discord
 
-        windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
-        windowrulev2= workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
+        #        windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
+        windowrule=noanim,^(jetbrains-idea)$
+        windowrulev2=dimaround,class:^(jetbrains-idea)$,title:^((Select)|(Choose) )
+        windowrulev2 = forceinput, class:jetbrains-ide
+        windowrulev2 = center, class:jetbrains-ide
+        windowrulev2 = workspace m+0, class:jetbrains-ide
+
+        windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
         windowrulev2 = float, class:1Password
         windowrulev2 = center, class:1Password
+        windowrulev2 = float, class:org.kde.polkit-kde-authentication-agent-1
+        windowrulev2 = center, class:org.kde.polkit-kde-authentication-agent-1
 
         # Some default env vars.
 

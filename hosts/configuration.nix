@@ -83,7 +83,6 @@
       freerdp
       slack
       ventoy-full
-      gparted
       gnome.gnome-system-monitor
       transmission-gtk
       spotify
