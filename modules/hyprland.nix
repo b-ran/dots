@@ -1,4 +1,4 @@
-{ pkgs, home-manager, hyprland, hyprland-contrib, user, host, ... }:
+{ pkgs, home-manager, hyprland-contrib, user, host, ... }:
 
 let
   catppuccinHyprland = pkgs.fetchFromGitHub {
@@ -43,9 +43,8 @@ in
     home.file.".config/hypr/catppuccin.conf".source = "${catppuccinHyprland}/themes/mocha.conf";
     wayland.windowManager.hyprland = {
       enable = true;
-      nvidiaPatches = true;
+      enableNvidiaPatches = true;
       systemdIntegration = true;
-      recommendedEnvironment = true;
 
       extraConfig = ''
         ${monitors}

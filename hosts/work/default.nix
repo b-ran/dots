@@ -1,4 +1,4 @@
-{ lib, pkgs, home-manager, hyprland, user, host, ... }:
+{ lib, pkgs, home-manager, user, host, ... }:
 
 {
   imports =
