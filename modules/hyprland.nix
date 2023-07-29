@@ -71,13 +71,8 @@ in
         # windowrulev2 = workspace 4, class:jetbrains-idea
         # windowrulev2 = workspace 3, class:discord
 
-        #        windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
-        windowrule=noanim,^(jetbrains-idea)$
-        windowrulev2=dimaround,class:^(jetbrains-idea)$,title:^((Select)|(Choose) )
-        windowrulev2 = forceinput, class:jetbrains-ide
-        windowrulev2 = center, class:jetbrains-ide
-        windowrulev2 = workspace m+0, class:jetbrains-ide
-
+        windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
+        
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
         windowrulev2 = float, class:1Password
         windowrulev2 = center, class:1Password
