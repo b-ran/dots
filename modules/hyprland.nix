@@ -10,10 +10,10 @@ let
 
   monitors = with host;
     if name == "desktop" then ''
-      monitor = ${toString fristMonitor}, 3840x2160@144, 0x0, 1
+      monitor = ${toString firstMonitor}, 3840x2160@144, 0x0, 1
       monitor = ${toString secondMonitor}, 2560x1440@75, 3840x360, 1
     '' else if name == "work" then ''
-      monitor = ${toString fristMonitor}, 1920x1080@60, 0x0, 1
+      monitor = ${toString firstMonitor}, 1920x1080@60, 0x0, 1
       monitor = ${toString secondMonitor}, 1920x1080@60, 1920x0, 1
       monitor = ${toString thirdMonitor}, 1920x10800@60, 3840x0, 1
     '' else ''
@@ -61,6 +61,7 @@ in
 
         exec-once = waybar
         exec-once = swayidle -w timeout 10 'if pgrep -x swaylock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
+        exec-once = nm-applet
         exec-once = discord-krisp-patch & discord --start-minimized
         exec-once = ${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
         exec-once = 1password --silent
@@ -72,7 +73,6 @@ in
         # windowrulev2 = workspace 3, class:discord
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
-        
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
         windowrulev2 = float, class:1Password
         windowrulev2 = center, class:1Password

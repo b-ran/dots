@@ -1,19 +1,14 @@
-{ config, pkgs, old-nixpkgs, agenix, user, system, ... }:
+{ config, pkgs, old-nixpkgs, user, system, ... }:
 
 {
   system.stateVersion = "23.11";
   time.timeZone = "Pacific/Auckland";
 
-  age.identityPaths = [ "/home/${user}/.ssh/agenix" ];
-  age.secrets.hello = {
-    file = ../secrets/hello.age;
-  };
-
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "scanner" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "password";
     shell = pkgs.zsh;
   };
@@ -32,7 +27,12 @@
     })
   ];
 
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    firewall = {
+      enable = true;
+    };
+  };
 
   environment = {
     shells = [ pkgs.zsh ];
@@ -70,9 +70,10 @@
       speechd
       networkmanagerapplet
       networkmanager-openvpn
+      openvpn
       feh
       polkit-kde-agent
-      agenix.packages.${system}.default
+      xclip
 
       # build
       gcc
@@ -82,6 +83,9 @@
       python311
       python311Packages.pip
       python310
+      pre-commit
+      rustc  # for ruff
+      cargo  # for ruff
 
       # progams
       keepassxc
@@ -106,9 +110,7 @@
     ]);
   };
 
-
-
-  networking.firewall.enable = false;
+  environment.variables.PIP_NO_BINARY = "ruff";
 
   security.pam.services.swaylock = { };
   security.pam.services.swaylock.text = ''

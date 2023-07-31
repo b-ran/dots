@@ -13,7 +13,10 @@ garbage-collect:
 update:
     nix flake update
 
-format:
+update-single +ARGS:
+    nix flake lock --update-input {{ARGS}}
+
+lint:
     nixpkgs-fmt .
 
 test-notifications:

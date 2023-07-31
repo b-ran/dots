@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, old-nixpkgs, home-manager, hyprland, hyprland-contrib, agenix, user, system }:
+{ lib, inputs, nixpkgs, old-nixpkgs, home-manager, hyprland, hyprland-contrib, secrets, user, system }:
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -9,26 +9,25 @@ in
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-nixpkgs home-manager hyprland-contrib agenix user system;
+      inherit pkgs old-nixpkgs home-manager hyprland-contrib secrets user system;
       host = {
         name = "desktop";
-        fristMonitor = "DP-1";
+        firstMonitor = "DP-1";
         secondMonitor = "HDMI-A-1";
       };
     };
     modules = [
       ./configuration.nix
       ./desktop
-      agenix.nixosModules.default
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit user hyprland;
+          inherit hyprland user system;
           host = {
             name = "desktop";
-            fristMonitor = "DP-1";
+            firstMonitor = "DP-1";
             secondMonitor = "HDMI-A-1";
           };
         };
@@ -39,16 +38,16 @@ in
           ];
         };
       }
-    ];
+    ] ++ lib.optional (secrets ? nixosModule) (secrets.nixosModule { user = "${user}"; system = "${system}"; });
   };
 
   work = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-nixpkgs home-manager hyprland-contrib agenix user system;
+      inherit pkgs old-nixpkgs home-manager hyprland-contrib user system;
       host = {
         name = "work";
-        fristMonitor = "DVI-I-1";
+        firstMonitor = "DVI-I-1";
         secondMonitor = "DP-1";
         thirdMonitor = "HDMI-A-1";
       };
@@ -56,7 +55,6 @@ in
     modules = [
       ./configuration.nix
       ./work
-      agenix.nixosModules.default
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -65,7 +63,7 @@ in
           inherit user hyprland;
           host = {
             name = "work";
-            fristMonitor = "DVI-I-1";
+            firstMonitor = "DVI-I-1";
             secondMonitor = "DP-1";
             thirdMonitor = "HDMI-A-1";
           };

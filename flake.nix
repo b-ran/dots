@@ -18,10 +18,10 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix.url = "github:ryantm/agenix";
+    secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets.git";
   };
 
-  outputs = inputs @ { self, nixpkgs, old-nixpkgs, home-manager, hyprland, hyprland-contrib, agenix, ... }:
+  outputs = inputs @ { self, nixpkgs, old-nixpkgs, home-manager, hyprland, hyprland-contrib, secrets, ... }:
     let
       user = "brandon";
       system = "x86_64-linux";
@@ -30,7 +30,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs old-nixpkgs home-manager hyprland hyprland-contrib agenix user system;
+          inherit inputs nixpkgs old-nixpkgs home-manager hyprland hyprland-contrib secrets user system;
         }
       );
     };
