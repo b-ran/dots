@@ -1,6 +1,5 @@
 [
   ./1password.nix
-  ./blueman.nix
   ./discord.nix
   ./docker.nix
   ./efi.nix

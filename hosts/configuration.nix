@@ -43,7 +43,15 @@
     pam.services.swaylock.text = "auth include login";
   };
 
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+  };
+
   services = {
+    blueman.enable = true;
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
     dbus.packages = [pkgs.gcr]; # Needed for Gnome services
