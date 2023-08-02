@@ -7,8 +7,10 @@
   ./grub.nix
   ./hyprland.nix
   ./jetbrains.nix
+  ./nix.nix
   ./nvidia.nix
   ./pipewire.nix
+  ./python.nix
   ./sddm.nix
   ./thunar.nix
 ]

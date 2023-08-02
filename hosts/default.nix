@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, old-nixpkgs, home-manager, hyprland, hyprland-contrib, secrets, user, system }:
+{ lib, inputs, nixpkgs, old-pkgs, home-manager, hyprland, hyprland-contrib, secrets, user, system }:
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -9,7 +9,7 @@ in
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-nixpkgs home-manager hyprland-contrib secrets user system;
+      inherit pkgs old-pkgs home-manager hyprland-contrib secrets user system;
       host = {
         name = "desktop";
         firstMonitor = "DP-1";
@@ -44,7 +44,7 @@ in
   work = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-nixpkgs home-manager hyprland-contrib user system;
+      inherit pkgs old-pkgs home-manager hyprland-contrib user system;
       host = {
         name = "work";
         firstMonitor = "DVI-I-1";

@@ -2,7 +2,6 @@
 
 {
   system.stateVersion = "23.11";
-  time.timeZone = "Pacific/Auckland";
 
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
@@ -12,20 +11,6 @@
     initialPassword = "password";
     shell = pkgs.zsh;
   };
-
-  fonts.packages = with pkgs; [
-    carlito
-    vegur
-    source-code-pro
-    jetbrains-mono
-    font-awesome
-    corefonts
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-      ];
-    })
-  ];
 
   networking = {
     networkmanager.enable = true;
@@ -37,97 +22,44 @@
   environment = {
     shells = [ pkgs.zsh ];
     pathsToLink = [ "/share/zsh" ];
-    systemPackages = with pkgs; ([
-      # cli
-      wget
-      cbonsai
-      viddy
-      neofetch
-      bat
-      gtop
-      unzip
-      ranger
-      ncdu
-      rsync
-      just
-      kubectl
-      helm
-      kubectx
-      kops
-      dive
-      awscli2
-      postgresql_15
-
-      #util
-      jq
-      zip
-      tree
-      playerctl
-      brightnessctl
-      pamixer
-      qt6.qtwayland
-      qt6.full
-      speechd
-      networkmanagerapplet
-      networkmanager-openvpn
-      openvpn
-      feh
-      polkit-kde-agent
-      xclip
-
-      # build
-      gcc
-      gnumake
-
-      # dev
-      python311
-      python311Packages.pip
-      python310
-      pre-commit
-      rustc  # for ruff
-      cargo  # for ruff
-
-      # progams
-      keepassxc
-      remmina
-      freerdp
-      slack
-      ventoy-full
-      gnome.gnome-system-monitor
-      transmission-gtk
-      spotify
-
-      # system
-      xdg_utils
-      libnotify
-
-      # sound
-      pavucontrol
-    ]) ++ (with old-nixpkgs.legacyPackages.${system}; [
-      # <https://discourse.nixos.org/t/python3-8-sphinx-build-failure-on-unstable/29102/11?u=stianlagstad>
-      python38
-      python39
-    ]);
-  };
-
-  environment.variables.PIP_NO_BINARY = "ruff";
-
-  security.pam.services.swaylock = { };
-  security.pam.services.swaylock.text = ''
-    auth include login
-  '';
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-  services.udisks2.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-
-  nix = {
-    settings.auto-optimise-store = true;
-    gc = {
-      automatic = true;
-      dates = "weekly";
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";  # Use wayland for electron apps if supported
     };
-    package = pkgs.nixFlakes;
-    extraOptions = "experimental-features = nix-command flakes";
+    variables = {
+      PIP_NO_BINARY = "ruff"; # Don't use prebuilt ruff wheels (they don't work on nixos)
+    };
   };
+
+  programs = {
+    # make HM-managed GTK stuff work
+    dconf.enable = true;
+    seahorse.enable = true;
+  };
+
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+    # Allow wayland to unlock the screen
+    pam.services.swaylock.text = "auth include login";
+  };
+
+  services = {
+    udisks2.enable = true;
+    gnome.gnome-keyring.enable = true;
+    dbus.packages = [pkgs.gcr]; # Needed for Gnome services
+    geoclue2.enable = true; # Allow location services
+    localtimed.enable = true; # Set the time from the network
+  };
+
+  fonts.packages = with pkgs; [
+    carlito
+    vegur
+    source-code-pro
+    jetbrains-mono
+    font-awesome
+    corefonts
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+  ];
+
+
 }
