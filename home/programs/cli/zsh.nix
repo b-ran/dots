@@ -21,12 +21,6 @@
       ls = "exa -l --icons";
       watch = "viddy";
 
-      # Git
-      gp = "git push";
-      gpl = "git pull";
-      gc = "git commit -m";
-      gco = "git checkout";
-
       # Kubernetes
       k = "kubectl";
       kp = "kubectl get pods";

@@ -8,6 +8,7 @@
   ./jetbrains.nix
   ./nix.nix
   ./nvidia.nix
+  ./openssh.nix
   ./pipewire.nix
   ./python.nix
   ./sddm.nix

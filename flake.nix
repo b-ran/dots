@@ -24,13 +24,14 @@
   outputs = inputs @ { self, nixpkgs, old-pkgs, home-manager, hyprland, hyprland-contrib, secrets, ... }:
     let
       user = "brandon";
+      public-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/kUnW9xrrFeqaAjRVzfJw+SCgIhUabAWmyOhH8yOvS";
       system = "x86_64-linux";
     in
     {
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs old-pkgs home-manager hyprland hyprland-contrib secrets user system;
+          inherit inputs nixpkgs old-pkgs home-manager hyprland hyprland-contrib secrets user public-key system;
         }
       );
     };
