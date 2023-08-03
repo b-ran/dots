@@ -16,6 +16,16 @@
       lg = "lazygit";
       neo = "neofetch";
 
+      # Git
+      g = "git";
+      ga = "git add";
+      gp = "git push";
+      gpl = "git pull";
+      gc = "git commit -m";
+      gco = "git checkout";
+      gd = "git diff";
+      gs = "git status";
+
       # Unix
       cat = "bat";
       ls = "exa -l --icons";
