@@ -57,6 +57,7 @@
     gnumake
     postgresql_15
     nodejs_20
+    yarn
   ];
 }
 
