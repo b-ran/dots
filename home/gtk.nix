@@ -1,29 +1,30 @@
-{ pkgs, ... }:
-
-{
-  home.packages = with pkgs; [ glib ]; # gsettings
-  xdg.systemDirs.data =
-    let
-      schema = pkgs.gsettings-desktop-schemas;
-    in
-    [ "${schema}/share/gsettings-schemas/${schema.name}" ];
+{ pkgs, config, ... }: {
 
   gtk = {
     enable = true;
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 11;
+    };
+
+    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
     theme = {
-      name = "Catppuccin-Mocha-Compact-Mauve-Dark";
+      name = "Catppuccin-Mocha-Compact-Mauve-dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "mauve" ];
         size = "compact";
         variant = "mocha";
       };
     };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    font = {
-      name = "JetBrainsMono Nerd Font";
-    };
+
+    gtk3.extraConfig = { gtk-application-prefer-dark-theme = 1; };
+
+    gtk4.extraConfig = { gtk-application-prefer-dark-theme = 1; };
   };
 }
