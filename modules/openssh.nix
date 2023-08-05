@@ -6,12 +6,12 @@
     startWhenNeeded = true;
     openFirewall = true;
     settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
   };
 
   users.users.${user}.openssh.authorizedKeys.keys = [
     "${public-key}"
   ];
 
-  security.pam.enableSSHAgentAuth = true;
   programs.ssh.startAgent = true;
 }

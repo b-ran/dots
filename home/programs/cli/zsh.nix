@@ -11,6 +11,14 @@
       ENHANCD_ENABLE_DOUBLE_DOT = false;
     };
 
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "sudo"
+        "ssh-agent"
+      ];
+    };
+
     shellAliases = {
       reload = "source ~/.zshrc";
       lg = "lazygit";
