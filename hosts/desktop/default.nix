@@ -3,7 +3,8 @@
 {
   imports =
     [ (import ./hardware-configuration.nix) ] ++
-    (import ../../modules);
+    (import ../../modules) ++
+    [(import ../../modules/piper.nix)];
 
   networking.hostName = "nixos";
 }
