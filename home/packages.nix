@@ -25,6 +25,7 @@
     zip
     tree
     feh
+    bfg-repo-cleaner
 
     # gui apps
     keepassxc
