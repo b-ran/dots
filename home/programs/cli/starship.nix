@@ -12,6 +12,10 @@
         # Other config here
         format = "$all"; # Remove this line to disable the default prompt format
         palette = "catppuccin_${flavour}";
+
+        aws = {
+          disabled = true;
+        };
       } // builtins.fromTOML (builtins.readFile
         (pkgs.fetchFromGitHub
           {

@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    dwt1-shell-color-scripts
+    krabby
+    thefuck
+  ];
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
@@ -24,6 +30,17 @@
         "thefuck"
       ];
     };
+
+    initExtra = ''
+      rand=$(($RANDOM % 2))
+
+      if [ $rand -eq 0 ]
+      then
+        krabby random
+      else
+        colorscript random
+      fi
+    '';
 
     shellAliases = {
       reload = "source ~/.zshrc";
