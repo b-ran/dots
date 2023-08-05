@@ -16,6 +16,12 @@
       plugins = [
         "sudo"
         "ssh-agent"
+        "safe-paste"
+        "extract"
+        "copyfile"
+        "copybuffer"
+        "copypath"
+        "thefuck"
       ];
     };
 
