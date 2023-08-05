@@ -101,7 +101,7 @@
       };
 
       font = {
-        size = 11;
+        size = 12;
         draw_bold_text_with_bright_colors = true;
         normal = {
           family = "JetBrainsMono Nerd Font";
