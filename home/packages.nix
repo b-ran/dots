@@ -56,8 +56,8 @@
     # dev
     gcc
     gnumake
-    postgresql_15
-    nodejs_20
+    postgresql
+    nodejs
     yarn
   ];
 }
