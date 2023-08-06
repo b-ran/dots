@@ -1,5 +1,5 @@
 [
   ./cursor.nix
   ./gtk.nix
-  ./packages.nixxd
+  ./packages.nix
 ]
