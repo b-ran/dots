@@ -5,6 +5,7 @@
     dwt1-shell-color-scripts
     krabby
     thefuck
+    woof
   ];
 
   programs.zsh = {
@@ -61,6 +62,7 @@
       cat = "bat";
       ls = "exa -l --icons";
       watch = "viddy";
+      share = "woof";
 
       # Kubernetes
       k = "kubectl";
