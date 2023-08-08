@@ -3,9 +3,7 @@
     lazygit = {
       enable = true;
       settings = {
-        git = {
-          enable = true;
-        };
+        promptToReturnFromSubprocess = false;
       };
     };
   };
