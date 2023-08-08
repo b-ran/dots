@@ -16,6 +16,10 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
+      allowedTCPPortRanges = [
+        {from = 3000; to = 3100;}
+        {from = 8000; to = 8100;}
+      ];
     };
   };
 
