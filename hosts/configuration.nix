@@ -68,6 +68,7 @@
     jetbrains-mono
     font-awesome
     corefonts
+    winePackages.fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
 

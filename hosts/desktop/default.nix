@@ -4,7 +4,7 @@
   imports =
     [ (import ./hardware-configuration.nix) ] ++
     (import ../../modules) ++
-    [(import ../../modules/piper.nix)];
+    [(import ../../modules/gaming.nix)];
 
   networking.hostName = "nixos";
 }
