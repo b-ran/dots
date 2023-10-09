@@ -63,8 +63,8 @@
       gs = "git status";
 
       # Unix
-      cat = "bat";
-      ls = "exa -l --icons";
+#      cat = "bat";
+#      ls = "exa -l --icons";
       watch = "viddy";
       share = "woof";
 

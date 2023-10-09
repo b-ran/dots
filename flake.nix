@@ -13,6 +13,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
@@ -21,7 +25,7 @@
     secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets.git";
   };
 
-  outputs = inputs @ { self, nixpkgs, old-pkgs, home-manager, hyprland, hyprland-contrib, secrets, ... }:
+  outputs = inputs @ { self, nixpkgs, old-pkgs, home-manager, darwin, hyprland, hyprland-contrib, secrets, ... }:
     let
       user = "brandon";
       public-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/kUnW9xrrFeqaAjRVzfJw+SCgIhUabAWmyOhH8yOvS";
@@ -32,6 +36,13 @@
         import ./hosts {
           inherit (nixpkgs) lib;
           inherit inputs nixpkgs old-pkgs home-manager hyprland hyprland-contrib secrets user public-key system;
+        }
+      );
+
+      darwinConfigurations = (
+        import ./darwin {
+          inherit (nixpkgs) lib;
+          inherit inputs nixpkgs home-manager darwin user;
         }
       );
     };
