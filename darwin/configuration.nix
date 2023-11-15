@@ -47,7 +47,7 @@
       just
       kubectl
       awscli2
-      # helm
+      kubernetes-helm
       kubectx
       kops
       dive
@@ -93,14 +93,23 @@
         tilesize = 40;
       };
       finder = {
-        QuitMenuItem = false;
+        QuitMenuItem = true;
+        AppleShowAllFiles = true;
+        AppleShowAllExtensions = true;
+        ShowPathbar = true;
+        ShowStatusBar = true;
       };
       trackpad = {
         Clicking = true;
+        Dragging = true;
+        TrackpadThreeFingerDrag = true;
         TrackpadRightClick = true;
       };
+      loginWindow = {
+        DisableConsoleAccess = true;
+      };
     };
-    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh''; # Set Default Shell
+    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh'';
     stateVersion = 4;
   };
 
