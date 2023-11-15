@@ -5,7 +5,6 @@
 
   users.users.${user} = {
     home = "/Users/${user}";
-    shell = pkgs.zsh;
   };
 
   fonts = {
@@ -18,12 +17,12 @@
     ];
   };
 
-  system = {
-
+  networking = {
+    computerName = "mac";
+    hostName = "mac";
   };
 
   environment = {
-    shells = with pkgs; [ zsh];
     systemPackages = with pkgs; [
       wget
       cbonsai
