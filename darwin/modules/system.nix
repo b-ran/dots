@@ -1,6 +1,7 @@
 { config, lib, pkgs, ...}:
 
 {
+  # Changes will require logging out and back in to take effect.
   system = {
     defaults = {
       NSGlobalDomain = {
