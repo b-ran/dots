@@ -14,17 +14,18 @@
     brews = [
     ];
     casks = [
-      "firefox-developer-edition"
-      "chromium"
-      "google-chrome"
-      "slack"
-      "spotify"
-      "discord"
-      "intellij-idea"
-      "1password"
-      "displaylink"
-      "pritunl"
-      "keepassxc"
+      "alacritty"
+#      "firefox-developer-edition"
+#      "chromium"
+#      "google-chrome"
+#      "slack"
+#      "spotify"
+#      "discord"
+#      "intellij-idea"
+#      "1password"
+#      "displaylink"
+#      "pritunl"
+#      "keepassxc"
     ];
   };
 }

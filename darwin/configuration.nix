@@ -5,6 +5,7 @@
 
   users.users.${user} = {
     home = "/Users/${user}";
+    shell = pkgs.zsh;
   };
 
   fonts = {
@@ -22,7 +23,16 @@
     hostName = "mac";
   };
 
+  programs = {
+    zsh.enable = true;
+  };
+
+  services = {
+    nix-daemon.enable = true;
+  };
+
   environment = {
+    shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       wget
       cbonsai
@@ -68,4 +78,30 @@
       experimental-features = nix-command flakes
     '';
   };
+
+  system = {
+    defaults = {
+      NSGlobalDomain = {
+        KeyRepeat = 1;
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
+      };
+      dock = {
+        autohide = true;
+        orientation = "bottom";
+        showhidden = true;
+        tilesize = 40;
+      };
+      finder = {
+        QuitMenuItem = false;
+      };
+      trackpad = {
+        Clicking = true;
+        TrackpadRightClick = true;
+      };
+    };
+    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh''; # Set Default Shell
+    stateVersion = 4;
+  };
+
 }
