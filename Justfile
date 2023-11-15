@@ -9,11 +9,11 @@ test +ARGS:
     sudo nixos-rebuild test --flake {{ARGS}}
 
 [macos]
-switch +ARGS:
+switch:
     darwin-rebuild switch --flake .#mac
 
 [macos]
-test +ARGS:
+test:
     darwin-rebuild test --flake .#mac
 
 garbage-collect:
