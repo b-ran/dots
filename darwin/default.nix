@@ -8,7 +8,7 @@ let
   };
 in
 {
-  mac = darwin.lib.darwinSystem {
+  "Brandons-MacBook-Pro" = darwin.lib.darwinSystem {
     inherit system;
     specialArgs = { inherit pkgs inputs user; };
     modules = [
@@ -19,7 +19,7 @@ in
         home-manager.extraSpecialArgs = {
           inherit user;
           host = {
-            name = "mac";
+            name = "Brandons-MacBook-Pro";
           };
         };
         home-manager.users.${user} = {
