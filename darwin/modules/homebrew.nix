@@ -26,6 +26,7 @@
       "displaylink"
       "pritunl"
       "keepassxc"
+      "raycast"
     ];
   };
 }
