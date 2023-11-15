@@ -1,10 +1,20 @@
 # command-prefix: n
 
+[linux]
 switch +ARGS:
     sudo nixos-rebuild switch --flake {{ARGS}}
 
+[linux]
 test +ARGS:
     sudo nixos-rebuild test --flake {{ARGS}}
+
+[macos]
+switch +ARGS:
+    darwin-rebuild switch --flake .#mac
+
+[macos]
+test +ARGS:
+    darwin-rebuild test --flake .#mac
 
 garbage-collect:
     sudo nix-collect-garbage -d
@@ -21,3 +31,4 @@ lint:
 
 test-notifications:
     notify-send "Hello world! 00"
+
