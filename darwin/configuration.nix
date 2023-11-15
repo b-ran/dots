@@ -105,7 +105,7 @@
         TrackpadThreeFingerDrag = true;
         TrackpadRightClick = true;
       };
-      loginWindow = {
+      loginwindow = {
         DisableConsoleAccess = true;
       };
     };
