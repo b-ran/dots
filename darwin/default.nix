@@ -19,7 +19,7 @@ in
         home-manager.extraSpecialArgs = {
           inherit user;
           host = {
-            name = mac;
+            name = "mac";
           };
         };
         home-manager.users.${user} = {
