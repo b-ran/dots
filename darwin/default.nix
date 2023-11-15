@@ -22,11 +22,11 @@ in
             name = "mac";
           };
         };
-#        home-manager.users.${user} = {
-#          imports = [
-#            ./home.nix
-#          ];
-#        };
+        home-manager.users.${user} = {
+          imports = [
+            ./home.nix
+          ];
+        };
       }
     ];
   };
