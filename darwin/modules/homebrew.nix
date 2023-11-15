@@ -14,18 +14,18 @@
     brews = [
     ];
     casks = [
-      "alacritty"
-#      "firefox-developer-edition"
-#      "chromium"
-#      "google-chrome"
-#      "slack"
-#      "spotify"
-#      "discord"
-#      "intellij-idea"
-#      "1password"
-#      "displaylink"
-#      "pritunl"
-#      "keepassxc"
+      # "alacritty" broken in homebrew
+      "firefox-developer-edition"
+      "chromium"
+      "google-chrome"
+      "slack"
+      "spotify"
+      "discord"
+      "intellij-idea"
+      "1password"
+      "displaylink"
+      "pritunl"
+      "keepassxc"
     ];
   };
 }
