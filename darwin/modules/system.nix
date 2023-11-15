@@ -13,6 +13,7 @@
         autohide = true;
         orientation = "bottom";
         showhidden = true;
+        static-only = true;
         tilesize = 40;
       };
       finder = {
