@@ -3,6 +3,8 @@
 {
   imports = ( import ./modules );
 
+  skhd.enable = true;
+
   users.users.${user} = {
     home = "/Users/${user}";
     shell = pkgs.zsh;

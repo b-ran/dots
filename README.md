@@ -15,10 +15,12 @@ a fresh macbook
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
+Restart your terminal
+
 ## Setup Nix
 ```console
-mkdir ~/.config/
-mkdir ~/.config/nix
+mkdir ~/.config/ &&
+mkdir ~/.config/nix &&
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
 
@@ -29,23 +31,27 @@ xcode-select --install
 
 ## Setup Homebrew
 ```console
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/brandon/.zprofile
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" &&
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/$USER/.zprofile &&
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
 ## Setup workspace
 ```console
-mkdir ~/workspace
-cd ~/workspace
-git clone https://github.com/b-ran/nixos-config
+mkdir ~/workspace &&
+cd ~/workspace &&
+git clone https://github.com/b-ran/nixos-config &&
 cd nixos-config
 ```
 
 ## First Darwin Flake Build
 ```console
-nix run nix-darwin -- switch --flake ~/.config/nix-darwin
+sudo mv /etc/shells /etc/shells.before-nix-darwin &&
+nix run nix-darwin -- switch --flake .#mac
 ```
+
+Restart your computer
+
 ## Post Darwin Flake Rebuilds
 ```console
 just switch
