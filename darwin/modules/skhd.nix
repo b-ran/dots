@@ -7,32 +7,20 @@
 
 with lib;
 {
-  options.skhd = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = mdDoc ''
-        Simple Hotkey Daemon for MacOS
+  services = {
+    skhd = {
+      enable = true;
+      package = pkgs.skhd;
+      skhdConfig = ''
+        # Menu
+        cmd + space : /Applications/Raycast.app/Contents/MacOS/Raycast
       '';
     };
   };
 
-  config = mkIf config.skhd.enable {
-    services = {
-      skhd = {
-        enable = true;
-        package = pkgs.skhd;
-        skhdConfig = ''
-          # Menu
-          cmd + space : /Applications/Raycast.app/Contents/MacOS/Raycast
-        '';
-      };
-    };
-
-    system = {
-      keyboard = {
-        enableKeyMapping = true;
-      };
+  system = {
+    keyboard = {
+      enableKeyMapping = true;
     };
   };
 }

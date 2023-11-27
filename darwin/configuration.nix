@@ -3,13 +3,11 @@
 {
   imports = ( import ./modules );
 
-  skhd.enable = true;
-
   users.users.${user} = {
     home = "/Users/${user}";
     shell = pkgs.zsh;
   };
-
+        
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
