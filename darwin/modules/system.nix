@@ -9,11 +9,15 @@
         NSAutomaticCapitalizationEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
       };
+      spaces = {
+        spans-displays = true;
+      };
       dock = {
         autohide = true;
         orientation = "bottom";
         showhidden = true;
         static-only = true;
+        mru-spaces = false;
         tilesize = 40;
       };
       finder = {
