@@ -5,7 +5,6 @@
 
 { config, lib, pkgs, ... }:
 
-with lib;
 {
   services = {
     skhd = {
@@ -13,7 +12,7 @@ with lib;
       package = pkgs.skhd;
       skhdConfig = ''
         # Menu
-        cmd + space : /Applications/Raycast.app/Contents/MacOS/Raycast
+        cmd - d : /Applications/Raycast.app/Contents/MacOS/Raycast
       '';
     };
   };
