@@ -12,7 +12,7 @@ in
       inherit pkgs old-pkgs home-manager hyprland-contrib secrets user public-key system;
       host = {
         name = "desktop";
-        firstMonitor = "DP-1";
+        firstMonitor = "DP-3";
         secondMonitor = "HDMI-A-1";
       };
     };

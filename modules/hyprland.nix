@@ -11,7 +11,7 @@ let
   monitors = with host;
     if name == "desktop" then ''
       monitor = ${toString firstMonitor}, 3840x2160@144, 0x0, 1
-      monitor = ${toString secondMonitor}, 2560x1440@75, 3840x360, 1
+      monitor = ${toString secondMonitor}, 2560x1440@75, 3840x360, 1, transform, 3
     '' else if name == "work" then ''
       monitor = ${toString firstMonitor}, 1920x1080@60, 0x0, 1
       monitor = ${toString secondMonitor}, 1920x1080@60, 1920x0, 1
