@@ -21,6 +21,7 @@ with lib;
     services = {
       yabai = {
         enable = true;
+        enableScriptingAddition = true;
         package = pkgs.yabai;
         config = {                  # Extra Config
           layout = "bsp";
