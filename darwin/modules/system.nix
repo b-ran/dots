@@ -10,7 +10,7 @@
         NSAutomaticSpellingCorrectionEnabled = false;
       };
       spaces = {
-        spans-displays = true;
+        spans-displays = false;
       };
       dock = {
         autohide = true;
