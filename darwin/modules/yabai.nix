@@ -28,30 +28,14 @@ with lib;
           split_ratio = "0.50";
           window_border = "on";
           window_border_width = "2";
-          window_border_radius = "11";
-          window_border_hidpi = "off";
-          active_window_opacity = "1.00";
-          normal_window_opacity = "0.95";
-          window_opacity_duration = "0.15";
-          window_topmost = "off";
-          window_shadow = "float";
           window_placement = "second_child";
-          window_animation_duration = "0.22";
           focus_follows_mouse = "autoraise";
-          mouse_modifier = "fn";
-          mouse_follows_focus = "on";
-          mouse_drop_action = "swap";
-          mouse_action1 = "move";
-          mouse_action2 = "resize";
-          active_window_border_color = "0xffe1e3e4";
-          normal_window_border_color = "0xff2a2f38";
-          insert_feedback_color = "0xff9dd274";
-
+          mouse_follows_focus = "off";
           top_padding = "10";
           bottom_padding = "10";
           left_padding = "10";
           right_padding = "10";
-          window_gap = "8";
+          window_gap = "10";
         };
         extraConfig = ''
           yabai -m rule --add app='^Emacs$' manage=on
