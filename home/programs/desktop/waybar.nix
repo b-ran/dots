@@ -3,14 +3,14 @@
   programs = {
     waybar = {
       enable = true;
-      package = hyprland.packages.${pkgs.system}.waybar-hyprland;
+      package = pkgs.waybar;
 
       settings.mainBar = {
         layer = "top";
-        modules-left = [ "wlr/workspaces" ];
+        modules-left = [ "hyprland/workspaces" ];
         modules-right = [ "pulseaudio" "cpu" "memory" "network" "clock" "tray" ];
 
-        "wlr/workspaces" = {
+        "hyprland/workspaces" = {
           disable-scroll = true;
           format = "{icon}";
           on-click = "activate";

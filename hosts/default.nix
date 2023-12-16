@@ -12,8 +12,9 @@ in
       inherit pkgs old-pkgs home-manager hyprland-contrib secrets user public-key system;
       host = {
         name = "desktop";
-        firstMonitor = "DP-3";
-        secondMonitor = "HDMI-A-1";
+        firstMonitor = "DP-1";
+        secondMonitor = "DP-2";
+        thirdMonitor = "DP-3";
       };
     };
     modules = [
@@ -29,7 +30,8 @@ in
           host = {
             name = "desktop";
             firstMonitor = "DP-1";
-            secondMonitor = "HDMI-A-1";
+            secondMonitor = "DP-2";
+            thirdMonitor = "DP-3";
           };
         };
         home-manager.users.${user} = {

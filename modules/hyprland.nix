@@ -10,8 +10,9 @@ let
 
   monitors = with host;
     if name == "desktop" then ''
-      monitor = ${toString firstMonitor}, 3840x2160@144, 0x0, 1
-      monitor = ${toString secondMonitor}, 2560x1440@75, 3840x360, 1, transform, 3
+      monitor = ${toString firstMonitor}, 3840x2160@144, 2560x0, 1.5
+      monitor = ${toString secondMonitor}, 2560x1440@60, 5120x0, 1
+      monitor = ${toString thirdMonitor}, 2560x1440@60, 0x0, 1
     '' else if name == "work" then ''
       monitor = ${toString firstMonitor}, 1920x1080@60, 0x0, 1
       monitor = ${toString secondMonitor}, 1920x1080@60, 1920x0, 1
@@ -41,7 +42,7 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       enableNvidiaPatches = true;
-      systemdIntegration = true;
+      systemd.enable = true;
 
       extraConfig = ''
         ${monitors}
@@ -101,10 +102,6 @@ in
 
         decoration {
           rounding = 10
-          blur = yes
-          blur_size = 3
-          blur_passes = 1
-          blur_new_optimizations = on
 
           drop_shadow = yes
           shadow_range = 4

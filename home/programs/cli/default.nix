@@ -2,7 +2,7 @@
   ./bat.nix
   ./btop.nix
   ./cava.nix
-  ./exa.nix
+  ./eza.nix
   ./fzf.nix
   ./git.nix
   ./htop.nix
