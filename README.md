@@ -40,12 +40,15 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ```console
 mkdir ~/workspace &&
 cd ~/workspace &&
-git clone https://github.com/b-ran/nixos-config &&
-cd nixos-config
+git clone https://github.com/b-ran/nixos-config
 ```
+
+## Disable SIP for Full Yabai Support
+https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
 
 ## First Darwin Flake Build
 ```console
+cd ~/workspace/nixos-config &&
 sudo mv /etc/shells /etc/shells.before-nix-darwin &&
 nix run nix-darwin -- switch --flake .#mac
 ```
@@ -56,3 +59,4 @@ Restart your computer
 ```console
 just switch
 ```
+

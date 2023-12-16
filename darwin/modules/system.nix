@@ -12,6 +12,10 @@
       spaces = {
         spans-displays = false;
       };
+      screensaver = {
+        askForPassword = true;
+        askForPasswordDelay = 0;
+      };
       dock = {
         autohide = true;
         orientation = "bottom";
