@@ -39,10 +39,10 @@ with lib;
           lalt - right : yabai -m window --focus east
 
           # Swap Window
-          shift + ctrl - up : yabai -m window --swap north
-          shift + ctrl - down : yabai -m window --swap south
-          shift + ctrl - left : yabai -m window --swap west
-          shift + ctrl - right : yabai -m window --swap east
+          ctrl - up : yabai -m window --swap north
+          ctrl - down : yabai -m window --swap south
+          ctrl - left : yabai -m window --swap west
+          ctrl - right : yabai -m window --swap east
 
           # Resize Window
           shift + cmd - left : yabai -m window --resize left:-50:0 && yabai -m window --resize right:-50:0
