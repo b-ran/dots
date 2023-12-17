@@ -16,7 +16,6 @@
     casks = [
       # "alacritty" broken in homebrew
       "firefox-developer-edition"
-      "chromium"
       "google-chrome"
       "slack"
       "spotify"

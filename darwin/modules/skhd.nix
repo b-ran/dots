@@ -28,6 +28,7 @@ with lib;
           ctrl - l : pmset displaysleepnow
           shift - ctrl - s : open -a "Screenshot"
           ctrl - s : screencapture -ci
+          ctrl - e : open -a "Pika"
 
           # Toggle Window
           ctrl - q : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2

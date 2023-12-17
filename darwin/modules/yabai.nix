@@ -23,7 +23,7 @@ with lib;
         enable = true;
         enableScriptingAddition = true;
         package = pkgs.yabai;
-        config = {                  # Extra Config
+        config = {
           layout = "bsp";
           auto_balance = "off";
           split_ratio = "0.50";
@@ -39,7 +39,6 @@ with lib;
           window_gap = "10";
         };
         extraConfig = ''
-          yabai -m rule --add app='^Emacs$' manage=on
           yabai -m rule --add title='Preferences' manage=off layer=above
           yabai -m rule --add title='^(Opening)' manage=off layer=above
           yabai -m rule --add title='Library' manage=off layer=above
@@ -47,7 +46,8 @@ with lib;
           yabai -m rule --add app='Activity Monitor' manage=off layer=above
           yabai -m rule --add app='Finder' manage=off layer=above
           yabai -m rule --add app='^System Information$' manage=off layer=above
-        '';                         # Window Rules
+          yabai -m rule --add app='Pika' manage=off layer=above
+        '';
       };
     };
   };
