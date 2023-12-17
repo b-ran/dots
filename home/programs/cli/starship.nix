@@ -6,7 +6,6 @@
       flavour = "mocha";
     in
     {
-      enable = true;
       enableZshIntegration = true;
       settings = {
         # Other config here

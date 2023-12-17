@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}:
+{ lib, pkgs, ...}:
 
 with lib;
 {
@@ -14,7 +14,6 @@ with lib;
     brews = [
     ];
     casks = [
-      # "alacritty" broken in homebrew
       "firefox-developer-edition"
       "google-chrome"
       "slack"

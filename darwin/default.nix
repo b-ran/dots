@@ -10,7 +10,7 @@ in
 {
   mac = darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = { inherit pkgs inputs user; };
+    specialArgs = { inherit lib inputs pkgs user; };
     modules = [
       ./configuration.nix
       home-manager.darwinModules.home-manager {

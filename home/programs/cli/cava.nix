@@ -1,24 +1,37 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+with lib;
 {
-  home = {
-    file.".config/cava/config".text = ''
-      [color]
+  options.programs.cava = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = mdDoc ''
+        Enable cava.
+      '';
+    };
+  };
 
-      gradient = 1
+  config = mkIf config.programs.cava.enable {
+    home = {
+      file.".config/cava/config".text = ''
+        [color]
 
-      gradient_color_1 = '#94e2d5'
-      gradient_color_2 = '#89dceb'
-      gradient_color_3 = '#74c7ec'
-      gradient_color_4 = '#89b4fa'
-      gradient_color_5 = '#cba6f7'
-      gradient_color_6 = '#f5c2e7'
-      gradient_color_7 = '#eba0ac'
-      gradient_color_8 = '#f38ba8'
-    '';
+        gradient = 1
 
-    packages = with pkgs; [
-      cava
-    ];
+        gradient_color_1 = '#94e2d5'
+        gradient_color_2 = '#89dceb'
+        gradient_color_3 = '#74c7ec'
+        gradient_color_4 = '#89b4fa'
+        gradient_color_5 = '#cba6f7'
+        gradient_color_6 = '#f5c2e7'
+        gradient_color_7 = '#eba0ac'
+        gradient_color_8 = '#f38ba8'
+      '';
+
+      packages = with pkgs; [
+        cava
+      ];
+    };
   };
 }

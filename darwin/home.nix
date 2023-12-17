@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ lib, pkgs, user, ... }:
 
 {
 #      imports =
@@ -15,8 +15,24 @@
 #        [( import ../home/programs/cli/zsh.nix )] ++
 #        [( import ../home/programs/apps/alacritty.nix )];
 
+    imports =
+      (import ../home/programs/cli);
+
     programs = {
       home-manager.enable = true;
+      bat.enable = true;
+      btop.enable = true;
+      cva.enable = false;
+      eza.enable = true;
+      fzf.enable = true;
+      git.enable = true;
+      htop.enable = true;
+      k9s.enable = true;
+      lazygit.enable = true;
+      ripgrep.enable = true;
+      starship.enable = true;
+      tmux.enable = true;
+      zsh.enable = true;
     };
 
     home = {

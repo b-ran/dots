@@ -1,7 +1,7 @@
 {
   programs = {
     htop = {
-      enable = true;
+
     };
   };
 }
