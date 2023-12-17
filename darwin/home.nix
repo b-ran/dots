@@ -8,7 +8,6 @@
     programs = {
       alacritty.enable = true;
       mpv.enable = true;
-      zathura.enable = true;
 
       home-manager.enable = true;
       bat.enable = true;
