@@ -22,7 +22,7 @@
       home-manager.enable = true;
       bat.enable = true;
       btop.enable = true;
-      cva.enable = false;
+      cava.enable = false;
       eza.enable = true;
       fzf.enable = true;
       git.enable = true;
