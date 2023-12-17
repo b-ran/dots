@@ -81,7 +81,7 @@
       };
 
       window = {
-        decorations = "full";
+        decorations = "None";
         dimensions = {
           columns = 82;
           lines = 25;
