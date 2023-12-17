@@ -16,9 +16,14 @@
 #        [( import ../home/programs/apps/alacritty.nix )];
 
     imports =
+      (import ../../home/programs/apps) ++
       (import ../home/programs/cli);
 
     programs = {
+      alacritty.enable = true;
+      mpv.enable = true;
+      zathura.enable = true;
+
       home-manager.enable = true;
       bat.enable = true;
       btop.enable = true;
@@ -41,7 +46,7 @@
       stateVersion = "23.11";
 
       packages = with pkgs; [
-        alacritty
+
       ];
     };
 }
