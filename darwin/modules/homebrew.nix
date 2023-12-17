@@ -21,6 +21,7 @@ with lib;
       "discord"
       "1password"
       "1password-cli"
+      "docker"
     ];
   };
 }
