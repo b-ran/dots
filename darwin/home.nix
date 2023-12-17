@@ -68,7 +68,7 @@
         keepassxc
         _1password-gui
         _1password
-        idea-ultimate
+        jetbrains.idea-ultimate
       ];
     };
 }
