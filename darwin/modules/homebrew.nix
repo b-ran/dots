@@ -25,6 +25,7 @@
       "1password"
       "displaylink"
       "pritunl"
+      "pika"
       "keepassxc"
       "raycast"
     ];
