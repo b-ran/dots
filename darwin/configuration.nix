@@ -3,7 +3,9 @@
 {
   imports = ( import ./modules );
 
+  homebrew.enable = true;
   skhd.enable = true;
+  system.enable = true;
   yabai.enable = true;
 
   users.users.${user} = {

@@ -26,9 +26,10 @@ with lib;
           # Shortcuts
           ctrl - d : /Applications/Alacritty.App/Contents/MacOS/alacritty
           ctrl - l : pmset displaysleepnow
-          shift - ctrl - s : open -a "Screenshot"
+          ctrl + shift - s : open -a "Screenshot"
           ctrl - s : screencapture -ci
           ctrl - e : open -a "Pika"
+          ctrl - return : open -a "Alacritty" -n
 
           # Toggle Window
           ctrl - q : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2

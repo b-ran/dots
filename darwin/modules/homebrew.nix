@@ -1,6 +1,17 @@
 { config, lib, pkgs, ...}:
 
+with lib;
 {
+  options.homebrew = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = mdDoc ''
+        Homebrew package manager for macOS with several packages and casks.
+      '';
+    };
+  };
+
   homebrew = {
     enable = true;
     onActivation = {

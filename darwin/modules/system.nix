@@ -1,6 +1,18 @@
 { config, lib, pkgs, ...}:
 
+
+with lib;
 {
+  options.system = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = mdDoc ''
+        Mac OS X system configuration.
+      '';
+    };
+  };
+
   # Changes will require logging out and back in to take effect.
   system = {
     defaults = {

@@ -1,8 +1,6 @@
 { pkgs, user, ... }:
 
 {
-#     imports = ( import ../home/programs/cli/bat.nix );
-
 #      imports =
 #        [( import ../home/programs/cli/bat.nix )] ++
 #        [( import ../home/programs/cli/btop.nix )] ++
