@@ -26,6 +26,8 @@ with lib;
       "pika"
       "keepassxc"
       "raycast"
+      "1password"
+      "1password-cli"
     ];
   };
 }
