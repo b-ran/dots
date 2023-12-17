@@ -30,6 +30,7 @@ with lib;
           ctrl - s : screencapture -ci
           ctrl - e : open -a "Pika"
           ctrl - return : open -a "Alacritty" -n
+          ctrl - d : open -a "Raycast"
 
           # Toggle Window
           ctrl - q : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
