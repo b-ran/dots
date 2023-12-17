@@ -66,8 +66,8 @@
         pika
         raycast
         keepassxc
-        1password
-        1password-cli
+        _1password-gui
+        _1password
         idea-ultimate
       ];
     };
