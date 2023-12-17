@@ -60,14 +60,11 @@
         nodejs
         yarn
 
-        discord
         slack
         spotify
         pika
         raycast
         keepassxc
-        _1password-gui
-        _1password
         jetbrains.idea-ultimate
       ];
     };

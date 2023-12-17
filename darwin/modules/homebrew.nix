@@ -18,6 +18,9 @@ with lib;
       "google-chrome"
       "displaylink"
       "pritunl"
+      "discord"
+      "1password"
+      "1password-cli"
     ];
   };
 }
