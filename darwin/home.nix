@@ -31,7 +31,44 @@
       stateVersion = "23.11";
 
       packages = with pkgs; [
+        wget
+        cbonsai
+        viddy
+        neofetch
+        bat
+        gtop
+        unzip
+        ranger
+        ncdu
+        rsync
+        just
+        kubectl
+        awscli2
+        kubernetes-helm
+        kubectx
+        kops
+        dive
+        jq
+        zip
+        tree
+        feh
+        bfg-repo-cleaner
 
+        gcc
+        gnumake
+        postgresql
+        nodejs
+        yarn
+
+        discord
+        slack
+        spotify
+        pika
+        raycast
+        keepassxc
+        1password
+        1password-cli
+        idea-ultimate
       ];
     };
 }

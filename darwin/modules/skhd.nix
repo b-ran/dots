@@ -24,7 +24,6 @@ with lib;
         package = pkgs.skhd;
         skhdConfig = ''
           # Shortcuts
-          ctrl - d : /Applications/Alacritty.App/Contents/MacOS/alacritty
           ctrl - l : pmset displaysleepnow
           ctrl + shift - s : open -a "Screenshot"
           ctrl - s : screencapture -ci

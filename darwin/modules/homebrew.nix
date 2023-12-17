@@ -16,18 +16,8 @@ with lib;
     casks = [
       "firefox-developer-edition"
       "google-chrome"
-      "slack"
-      "spotify"
-      "discord"
-      "intellij-idea"
-      "1password"
       "displaylink"
       "pritunl"
-      "pika"
-      "keepassxc"
-      "raycast"
-      "1password"
-      "1password-cli"
     ];
   };
 }

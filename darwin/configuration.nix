@@ -38,36 +38,6 @@
 
   environment = {
     shells = with pkgs; [ zsh ];
-    systemPackages = with pkgs; [
-      wget
-      cbonsai
-      viddy
-      neofetch
-      bat
-      gtop
-      unzip
-      ranger
-      ncdu
-      rsync
-      just
-      kubectl
-      awscli2
-      kubernetes-helm
-      kubectx
-      kops
-      dive
-      jq
-      zip
-      tree
-      feh
-      bfg-repo-cleaner
-
-      gcc
-      gnumake
-      postgresql
-      nodejs
-      yarn
-    ];
   };
 
   nix = {
