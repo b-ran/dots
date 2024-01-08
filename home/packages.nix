@@ -25,7 +25,9 @@
     zip
     tree
     feh
+    wlr-randr
     bfg-repo-cleaner
+    soco-cli
 
     # gui apps
     keepassxc
@@ -36,6 +38,7 @@
     gnome.gnome-system-monitor
     transmission-gtk
     spotify
+    nwg-displays
 
     # system
     xdg_utils
@@ -52,6 +55,7 @@
     openvpn
     polkit-kde-agent
     xclip
+
 
     # dev
     gcc

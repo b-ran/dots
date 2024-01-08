@@ -12,9 +12,6 @@ in
       inherit pkgs old-pkgs home-manager hyprland-contrib secrets user public-key system;
       host = {
         name = "desktop";
-        firstMonitor = "DP-1";
-        secondMonitor = "DP-2";
-        thirdMonitor = "DP-3";
       };
     };
     modules = [
@@ -29,9 +26,6 @@ in
           inherit hyprland user system;
           host = {
             name = "desktop";
-            firstMonitor = "DP-1";
-            secondMonitor = "DP-2";
-            thirdMonitor = "DP-3";
           };
         };
         home-manager.users.${user} = {
@@ -50,9 +44,6 @@ in
       inherit pkgs old-pkgs home-manager hyprland-contrib user public-key system;
       host = {
         name = "work";
-        firstMonitor = "DVI-I-1";
-        secondMonitor = "DP-1";
-        thirdMonitor = "HDMI-A-1";
       };
     };
     modules = [
@@ -66,9 +57,6 @@ in
           inherit user hyprland;
           host = {
             name = "work";
-            firstMonitor = "DVI-I-1";
-            secondMonitor = "DP-1";
-            thirdMonitor = "HDMI-A-1";
           };
         };
         home-manager.users.${user} = {

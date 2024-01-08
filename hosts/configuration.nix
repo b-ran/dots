@@ -55,7 +55,6 @@
   services = {
     blueman.enable = true;
     udisks2.enable = true;
-    gnome.gnome-keyring.enable = true;
     dbus.packages = [pkgs.gcr]; # Needed for Gnome services
     geoclue2.enable = true; # Allow location services
     localtimed.enable = true; # Set the time from the network

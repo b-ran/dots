@@ -5,13 +5,13 @@
     dxvk
     lutris
     bottles
-    heroic
     wine-wayland
     wine64
     winetricks
     protonup-qt
     piper
     libratbag
+    prismlauncher
   ];
 
   programs = {

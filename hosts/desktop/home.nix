@@ -9,13 +9,14 @@
     (import ../../home/programs/cli);
 
   programs = {
+    home-manager.enable = true;
     alacritty.enable = true;
     chromium.enable = true;
     firefox.enable = true;
     mpv.enable = true;
     zathura.enable = true;
+    vscode.enable = true;
 
-    home-manager.enable = true;
     bat.enable = true;
     btop.enable = true;
     cava.enable = true;

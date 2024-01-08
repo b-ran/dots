@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, darwin, user, ...}:
+{ lib, inputs, nixpkgs, home-manager, darwin, secrets, user, ...}:
 
 let
   system = "aarch64-darwin";
@@ -10,9 +10,10 @@ in
 {
   mac = darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = { inherit lib inputs pkgs user; };
+    specialArgs = { inherit lib inputs pkgs secrets user; };
     modules = [
       ./configuration.nix
+      (secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.darwinModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;

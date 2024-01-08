@@ -37,16 +37,16 @@ with lib;
           ctrl - c : yabai -m window --close
 
           # Focus Window
-          lalt - up : yabai -m window --focus north
-          lalt - down : yabai -m window --focus south
-          lalt - left : yabai -m window --focus west
-          lalt - right : yabai -m window --focus east
+          ctrl - up : yabai -m window --focus north
+          ctrl - down : yabai -m window --focus south
+          ctrl - left : yabai -m window --focus west
+          ctrl - right : yabai -m window --focus east
 
           # Swap Window
-          ctrl - up : yabai -m window --swap north
-          ctrl - down : yabai -m window --swap south
-          ctrl - left : yabai -m window --swap west
-          ctrl - right : yabai -m window --swap east
+          shift + ctrl - up : yabai -m window --swap north
+          shift + ctrl - down : yabai -m window --swap south
+          shift + ctrl - left : yabai -m window --swap west
+          shift + ctrl - right : yabai -m window --swap east
 
           # Resize Window
           shift + cmd - left : yabai -m window --resize left:-50:0 && yabai -m window --resize right:-50:0

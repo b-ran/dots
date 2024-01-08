@@ -7,27 +7,10 @@ let
     rev = "99a88fd21fac270bd999d4a26cf0f4a4222c58be";
     sha256 = "sha256-07B5QmQmsUKYf38oWU3+2C6KO4JvinuTwmW1Pfk8CT8=";
   };
-
-  monitors = with host;
-    if name == "desktop" then ''
-      monitor = ${toString firstMonitor}, 3840x2160@144, 2560x0, 1.5
-      monitor = ${toString secondMonitor}, 2560x1440@60, 5120x0, 1
-      monitor = ${toString thirdMonitor}, 2560x1440@60, 0x0, 1
-    '' else if name == "work" then ''
-      monitor = ${toString firstMonitor}, 1920x1080@60, 0x0, 1
-      monitor = ${toString secondMonitor}, 1920x1080@60, 1920x0, 1
-      monitor = ${toString thirdMonitor}, 1920x10800@60, 3840x0, 1
-    '' else ''
-      monitor = ,preferred,auto,1
-    '';
 in
 {
   programs = {
     xwayland.enable = true;
-  };
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
   };
 
   environment.systemPackages = with pkgs; [
@@ -39,13 +22,13 @@ in
 
   home-manager.users.${user} = {
     home.file.".config/hypr/catppuccin.conf".source = "${catppuccinHyprland}/themes/mocha.conf";
+
     wayland.windowManager.hyprland = {
       enable = true;
-      enableNvidiaPatches = true;
       systemd.enable = true;
 
       extraConfig = ''
-        ${monitors}
+        source=~/.config/hypr/monitors.conf
         source=~/.config/hypr/catppuccin.conf
 
         env = LIBVA_DRIVER_NAME,nvidia
@@ -69,6 +52,8 @@ in
         windowrulev2 = opacity 0.90 override 0.90 override, title:Spotify
         # windowrulev2 = workspace 4, class:jetbrains-idea
         # windowrulev2 = workspace 3, class:discord
+        windowrulev2 = stayfocused, title:^()$,class:^(steam)$
+        windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
@@ -83,10 +68,6 @@ in
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {
           follow_mouse = 1
-
-          touchpad {
-            natural_scroll = no
-          }
         }
 
         general {
@@ -103,7 +84,7 @@ in
         decoration {
           rounding = 10
 
-          drop_shadow = yes
+          drop_shadow = true
           shadow_range = 4
           shadow_render_power = 3
           col.shadow = $base
@@ -124,8 +105,8 @@ in
         }
 
         dwindle {
-          pseudotile = yes
-          preserve_split = yes
+          pseudotile = true
+          preserve_split = true
         }
 
         master {
@@ -133,7 +114,15 @@ in
         }
 
         gestures {
-          workspace_swipe = yes
+          workspace_swipe = true
+        }
+
+        xwayland {
+          force_zero_scaling = true
+        }
+
+        misc {
+          force_default_wallpaper = 0
         }
 
         $mod = SUPER
