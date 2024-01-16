@@ -53,6 +53,7 @@
         tree
         feh
         bfg-repo-cleaner
+        soco-cli
 
         gcc
         gnumake

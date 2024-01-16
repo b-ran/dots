@@ -17,7 +17,6 @@ in
     modules = [
       ./configuration.nix
       ./desktop
-      (secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -32,6 +31,7 @@ in
           imports = [
             ./home.nix
             desktop/home.nix
+            (secrets.homeConfiguration { system = "${system}"; })
           ];
         };
       }

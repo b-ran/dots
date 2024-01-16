@@ -13,7 +13,6 @@ in
     specialArgs = { inherit lib inputs pkgs secrets user; };
     modules = [
       ./configuration.nix
-      (secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.darwinModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -26,6 +25,7 @@ in
         home-manager.users.${user} = {
           imports = [
             ./home.nix
+            (secrets.homeConfiguration { user = "${user}"; system = "${system}"; })
           ];
         };
       }
