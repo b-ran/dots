@@ -25,10 +25,6 @@
             foreground = "#1E1E2E";
             background = "#A6E3A1";
           };
-          footer_bar = {
-            foreground = "#1E1E2E";
-            background = "#A6ADC8";
-          };
         };
         hints = {
           start = {
@@ -92,15 +88,10 @@
         };
         dynamic_padding = false;
         dynamic_title = true;
-        scrolling = {
-          history = 10000;
-          multiplier = 3;
-        };
       };
 
       font = {
         size = 12;
-        draw_bold_text_with_bright_colors = true;
         normal = {
           family = "JetBrainsMono Nerd Font";
           style = "Medium";
