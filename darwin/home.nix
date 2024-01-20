@@ -35,7 +35,6 @@
         cbonsai
         viddy
         neofetch
-        bat
         gtop
         unzip
         ranger

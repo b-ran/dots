@@ -17,6 +17,7 @@ with lib;
       "firefox-developer-edition"
       "google-chrome"
       "displaylink"
+      "alacritty"
       "pritunl"
       "discord"
       "1password"

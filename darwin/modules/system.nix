@@ -20,6 +20,7 @@ with lib;
           KeyRepeat = 1;
           NSAutomaticCapitalizationEnabled = false;
           NSAutomaticSpellingCorrectionEnabled = false;
+          _HIHideMenuBar = true;
         };
         spaces = {
           spans-displays = false;
