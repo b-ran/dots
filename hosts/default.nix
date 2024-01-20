@@ -31,7 +31,7 @@ in
           imports = [
             ./home.nix
             desktop/home.nix
-            (secrets.homeConfiguration { system = "${system}"; })
+            (secrets.homeConfiguration { user = "${user}"; system = "${system}"; })
           ];
         };
       }

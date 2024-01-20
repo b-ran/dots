@@ -17,7 +17,8 @@
     just
     kubectl
     awscli2
-    helm
+    kubernetes-helm
+    ventoy-full
     kubectx
     kops
     dive
