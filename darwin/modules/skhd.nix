@@ -76,6 +76,7 @@ with lib;
           alt + shift - 4 : yabai -m window --space 4
           alt + shift - 5 : yabai -m window --space 5
         '';
+      };
 #        skhdConfig = ''
 #          # Shortcuts
 #          alt - l : pmset displaysleepnow
