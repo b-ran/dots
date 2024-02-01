@@ -62,7 +62,7 @@
     gcc
     gnumake
     postgresql
-    nodejs
+    nodejs_21
     yarn
   ];
 }
