@@ -1,6 +1,13 @@
 { lib, pkgs, user, ... }:
 
 {
+  imports =
+    (import ../home) ++
+    (import ../home/services) ++
+    (import ../home/programs/apps) ++
+    (import ../home/programs/desktop) ++
+    (import ../home/programs/cli);
+
   programs = {
     home-manager.enable = true;
   };
@@ -16,6 +23,78 @@
 
     packages = with pkgs; [
 
+      # cli
+      wget
+      cbonsai
+      viddy
+      neofetch
+      bat
+      gtop
+      unzip
+      ranger
+      ncdu
+      rsync
+      just
+      kubectl
+#      awscli2
+      kubernetes-helm
+      ventoy-full
+      kubectx
+      kops
+      dive
+      jq
+      zip
+      tree
+      feh
+      wlr-randr
+      bfg-repo-cleaner
+      soco-cli
+      distrobox
+      killall
+
+      # gui apps
+      keepassxc
+      remmina
+      freerdp
+      slack
+      ventoy-full
+      transmission-gtk
+      spotify
+      nwg-displays
+      gimp
+
+      # gnome
+      loupe
+      gnome.gnome-system-monitor
+      gnome.gnome-disk-utility
+      gnome.gnome-clocks
+      gnome.gnome-calculator
+      gnome.gnome-weather
+      gnome.nautilus
+
+
+      # system
+      xdg_utils
+      libnotify
+      pavucontrol
+      playerctl
+      brightnessctl
+      pamixer
+      qt6.qtwayland
+      qt6.full
+      speechd
+      networkmanagerapplet
+      networkmanager-openvpn
+      openvpn
+      polkit-kde-agent
+      xclip
+
+      # dev
+      gcc
+      gnumake
+      postgresql
+      nodejs_21
+      yarn
     ];
   };
 }

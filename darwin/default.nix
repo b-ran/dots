@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, darwin, secrets, user, ...}:
+{ lib, inputs, nixpkgs, home-manager, darwin, user, ...}:
 
 let
   system = "aarch64-darwin";
@@ -25,7 +25,6 @@ in
         home-manager.users.${user} = {
           imports = [
             ./home.nix
-            (secrets.homeConfiguration { user = "${user}"; system = "${system}"; })
           ];
         };
       }
