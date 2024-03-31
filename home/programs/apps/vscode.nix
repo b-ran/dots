@@ -2,6 +2,7 @@
 
 {
   programs.vscode = {
+    enable = true;
     userSettings = {
       "files.autoSave" = "afterDelay";
       "files.autoSaveDelay" = 1000;
@@ -31,7 +32,7 @@
       pkgs.vscode-extensions.christian-kohler.path-intellisense
       pkgs.vscode-extensions.skellock.just
       pkgs.vscode-extensions.formulahendry.code-runner
-      pkgs.vscode-extensions.ms-python.python
+#      pkgs.vscode-extensions.ms-python.python
       pkgs.vscode-extensions.ms-python.vscode-pylance
       pkgs.vscode-extensions.batisteo.vscode-django
     ];
