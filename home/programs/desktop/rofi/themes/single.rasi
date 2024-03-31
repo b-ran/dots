@@ -1,0 +1,190 @@
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+	drun-display-format: "{name}";
+    hover-select: true;
+    font: "JetBrains Mono Nerd Font 14";
+}
+
+* {
+    text-color: @foreground;
+    border-color: @active-background;
+}
+
+window {
+    fullscreen: false;
+    transparency: "real";
+    cursor: "default";
+    spacing: 0px;
+    border: 2px;
+    border-radius: 30px;
+    location: center;
+    anchor: center;
+    width: 40%;
+    background-color: #00000088;
+}
+
+mainbox {
+    enabled: true;
+    orientation: horizontal;
+    children: [ "img", "listbox"];
+    background-color: transparent;
+}
+
+img {
+    enabled: true;
+    padding: 60px 120px;
+    margin: 10px;
+    background-color: transparent;
+    border-radius: 26px;
+    background-image: url("~/.config/current-wallpaper", height);
+    orientation: horizontal;
+}
+
+entry {
+    enabled: true;
+    expand: false;
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px;
+    background-color: transparent;
+    border-color: @active-background;
+    text-color: inherit;
+    cursor: text;
+    placeholder: "  Search";
+    placeholder-color: inherit;
+}
+
+imagebox {
+    background-color: transparent;
+    orientation: vertical;
+}
+
+listbox {
+    spacing: 20px;
+    padding: 20px;
+	background-color: transparent;
+    orientation: vertical;
+    children: [ "entry", "message", "listview" ];
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+  	cycle: true;
+  	dynamic: true;
+  	scrollbar: false;
+  	layout: vertical;
+  	reverse: false;
+    spacing: 10px;
+	background-color: transparent;
+	border: 0px;
+}
+
+dummy {
+    expand: true;
+    background-color: transparent;
+}
+
+element {
+    enabled: true;
+    padding: 5px;
+    margin: 2px;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+element {
+    enabled: true;
+    spacing: 10px;
+    padding: 4px;
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+element normal.normal {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element normal.urgent {
+    background-color: @active-background;
+    text-color: @foreground;
+}
+
+element normal.active {
+    background-color: @active-background;
+    text-color: @background;
+}
+
+element selected.normal {
+    background-color: @active-background;
+    text-color: @background;
+}
+
+element selected.urgent {
+    background-color: @active-background;
+    text-color: @background;
+}
+
+element selected.active {
+    background-color: @active-background;
+    text-color: @background;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element alternate.urgent {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element alternate.active {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element-icon {
+    background-color: transparent;
+    text-color: inherit;
+    size: 36px;
+    cursor: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+element.alternate.normal {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+message {
+    background-color: transparent;
+}
+textbox {
+    padding: 12px;
+    border-radius: 10px;
+    background-color: @active-background;
+    text-color: @foreground;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+error-message {
+    padding: 12px;
+    border-radius: 20px;
+    background-color: @active-background;
+    text-color: @foreground;
+}
