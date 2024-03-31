@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, old-pkgs, home-manager, hyprland, hyprland-contrib, secrets, user, public-key, system }:
+{ lib, inputs, nixpkgs, home-manager, hyprland, hyprland-contrib, user, public-key, system }:
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -9,7 +9,7 @@ in
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-pkgs home-manager hyprland-contrib secrets user public-key system;
+      inherit pkgs home-manager hyprland-contrib user public-key system;
       host = {
         name = "desktop";
       };
@@ -17,6 +17,7 @@ in
     modules = [
       ./configuration.nix
       ./desktop
+      (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -30,8 +31,6 @@ in
         home-manager.users.${user} = {
           imports = [
             ./home.nix
-            desktop/home.nix
-            (secrets.homeConfiguration { user = "${user}"; system = "${system}"; })
           ];
         };
       }
@@ -41,7 +40,7 @@ in
   work = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs old-pkgs home-manager hyprland-contrib user public-key system;
+      inherit pkgs home-manager hyprland-contrib user public-key system;
       host = {
         name = "work";
       };
@@ -62,7 +61,6 @@ in
         home-manager.users.${user} = {
           imports = [
             ./home.nix
-            work/home.nix
           ];
         };
       }

@@ -41,8 +41,8 @@
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    # Allow wayland to unlock the screen
-    pam.services.swaylock.text = "auth include login";
+    pam.services.swaylock.text = "auth include login"; # Allow wayland to unlock the screen
+    pam.services.login.enableGnomeKeyring = true;
   };
 
   hardware = {
@@ -57,7 +57,7 @@
     udisks2.enable = true;
     dbus.packages = [pkgs.gcr]; # Needed for Gnome services
     geoclue2.enable = true; # Allow location services
-    localtimed.enable = true; # Set the time from the network
+    localtimed.enable = true;
   };
 
   fonts.packages = with pkgs; [
@@ -70,6 +70,4 @@
     winePackages.fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
-
-
 }
