@@ -2,6 +2,7 @@
 
 {
   programs.alacritty = {
+    enable = true;
     settings = {
       colors = {
         primary = {

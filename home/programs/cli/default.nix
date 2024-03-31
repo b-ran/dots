@@ -3,7 +3,6 @@
   ./btop.nix
   ./cava.nix
   ./eza.nix
-  ./fzf.nix
   ./git.nix
   ./htop.nix
   ./k9s.nix
@@ -11,5 +10,6 @@
   ./ripgrep.nix
   ./starship.nix
   ./tmux.nix
+  ./zoxide.nix
   ./zsh.nix
 ]

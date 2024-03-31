@@ -1,5 +1,6 @@
 {
   programs.zathura = {
+    enable = true;
     options = {
       default-fg = "#CDD6F4";
       default-bg = "#1E1E2E";
