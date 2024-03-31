@@ -14,7 +14,7 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets.git";
+#    secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets.git";
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, darwin, hyprland, hyprland-contrib, ... }:
