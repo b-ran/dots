@@ -30,5 +30,5 @@ lint:
     nixpkgs-fmt .
 
 test-notifications:
-    notify-send "Hello world! 00"
+    notify-send "Hello world! 00 https://www.google.com/"
 
