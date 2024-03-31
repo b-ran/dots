@@ -1,7 +1,8 @@
 { pkgs, ... }:
+
 {
-  home.packages = [
-    pkgs.udiskie
+  home.packages = with pkgs; [
+    udiskie
   ];
 
   services = {
