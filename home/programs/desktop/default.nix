@@ -1,5 +1,7 @@
 [
-  ./waybar.nix
+  ./pywal
+  ./rofi
   ./swaylock.nix
-  ./rofi.nix
+  ./swww.nix
+  ./waybar
 ]
