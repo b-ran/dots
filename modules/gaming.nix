@@ -12,6 +12,8 @@
     piper
     libratbag
     prismlauncher
+    gamemode
+    gamescope
   ];
 
   programs = {
