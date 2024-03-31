@@ -1,13 +1,5 @@
 { pkgs, home-manager, hyprland-contrib, user, host, ... }:
 
-let
-  catppuccinHyprland = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "hyprland";
-    rev = "99a88fd21fac270bd999d4a26cf0f4a4222c58be";
-    sha256 = "sha256-07B5QmQmsUKYf38oWU3+2C6KO4JvinuTwmW1Pfk8CT8=";
-  };
-in
 {
   programs = {
     xwayland.enable = true;
@@ -15,13 +7,15 @@ in
 
   environment.systemPackages = with pkgs; [
     hyprpicker
-    hyprpaper
+    imagemagick
     wl-clipboard
     hyprland-contrib.packages.${pkgs.system}.grimblast
+    slurp
+    cliphist
+    wf-recorder
   ];
 
   home-manager.users.${user} = {
-    home.file.".config/hypr/catppuccin.conf".source = "${catppuccinHyprland}/themes/mocha.conf";
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -29,7 +23,7 @@ in
 
       extraConfig = ''
         source=~/.config/hypr/monitors.conf
-        source=~/.config/hypr/catppuccin.conf
+        source=~/.cache/wal/colors-hyprland.conf
 
         env = LIBVA_DRIVER_NAME,nvidia
         env = XDG_SESSION_TYPE,wayland
@@ -43,13 +37,13 @@ in
         exec-once = waybar
         exec-once = swayidle -w timeout 10 'if pgrep -x swaylock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
         exec-once = nm-applet
-        exec-once = discord-krisp-patch & discord --start-minimized
+        exec-once = discord --start-minimized
         exec-once = ${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
         exec-once = 1password --silent
-
+        exec-once = swww query || swww init
+        exec-once = wl-paste --watch cliphist store
 
         # windowrulev2 = workspace 7, title:Spotify
-        windowrulev2 = opacity 0.90 override 0.90 override, title:Spotify
         # windowrulev2 = workspace 4, class:jetbrains-idea
         # windowrulev2 = workspace 3, class:discord
         windowrulev2 = stayfocused, title:^()$,class:^(steam)$
@@ -62,21 +56,32 @@ in
         windowrulev2 = float, class:org.kde.polkit-kde-authentication-agent-1
         windowrulev2 = center, class:org.kde.polkit-kde-authentication-agent-1
 
+
+        layerrule = unset, rofi
+        layerrule = blur, rofi
+        layerrule = ignorezero, rofi
+
         # Some default env vars.
 
 
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {
           follow_mouse = 1
+
+          touchpad {
+            middle_button_emulation = true
+            tap-to-click = true
+            tap-and-drag = true
+          }
         }
 
         general {
-          cursor_inactive_timeout = 30
+          cursor_inactive_timeout = 10
           gaps_in = 5
           gaps_out = 10
           border_size = 2
-          col.active_border = $sky
-          col.inactive_border = $base
+          col.active_border = $primary
+          col.inactive_border = $background
 
           layout = dwindle
         }
@@ -87,21 +92,16 @@ in
           drop_shadow = true
           shadow_range = 4
           shadow_render_power = 3
-          col.shadow = $base
-          col.shadow_inactive = $base
+          col.shadow = $background
+          col.shadow_inactive = $background
         }
 
         animations {
           enabled = yes
+        }
 
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-
-          animation = windows, 1, 7, myBezier
-          animation = windowsOut, 1, 7, default, popin 80%
-          animation = border, 1, 10, default
-          animation = borderangle, 1, 8, default
-          animation = fade, 1, 7, default
-          animation = workspaces, 1, 6, default
+        gestures {
+          workspace_swipe = true
         }
 
         dwindle {
@@ -113,33 +113,43 @@ in
           new_is_master = true
         }
 
-        gestures {
-          workspace_swipe = true
-        }
-
         xwayland {
           force_zero_scaling = true
         }
 
         misc {
           force_default_wallpaper = 0
+          disable_hyprland_logo = true
+          disable_splash_rendering = true
         }
 
         $mod = SUPER
 
-        bind = $mod, Return, exec, alacritty
-        bind = $mod, R, forcerendererreload,
-        bind = $mod, C, killactive,
-        bind = $mod, E, exec, hyprpicker -nar && notify-send "Color picked and copied to clipboard"
-        bind = $mod, D, exec, rofi -combi-modi "drun,Power Menu:~/.config/rofi/menus/powermenu.sh" -show combi -theme ~/.config/rofi/themes/combi.rasi
-        bind = $mod, N, exec, networkmanager_dmenu
-        bind = $mod, P, pseudo,
-        bind = $mod, W, togglesplit,
         bind = $mod, F, fullscreen,
-        bind = $mod, Q, togglefloating,
-        bind = $mod, L, exec, swaylock
+        # bind = SUPER_SHIFT, F, togglefloating,
+        # bind = $mod CTRL, F, exec, hyprctl dispatch workspaceopt allfloat
+        bind = $mod, P, pseudo,
+        bind = $mod, G, togglegroup,b
+        bind = $mod, H, togglesplit
+        bind = $mod, C, killactive,
+
+        bind = $mod, B, exec, ~/.config/rofi/menus/background-select.sh
+        bind = $mod, N, exec, networkmanager_dmenu
+        bind = $mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi
+        bind = $mod, A, exec, rofi -show filebrowser -theme /home/brandon/workspace/nixos-config/home/programs/desktop/rofi/themes/dual.rasi
+        bind = $mod, R, exec, rofi -show run -theme ~/.config/rofi/themes/dual.rasi
+        bind = $mod, W, exec, ~/.config/rofi/menus/windows.sh
+        bind = $mod, V, exec, ~/.config/rofi/menus/clipboard.sh
+        bind = $mod, X, exec, ~/.config/rofi/menus/power.sh
+        bind = $mod, T, exec, ~/.config/rofi/menus/pywal.sh
+
         bind = $mod, S, exec, grimblast --notify copy area
-        bind = $mod SHIFT, S, exec, grimblast --notify --freeze copy area
+        bind = $mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh
+
+        bind = $mod, Return, exec, alacritty
+
+        bind = $mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:"$color" /tmp/color_notification.png && notify-send "Picked Color: " "$color" -i /tmp/color_notification.png
+        bind = $mod, L, exec, swaylock
 
         # Move focus with mod + arrow keys
         bind = $mod, left, movefocus, l
