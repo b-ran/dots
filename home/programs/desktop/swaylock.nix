@@ -35,7 +35,7 @@
       };
     };
 
-  home.packages = [
-    pkgs.swayidle
+  home.packages = with pkgs; [
+    swayidle
   ];
 }
