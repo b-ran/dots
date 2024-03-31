@@ -4,17 +4,19 @@
   home.packages = with pkgs; [
     dwt1-shell-color-scripts
     krabby
-    thefuck
     woof
+    nano
   ];
 
   programs.zsh = {
-    enableAutosuggestions = true;
+    enable = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
+    syntaxHighlighting.enable = true;
 
-    localVariables = {
-      ENHANCD_ENABLE_HOME = false;
-      ENHANCD_ENABLE_DOUBLE_DOT = false;
+    history = {
+      size = 100000;
+      share = true;
     };
 
     oh-my-zsh = {
@@ -27,7 +29,6 @@
         "copyfile"
         "copybuffer"
         "copypath"
-        "thefuck"
       ];
       extraConfig = ''
         zstyle :omz:plugins:ssh-agent quiet yes
@@ -60,18 +61,33 @@
       gco = "git checkout";
       gd = "git diff";
       gs = "git status";
+      gce = "git config user.email";
+      gcn = "git config user.name";
+
 
       # Unix
-      cat = "bat";
-      l = "eza -l --icons";
+      b = "bat";
       watch = "viddy";
       share = "woof";
+      wt = "hyprctl clients";
+      copyfile="xclip -selection clipboard <";
+      cava = "cava -p ~/.cache/wal/colors-cava";
+
+      dsize = "du -hs";
+      l = "eza --icons  -a --group-directories-first -1";
+      ll = "eza --icons  -a --group-directories-first -1 --long";
+      tree = "eza --icons --tree --group-directories-first";
+      findw = "grep -rl";
 
       # Kubernetes
       k = "kubectl";
       kp = "kubectl get pods";
       kc = "kubectx";
       kn = "kubens";
+
+      # Python
+      piv = "python -m venv .venv";
+      psv = "source .venv/bin/activate";
 
       # Docker
       dstop = "docker stop $(docker ps -a -q) 2>/dev/null";
@@ -97,16 +113,6 @@
         name = "zsh-syntax-highlighting";
         file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
         src = pkgs.zsh-syntax-highlighting;
-      }
-      {
-        name = "enhancd";
-        file = "init.sh";
-        src = pkgs.fetchFromGitHub {
-          owner = "b4b4r07";
-          repo = "enhancd";
-          rev = "230695f8da8463b18121f58d748851a67be19a00";
-          sha256 = "sha256-XJl0XVtfi/NTysRMWant84uh8+zShTRwd7t2cxUk+qU=";
-        };
       }
     ];
   };
