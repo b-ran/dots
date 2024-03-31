@@ -1,9 +1,9 @@
 [
   ./1password.nix
+  ./boot.nix
   ./discord.nix
   ./docker.nix
   ./efi.nix
-  ./grub.nix
   ./hyprland.nix
   ./jetbrains.nix
   ./nix.nix
