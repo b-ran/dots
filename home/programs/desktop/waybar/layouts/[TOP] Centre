@@ -1,0 +1,15 @@
+{
+  "modules-left": [
+    "clock",
+    "network",
+    "pulseaudio",
+    "cpu",
+    "memory",
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "tray"
+  ],
+}
