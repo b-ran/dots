@@ -3,14 +3,15 @@
   ./boot.nix
   ./discord.nix
   ./docker.nix
-  ./efi.nix
   ./hyprland.nix
   ./jetbrains.nix
   ./nix.nix
   ./nvidia.nix
   ./openssh.nix
   ./pipewire.nix
+  ./printing.nix
   ./python.nix
   ./sddm.nix
   ./thunar.nix
+  ./wallpaper.nix
 ]
