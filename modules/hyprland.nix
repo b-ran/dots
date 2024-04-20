@@ -1,32 +1,43 @@
-{ pkgs, home-manager, hyprland-contrib, user, host, ... }:
+{ inputs, pkgs, home-manager, user, ... }:
 
 {
   programs = {
     xwayland.enable = true;
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    };
   };
 
   environment.systemPackages = with pkgs; [
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     hyprpicker
     imagemagick
     wl-clipboard
-    hyprland-contrib.packages.${pkgs.system}.grimblast
     slurp
     cliphist
-    wf-recorder
+    xwaylandvideobridge
+    tesseract
   ];
 
   home-manager.users.${user} = {
 
     wayland.windowManager.hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       systemd.enable = true;
+
+      plugins = [inputs.Hyprspace.packages.${pkgs.system}.Hyprspace];
 
       extraConfig = ''
         source=~/.config/hypr/monitors.conf
         source=~/.cache/wal/colors-hyprland.conf
 
+        env = HYPRCURSOR_THEME,rose-pine-hyprcursor
+
         env = LIBVA_DRIVER_NAME,nvidia
-        env = XDG_SESSION_TYPE,wayland
+        env = XDG_SESSION_TYPE,x11
         env = WLR_NO_HARDWARE_CURSORS,1
         env = XDG_SESSION_DESKTOP,Hyprland
         env = QT_QPA_PLATFORM=wayland
@@ -35,19 +46,18 @@
         env = _JAVA_AWT_WM_NONREPARENTING,1
 
         exec-once = waybar
-        exec-once = swayidle -w timeout 10 'if pgrep -x swaylock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
+        exec-once = swayidle -w timeout 10 'if pgrep -x hyprlock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
         exec-once = nm-applet
         exec-once = discord --start-minimized
         exec-once = ${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
         exec-once = 1password --silent
-        exec-once = swww query || swww init
+        exec-once = swww query || swww-daemon
         exec-once = wl-paste --watch cliphist store
+        exec-once = playerctld daemon
 
         # windowrulev2 = workspace 7, title:Spotify
         # windowrulev2 = workspace 4, class:jetbrains-idea
         # windowrulev2 = workspace 3, class:discord
-        windowrulev2 = stayfocused, title:^()$,class:^(steam)$
-        windowrulev2 = minsize 1 1, title:^()$,class:^(steam)$
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
@@ -56,72 +66,15 @@
         windowrulev2 = float, class:org.kde.polkit-kde-authentication-agent-1
         windowrulev2 = center, class:org.kde.polkit-kde-authentication-agent-1
 
+        windowrulev2 = opacity 0.0 override,class:^(xwaylandvideobridge)$
+        windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+        windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
+        windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
+        windowrulev2 = noblur,class:^(xwaylandvideobridge)$pipewire
 
         layerrule = unset, rofi
         layerrule = blur, rofi
         layerrule = ignorezero, rofi
-
-        # Some default env vars.
-
-
-        # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
-        input {
-          follow_mouse = 1
-
-          touchpad {
-            middle_button_emulation = true
-            tap-to-click = true
-            tap-and-drag = true
-          }
-        }
-
-        general {
-          cursor_inactive_timeout = 10
-          gaps_in = 5
-          gaps_out = 10
-          border_size = 2
-          col.active_border = $primary
-          col.inactive_border = $background
-
-          layout = dwindle
-        }
-
-        decoration {
-          rounding = 10
-
-          drop_shadow = true
-          shadow_range = 4
-          shadow_render_power = 3
-          col.shadow = $background
-          col.shadow_inactive = $background
-        }
-
-        animations {
-          enabled = yes
-        }
-
-        gestures {
-          workspace_swipe = true
-        }
-
-        dwindle {
-          pseudotile = true
-          preserve_split = true
-        }
-
-        master {
-          new_is_master = true
-        }
-
-        xwayland {
-          force_zero_scaling = true
-        }
-
-        misc {
-          force_default_wallpaper = 0
-          disable_hyprland_logo = true
-          disable_splash_rendering = true
-        }
 
         $mod = SUPER
 
@@ -132,24 +85,27 @@
         bind = $mod, G, togglegroup,b
         bind = $mod, H, togglesplit
         bind = $mod, C, killactive,
+        bind = ALT, tab, overview:toggle
+
 
         bind = $mod, B, exec, ~/.config/rofi/menus/background-select.sh
         bind = $mod, N, exec, networkmanager_dmenu
         bind = $mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi
         bind = $mod, A, exec, rofi -show filebrowser -theme /home/brandon/workspace/nixos-config/home/programs/desktop/rofi/themes/dual.rasi
-        bind = $mod, R, exec, rofi -show run -theme ~/.config/rofi/themes/dual.rasi
+        bind = $mod, Q, exec, rofi -show run -theme ~/.config/rofi/themes/dual.rasi
         bind = $mod, W, exec, ~/.config/rofi/menus/windows.sh
         bind = $mod, V, exec, ~/.config/rofi/menus/clipboard.sh
         bind = $mod, X, exec, ~/.config/rofi/menus/power.sh
         bind = $mod, T, exec, ~/.config/rofi/menus/pywal.sh
-
-        bind = $mod, S, exec, grimblast --notify copy area
+        bind = $mod, Y, exec, ~/.config/rofi/menus/waybar.sh
         bind = $mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh
 
         bind = $mod, Return, exec, alacritty
 
-        bind = $mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:"$color" /tmp/color_notification.png && notify-send "Picked Color: " "$color" -i /tmp/color_notification.png
-        bind = $mod, L, exec, swaylock
+        bind = $mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i "$temp" "Screenshot:" "Captured selected area" && rm "$temp"
+        bind = $mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:"$color" /tmp/color_notification.png && notify-send "Picked Color:" "$color" -i /tmp/color_notification.png
+        bind = $mod, L, exec, playerctl pause & hyprlock
+        bind = $mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i "$temp" "OCR:" "Text has been copied to the clipboard." && rm "$temp"
 
         # Move focus with mod + arrow keys
         bind = $mod, left, movefocus, l
@@ -215,6 +171,65 @@
 
         binde = ,XF86MonBrightnessUp,exec,brightnessctl s +5% && notify-send -t 1000 " Brightness" "$(light)%" --hint="int:value:$(light)"
         binde = ,XF86MonBrightnessDown,exec,brightnessctl s 5%- && notify-send -t 1000 " Brightness" "$(light)%" --hint="int:value:$(light)"
+
+        # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
+        input {
+          follow_mouse = 1
+
+          touchpad {
+            middle_button_emulation = true
+            tap-to-click = true
+            tap-and-drag = true
+          }
+        }
+
+        general {
+          cursor_inactive_timeout = 10
+          gaps_in = 5
+          gaps_out = 10
+          border_size = 2
+          col.active_border = $primary
+          col.inactive_border = $background
+
+          layout = dwindle
+        }
+
+        decoration {
+          rounding = 10
+
+          drop_shadow = true
+          shadow_range = 4
+          shadow_render_power = 3
+          col.shadow = $background
+          col.shadow_inactive = $background
+        }
+
+        animations {
+          enabled = yes
+        }
+
+        gestures {
+          workspace_swipe = true
+        }
+
+        dwindle {
+          pseudotile = true
+          preserve_split = true
+        }
+
+        master {
+          new_is_master = true
+        }
+
+        xwayland {
+          force_zero_scaling = true
+        }
+
+        misc {
+          force_default_wallpaper = 0
+          disable_hyprland_logo = true
+          disable_splash_rendering = true
+        }
       '';
     };
   };
