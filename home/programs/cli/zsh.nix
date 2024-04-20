@@ -70,7 +70,7 @@
       watch = "viddy";
       share = "woof";
       wt = "hyprctl clients";
-      copyfile="xclip -selection clipboard <";
+      copyfile="wl-copy <";
       cava = "cava -p ~/.cache/wal/colors-cava";
 
       dsize = "du -hs";
