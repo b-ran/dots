@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, hyprland, hyprland-contrib, user, public-key, system }:
+{ lib, inputs, nixpkgs, home-manager, hyprland-contrib, user, public-key, system }:
 let
   pkgs = import nixpkgs {
     inherit system;
@@ -9,7 +9,7 @@ in
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs home-manager hyprland-contrib user public-key system;
+      inherit pkgs inputs home-manager hyprland-contrib user public-key system;
       host = {
         name = "desktop";
       };
@@ -17,19 +17,21 @@ in
     modules = [
       ./configuration.nix
       ./desktop
-#      (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; })
+      (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit hyprland user system;
+          inherit user system;
           host = {
             name = "desktop";
           };
         };
         home-manager.users.${user} = {
           imports = [
+            inputs.hyprland.homeManagerModules.default
+            inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];
         };
@@ -40,7 +42,7 @@ in
   work = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs home-manager hyprland-contrib user public-key system;
+      inherit pkgs inputs home-manager hyprland-contrib user public-key system;
       host = {
         name = "work";
       };
@@ -48,18 +50,20 @@ in
     modules = [
       ./configuration.nix
       ./work
+      (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit user hyprland;
+          inherit user system;
           host = {
             name = "work";
           };
         };
         home-manager.users.${user} = {
           imports = [
+             inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];
         };

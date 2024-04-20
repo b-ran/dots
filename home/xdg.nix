@@ -35,6 +35,7 @@ in
       enable = true;
       createDirectories = true;
     };
+    portal.enable = true;
     mimeApps = {
       enable = true;
       defaultApplications = {

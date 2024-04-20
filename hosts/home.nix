@@ -24,6 +24,9 @@
     packages = with pkgs; [
 
       # cli
+      nh
+      nvd
+      nix-output-monitor
       wget
       cbonsai
       viddy
@@ -36,7 +39,7 @@
       rsync
       just
       kubectl
-#      awscli2
+      awscli2
       kubernetes-helm
       ventoy-full
       kubectx
@@ -48,9 +51,10 @@
       feh
       wlr-randr
       bfg-repo-cleaner
-      soco-cli
       distrobox
       killall
+      glow
+      nix-prefetch-git
 
       # gui apps
       keepassxc
@@ -62,6 +66,7 @@
       spotify
       nwg-displays
       gimp
+      filezilla
 
       # gnome
       loupe
@@ -71,7 +76,7 @@
       gnome.gnome-calculator
       gnome.gnome-weather
       gnome.nautilus
-
+      gnome.seahorse
 
       # system
       xdg_utils
@@ -87,6 +92,7 @@
       networkmanager-openvpn
       openvpn
       polkit-kde-agent
+      wl-clipboard
       xclip
 
       # dev
@@ -95,6 +101,8 @@
       postgresql
       nodejs_21
       yarn
+      pkg-config
+      cpio
     ];
   };
 }

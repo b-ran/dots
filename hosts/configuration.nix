@@ -1,10 +1,11 @@
-{ config, pkgs, old-nixpkgs, user, system, ... }:
+{ config, pkgs, user, system, ... }:
 
 {
   system.stateVersion = "23.11";
 
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
+
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
@@ -13,6 +14,7 @@
   };
 
   networking = {
+    enableIPv6 = false;
     networkmanager.enable = true;
     firewall = {
       enable = true;
@@ -27,6 +29,7 @@
     shells = [ pkgs.zsh ];
     pathsToLink = [ "/share/zsh" ];
     sessionVariables = {
+      FLAKE = "/home/${user}/workspace/nixos-config";
       NIXOS_OZONE_WL = "1";  # Use wayland for electron apps if supported
     };
     variables = {
@@ -60,13 +63,14 @@
     localtimed.enable = true;
   };
 
+  fonts.enableDefaultPackages = true;
   fonts.packages = with pkgs; [
     carlito
     vegur
     source-code-pro
     jetbrains-mono
     font-awesome
-    corefonts
+    # corefonts
     winePackages.fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];

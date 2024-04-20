@@ -6,5 +6,5 @@
     (import ../../modules) ++
     [(import ../../modules/gaming.nix)];
 
-  networking.hostName = "nixos";
+  networking.hostName = "desktop";
 }
