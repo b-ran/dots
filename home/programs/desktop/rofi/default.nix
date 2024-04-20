@@ -12,6 +12,11 @@
     file.".config/rofi/menus/background-select.sh" = {
       executable = true;
       source = ./menus/background-select.sh;
+      onChange = ''
+         if [ ! -f ~/.config/current-wallpaper ]; then
+            cp ~/wallpapers/astronaut-moonlight-serenity.png ~/.config/current-wallpaper
+         fi
+      '';
     };
     file.".config/rofi/menus/clipboard.sh" = {
       executable = true;
@@ -28,6 +33,14 @@
     file.".config/rofi/menus/windows.sh" = {
       executable = true;
       source = ./menus/windows.sh;
+    };
+    file.".config/rofi/menus/pywal.sh" = {
+      executable = true;
+      source = ./menus/pywal.sh;
+    };
+    file.".config/rofi/menus/waybar.sh" = {
+      executable = true;
+      source = ./menus/waybar.sh;
     };
 
     file.".config/networkmanager-dmenu/config.ini".text = ''

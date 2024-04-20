@@ -12,13 +12,13 @@ if [ x"$*" = x"Shutdown" ]; then
 elif [ x"$*" = x"Reboot" ]; then
   systemctl reboot
 elif [ x"$*" = x"Suspend" ]; then
-  systemctl suspend
+   systemctl suspend & playerctl pause & swaylock -f
 elif [ x"$*" = x"Logout" ]; then
   loginctl terminate-session $XDG_SESSION_ID
 elif [ x"$*" = x"Hibernate" ]; then
-  systemctl hibernate
+  systemctl hibernate & playerctl pause & swaylock -f
 elif [ x"$*" = x"Lock" ]; then
-  swaylock -f && exit
+  playerctl pause & swaylock -f  && exit
 else
   option=$(get_options | rofi -dmenu -i -theme ~/.config/rofi/themes/single-wide.rasi -theme-str "listview {lines: 6;}" \ -theme-str 'entry { placeholder: " Search"; }')
   if [ -z "$option" ]; then

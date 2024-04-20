@@ -1,11 +1,11 @@
 # Background Path
 backgroundDir="$HOME/wallpapers"
-themesDir="/home/brandon/workspace/nixos-config/home/programs/desktop/rofi/themes"
+themesDir="~/.config/rofi/themes"
 
 # Transition config
-TYPE="wipe"
+TYPE="simple"
 DURATION=3
-SWWW_PARAMS="--transition-type ${TYPE} --transition-duration ${DURATION}"
+SWWW_PARAMS="--transition-type ${TYPE}"
 
 # Retrieve image files as a list
 PICS=($(find -L "${backgroundDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \)))
