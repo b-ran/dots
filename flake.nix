@@ -9,15 +9,29 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-#    secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets.git";
+    hyprland ={
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprlock.url = "github:hyprwm/Hyprlock";
+    secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, hyprland, hyprland-contrib, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, hyprland-contrib, ... }:
     let
       user = "brandon";
       public-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/kUnW9xrrFeqaAjRVzfJw+SCgIhUabAWmyOhH8yOvS";
@@ -27,7 +41,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager hyprland hyprland-contrib user public-key system;
+          inherit inputs nixpkgs home-manager hyprland-contrib user public-key system;
         }
       );
 
