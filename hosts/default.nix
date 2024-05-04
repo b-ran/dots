@@ -22,9 +22,9 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-#        home-manager.backupFileExtension = "bk";
+        home-manager.backupFileExtension = "bk";
         home-manager.extraSpecialArgs = {
-          inherit user system;
+          inherit inputs user system;
           host = {
             name = "desktop";
           };
@@ -56,9 +56,9 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-#        home-manager.backupFileExtension = "bk";
+        home-manager.backupFileExtension = "bk";
         home-manager.extraSpecialArgs = {
-          inherit user system;
+          inherit inputs user system;
           host = {
             name = "work";
           };
