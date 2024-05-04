@@ -61,6 +61,7 @@
       gco = "git checkout";
       gd = "git diff";
       gs = "git status";
+      gu = "git reset HEAD~";
       gce = "git config user.email";
       gcn = "git config user.name";
 
