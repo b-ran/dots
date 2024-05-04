@@ -39,7 +39,7 @@
         env = WLR_NO_HARDWARE_CURSORS,1
         env = XDG_SESSION_DESKTOP,Hyprland
         env = QT_QPA_PLATFORM=wayland
-        env = BROWSER,firefox
+        env = BROWSER,firefox-developer-edition
         env = MOZ_ENABLE_WAYLAND,1
         env = _JAVA_AWT_WM_NONREPARENTING,1
 

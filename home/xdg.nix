@@ -2,7 +2,7 @@
 # to check on portal status - nix run nixpkgs#door-knocker
 
 let
-  browser = [ "firefox.desktop" ];
+  browser = [ "firefox-developer-edition.desktop" ];
   media = [ "mpv.desktop" ];
   image = [ "feh.desktop" ];
   torrent = [ "transmission-gtk.desktop" ];
