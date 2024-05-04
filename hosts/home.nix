@@ -67,6 +67,7 @@
       nwg-displays
       gimp
       filezilla
+      logseq
 
       # gnome
       loupe
@@ -93,13 +94,12 @@
       openvpn
       polkit-kde-agent
       wl-clipboard
-      xclip
 
       # dev
       gcc
       gnumake
       postgresql
-      nodejs_21
+      # nodejs_21
       yarn
       pkg-config
       cpio

@@ -22,6 +22,7 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+#        home-manager.backupFileExtension = "bk";
         home-manager.extraSpecialArgs = {
           inherit user system;
           host = {
@@ -55,6 +56,7 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+#        home-manager.backupFileExtension = "bk";
         home-manager.extraSpecialArgs = {
           inherit user system;
           host = {
@@ -63,7 +65,8 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-             inputs.hyprlock.homeManagerModules.hyprlock
+            inputs.hyprland.homeManagerModules.default
+            inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];
         };

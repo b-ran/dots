@@ -5,15 +5,12 @@
     loader = {
       grub = {
         enable = true;
+        splashImage = null;
         devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;
         configurationLimit = 5;
       };
-#
-#      systemd-boot = {
-#        enable = true; # Enable systemd-boot
-#      };
 
       efi = {
         canTouchEfiVariables = true;

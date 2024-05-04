@@ -13,20 +13,13 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland ={
+    hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     hyprlock.url = "github:hyprwm/Hyprlock";
     secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
   };

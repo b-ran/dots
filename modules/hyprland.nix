@@ -28,8 +28,6 @@
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       systemd.enable = true;
 
-      plugins = [inputs.Hyprspace.packages.${pkgs.system}.Hyprspace];
-
       extraConfig = ''
         source=~/.config/hypr/monitors.conf
         source=~/.cache/wal/colors-hyprland.conf
@@ -85,7 +83,6 @@
         bind = $mod, G, togglegroup,b
         bind = $mod, H, togglesplit
         bind = $mod, C, killactive,
-        bind = ALT, tab, overview:toggle
 
 
         bind = $mod, B, exec, ~/.config/rofi/menus/background-select.sh

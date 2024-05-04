@@ -1,3 +1,6 @@
+{ pkgs, ... }:
+# to check on portal status - nix run nixpkgs#door-knocker
+
 let
   browser = [ "firefox.desktop" ];
   media = [ "mpv.desktop" ];
@@ -30,18 +33,18 @@ in
 {
   xdg = {
     enable = true;
-    cacheHome = config.home.homeDirectory + "/.local/cache";
     userDirs = {
       enable = true;
       createDirectories = true;
     };
-    portal.enable = true;
+#    portal = {
+#      enable = true;
+#      config.common.default = "*";
+#      extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome ];
+#    };
     mimeApps = {
       enable = true;
-      defaultApplications = {
-        default = browser;
-        associations = associations;
-      };
+      defaultApplications = associations;
     };
   };
 }
