@@ -45,7 +45,7 @@
 
     file.".config/networkmanager-dmenu/config.ini".text = ''
       [dmenu]
-      dmenu_command = rofi -dmenu -i -theme /home/brandon/workspace/nixos-config/home/programs/desktop/rofi/themes/single.rasi -theme-str 'entry { placeholder: "󰈀 Search"; }'
+      dmenu_command = rofi -dmenu -i -theme ~/.config/rofi/themes/single.rasi -theme-str 'entry { placeholder: "󰈀 Search"; }'
       rofi_highlight = True
       compact = True
       wifi_chars = 󰤟󰤢󰤥󰤨

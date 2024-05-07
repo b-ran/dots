@@ -8,11 +8,17 @@
       "/home/${user}/.cache/wal/colors-hyprland.conf"
     ];
 
+    general = {
+      no_fade_in = true;
+      no_fade_out = true;
+      ignore_empty_input = true;
+    };
+
     backgrounds = [
       {
         path = "/home/${user}/.config/current-wallpaper";
-        blur_size = 4;
-        blur_passes = 3;
+        blur_size = 2;
+        blur_passes = 2;
         noise = 0.0117;
         contrast = 1.3000;
         brightness = 0.8000;
@@ -66,10 +72,10 @@
         hide_input = false;
         position = {
           x = 0;
-          y = 50;
+          y = -75;
         };
         halign = "center";
-        valign = "bottom";
+        valign = "center";
       }
     ];
   };

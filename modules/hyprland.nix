@@ -5,7 +5,6 @@
     xwayland.enable = true;
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
   };
 
@@ -25,7 +24,6 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       systemd.enable = true;
 
       extraConfig = ''
@@ -88,7 +86,7 @@
         bind = $mod, B, exec, ~/.config/rofi/menus/background-select.sh
         bind = $mod, N, exec, networkmanager_dmenu
         bind = $mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi
-        bind = $mod, A, exec, rofi -show filebrowser -theme /home/brandon/workspace/nixos-config/home/programs/desktop/rofi/themes/dual.rasi
+        bind = $mod, A, exec, rofi -show filebrowser -theme ~/.config/rofi/themes/dual.rasi
         bind = $mod, Q, exec, rofi -show run -theme ~/.config/rofi/themes/dual.rasi
         bind = $mod, W, exec, ~/.config/rofi/menus/windows.sh
         bind = $mod, V, exec, ~/.config/rofi/menus/clipboard.sh
@@ -101,7 +99,7 @@
 
         bind = $mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i "$temp" "Screenshot:" "Captured selected area" && rm "$temp"
         bind = $mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:"$color" /tmp/color_notification.png && notify-send "Picked Color:" "$color" -i /tmp/color_notification.png
-        bind = $mod, L, exec, playerctl pause & hyprlock
+        bind = $mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap
         bind = $mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i "$temp" "OCR:" "Text has been copied to the clipboard." && rm "$temp"
 
         # Move focus with mod + arrow keys
