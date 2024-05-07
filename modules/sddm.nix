@@ -17,10 +17,6 @@
   services.displayManager = {
     sessionPackages = [ config.programs.hyprland.package ];
     enable = true;
-#    autoLogin = {
-#      enable = false;
-#      user = user;
-#    };
 
     sddm = {
       enable = true;
