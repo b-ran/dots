@@ -61,6 +61,8 @@
     dbus.packages = [pkgs.gcr]; # Needed for Gnome services
     geoclue2.enable = true; # Allow location services
     localtimed.enable = true;
+    gvfs.enable = true;
+    gnome.sushi.enable = true;
   };
 
   fonts.enableDefaultPackages = true;

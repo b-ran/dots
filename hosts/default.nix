@@ -31,7 +31,6 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            inputs.hyprland.homeManagerModules.default
             inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];
@@ -65,7 +64,6 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            inputs.hyprland.homeManagerModules.default
             inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];

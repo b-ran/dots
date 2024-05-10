@@ -12,6 +12,5 @@
   ./printing.nix
   ./python.nix
   ./sddm.nix
-  ./thunar.nix
   ./wallpaper.nix
 ]

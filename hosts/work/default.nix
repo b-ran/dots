@@ -6,6 +6,6 @@
     (import ../../modules);
 
   networking.hostName = "work";
-  networking.networkmanager.insertNameservers = [ "10.1.0.3" ];
-  networking.nameservers = [ "10.1.0.3" ];
+  networking.networkmanager.insertNameservers = [ "10.1.0.3" "1.1.1.1" ];
+  networking.nameservers = [ "10.1.0.3"  "1.1.1.1" ];
 }
