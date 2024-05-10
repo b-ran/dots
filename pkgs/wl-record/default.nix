@@ -1,14 +1,10 @@
 {
   writeShellScriptBin,
   lib,
-  wf-recorder,
-  libnotify,
-  slurp,
-  wl-clipboard,
 }: let
   _ = lib.getExe;
 in
-  writeShellScriptBin "wl-ocr" ''
+  writeShellScriptBin "wl-record" ''
 
   PID_FILE="/tmp/wf-recorder.pid"
   RECORDINGS_DIR="$HOME/Recordings"
@@ -35,11 +31,9 @@ in
       fi
   }
 
-
   if [ -f "$PID_FILE" ]; then
       stop_recording
   else
       start_recording
   fi
-
   ''

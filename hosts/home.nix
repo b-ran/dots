@@ -1,7 +1,5 @@
 { lib, pkgs, user, ... }:
-let
-  wl-ocr = (callPackage ../pkgs/wl-ocr { });
-in
+
 {
   imports =
     (import ../home) ++
@@ -24,7 +22,6 @@ in
     stateVersion = "23.11";
 
     packages = with pkgs; [
-      wl-ocr
       # cli
       nh
       nvd
@@ -77,7 +74,6 @@ in
       gnome.gnome-disk-utility
       gnome.gnome-clocks
       gnome.gnome-calculator
-      gnome.gnome-weather
       gnome.nautilus
       gnome.seahorse
 
@@ -101,7 +97,7 @@ in
       gcc
       gnumake
       postgresql
-      # nodejs_21
+      nodejs
       yarn
       pkg-config
       cpio

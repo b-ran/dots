@@ -1,5 +1,8 @@
 { inputs, pkgs, home-manager, user, ... }:
 
+let
+  wl-record = (pkgs.callPackage ../pkgs/wl-record { });
+in
 {
   programs = {
     xwayland.enable = true;
@@ -19,6 +22,7 @@
     xwaylandvideobridge
     tesseract
     wf-recorder
+    wl-record
   ];
 
   home-manager.users.${user} = {
@@ -99,7 +103,7 @@
         bind = $mod, Return, exec, alacritty
 
         bind = $mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i "$temp" "Screenshot:" "Captured selected area" && rm "$temp"
-        bind = $mod, R, exec, wl-screenrec -g "$(slurp)"
+        bind = $mod, R, exec, wl-record
         bind = $mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:"$color" /tmp/color_notification.png && notify-send "Picked Color:" "$color" -i /tmp/color_notification.png
         bind = $mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap
         bind = $mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i "$temp" "OCR:" "Text has been copied to the clipboard." && rm "$temp"
