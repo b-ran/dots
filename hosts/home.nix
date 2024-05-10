@@ -1,5 +1,7 @@
 { lib, pkgs, user, ... }:
-
+let
+  wl-ocr = (callPackage ../pkgs/wl-ocr { });
+in
 {
   imports =
     (import ../home) ++
@@ -22,7 +24,7 @@
     stateVersion = "23.11";
 
     packages = with pkgs; [
-
+      wl-ocr
       # cli
       nh
       nvd

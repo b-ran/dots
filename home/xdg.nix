@@ -1,6 +1,6 @@
 { pkgs, ... }:
 # to check on portal status - nix run nixpkgs#door-knocker
-
+# check desktop file names find / -name "feh.desktop"
 let
   browser = [ "firefox-developer-edition.desktop" ];
   media = [ "mpv.desktop" ];
@@ -22,8 +22,9 @@ let
     "audio/*" = media;
     "video/*" = media;
     "image/*" = image;
+    "image/jpeg" = image;
     "application/json" = browser;
-    "application/pdf" = [ "zathura.desktop" ];
+    "application/pdf" = [ "org.pwmt.zathura.desktop" ];
     "application/x-bittorrent" = torrent;
     "application/x-bittorrent;x-scheme-handler/magnet" = torrent;
     "x-scheme-handler/discord" = [ "discord.desktop" ];
