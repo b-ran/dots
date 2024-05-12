@@ -35,7 +35,7 @@
         font_family = "JetBrains Mono Nerd Font 10";
         position = {
           x = 0;
-          y = 16;
+          y = 80;
         };
         halign = "center";
         valign = "center";
