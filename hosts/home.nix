@@ -66,7 +66,6 @@
       nwg-displays
       gimp
       filezilla
-      logseq
 
       # gnome
       loupe

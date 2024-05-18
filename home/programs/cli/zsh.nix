@@ -8,6 +8,11 @@
     nano
   ];
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -17,7 +22,24 @@
     history = {
       size = 100000;
       share = true;
+      expireDuplicatesFirst = true;
     };
+
+    initExtra = ''
+      if [ -f ~/.cache/wal/fzf.sh ]; then
+        source ~/.cache/wal/fzf.sh
+      fi
+
+      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      rand=$(($RANDOM % 2))
+
+      if [ $rand -eq 0 ]
+      then
+        krabby random
+      else
+        colorscript random
+      fi
+    '';
 
     oh-my-zsh = {
       enable = true;
@@ -33,19 +55,11 @@
       extraConfig = ''
         zstyle :omz:plugins:ssh-agent quiet yes
         zstyle :omz:plugins:ssh-agent lazy yes
+        zstyle ':completion:*' menu no
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+        zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'els --color $realpath'
       '';
     };
-
-    initExtra = ''
-      rand=$(($RANDOM % 2))
-
-      if [ $rand -eq 0 ]
-      then
-        krabby random
-      else
-        colorscript random
-      fi
-    '';
 
     shellAliases = {
       reload = "source ~/.zshrc";
