@@ -3,38 +3,145 @@
 {
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
     userSettings = {
-      "files.autoSave" = "afterDelay";
-      "files.autoSaveDelay" = 1000;
-      "window.titleBarStyle" = "custom";
+
+      "window.title" = "\${activeEditorShort}";
+      "window.titleBarStyle" = "native";
+      "window.zoomLevel" = 2;
+      "window.menuBarVisibility" = "toggle";
+      "window.commandCenter" = false;
+
       "editor.fontFamily" = "JetBrainsMono Nerd Font";
       "editor.fontSize" = 14;
+      "editor.tabSize" = 1.5;
+      "editor.wordWrap" = "on";
       "editor.fontLigatures" = true;
-      "editor.formatOnSave" = true;
-      "editor.formatOnPaste" = true;
-      "window.zoomLevel" = 1.5;
+      "editor.formatOnSave" = false;
+      "editor.formatOnPaste" = false;
+      "editor.minimap.enabled" = false;
+      "editor.scrollbar.horizontalScrollbarSize" = 4;
+      "editor.scrollbar.verticalScrollbarSize" = 4;
+      
+      "explorer.compactFolders" = false;
+      "explorer.autoReveal"= false;
+      "breadcrumbs.enabled"= true;
+
+      "workbench.tips.enabled" = true;
+      "workbench.statusBar.visible" = true;
+      "workbench.layoutControl.enabled" = false;
+      "workbench.editor.enablePreview" = false;
+      "workbench.editor.empty.hint" = "hidden";
+      "workbench.activityBar.location" = "hidden";
+      "workbench.startupEditor" = "none";
+      "workbench.editor.labelFormat" = "short";
+
+      # Linked editing
+      "editor.linkedEditing" = true;
+
+      # Telemetry
+      "telemetry.telemetryLevel" = "off";
+
+      # Plugins
+      "svelte.enable-ts-plugin" = true;
+
+      # Files
+      "files.autoSave" = "afterDelay";
+      "files.autoSaveDelay" = 1000;
+
+
+      # File Types
+      "[nix]"."editor.tabSize" = 2;
+
+      # Search
+      "search.exclude" = {
+        "**/node_modules" = true;
+        "**/bower_components" = true;
+        "**/*.code-search" = true;
+        "**/.svelte-kit" =  true;
+      };
+
+      # GitLens
+      "gitlens.codeLens.enabled" = false;
+      "gitlens.currentLine.enabled" = false;
+      "gitlens.statusBar.enabled" = false;
     };
-    extensions = [
-      pkgs.vscode-extensions.svelte.svelte-vscode
-      pkgs.vscode-extensions.esbenp.prettier-vscode
-      pkgs.vscode-extensions.dbaeumer.vscode-eslint
-      pkgs.vscode-extensions.bradlc.vscode-tailwindcss
-      pkgs.vscode-extensions.formulahendry.auto-rename-tag
-      pkgs.vscode-extensions.formulahendry.auto-close-tag
-      pkgs.vscode-extensions.github.copilot
-      pkgs.vscode-extensions.editorconfig.editorconfig
-      pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
-      pkgs.vscode-extensions.ms-azuretools.vscode-docker
-      pkgs.vscode-extensions.firefox-devtools.vscode-firefox-debug
-      pkgs.vscode-extensions.yzhang.markdown-all-in-one
-      pkgs.vscode-extensions.redhat.vscode-yaml
-      pkgs.vscode-extensions.eamodio.gitlens
-      pkgs.vscode-extensions.christian-kohler.path-intellisense
-      pkgs.vscode-extensions.skellock.just
-      pkgs.vscode-extensions.formulahendry.code-runner
-#      pkgs.vscode-extensions.ms-python.python
-      pkgs.vscode-extensions.ms-python.vscode-pylance
-      pkgs.vscode-extensions.batisteo.vscode-django
-    ];
+     extensions = with pkgs.open-vsx; [
+      # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
+
+      # Essentials
+      editorconfig.editorconfig
+      streetsidesoftware.code-spell-checker
+      mikestead.dotenv
+
+      # Scripts
+      skellock.just
+
+      # Interface
+      eamodio.gitlens
+      christian-kohler.path-intellisense
+      usernamehw.errorlens
+      formulahendry.code-runner
+
+      # Markdown
+      yzhang.markdown-all-in-one
+
+      # Yaml
+      redhat.vscode-yaml
+
+      # Containers
+      ms-kubernetes-tools.vscode-kubernetes-tools
+      ms-azuretools.vscode-docker
+
+      # Python
+      batisteo.vscode-django
+
+
+      # Web
+      rangav.vscode-thunder-client
+      yoavbls.pretty-ts-errors
+      svelte.svelte-vscode
+      esbenp.prettier-vscode
+      dbaeumer.vscode-eslint
+      bradlc.vscode-tailwindcss
+      pflannery.vscode-versionlens
+      csstools.postcss
+
+      # Testing
+      vitest.explorer
+      ms-playwright.playwright
+      firefox-devtools.vscode-firefox-debug
+      ms-vscode.test-adapter-converter
+
+      # Nix
+      jnoortheen.nix-ide
+    ]
+    ++ (with pkgs.vscode-marketplace; [
+      # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
+      # Interface
+      amodio.toggle-excluded-files
+
+      # Remote
+      ms-vscode-remote.vscode-remote-extensionpack
+      ms-vscode.remote-explorer
+      ms-vscode.live-server
+      ms-vsliveshare.vsliveshare
+
+      # Python
+      ms-python.vscode-pylance
+      ms-python.python
+
+      # Git
+      github.vscode-pull-request-github
+
+      # AI
+      github.copilot
+
+      # Web
+      wallabyjs.quokka-vscode
+      ardenivanov.svelte-intellisense
+    ]);
   };
 }
