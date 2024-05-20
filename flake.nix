@@ -9,6 +9,10 @@
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +21,7 @@
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprlock.url = "github:hyprwm/Hyprlock";
+#    hyprlock.url = "github:hyprwm/Hyprlock";
     secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
   };
 

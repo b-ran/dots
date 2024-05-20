@@ -176,6 +176,8 @@ in
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {
           follow_mouse = 1
+          repeat_delay = 300
+          repeat_rate = 50
 
           touchpad {
             middle_button_emulation = true

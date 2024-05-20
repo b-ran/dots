@@ -20,9 +20,9 @@ in
       (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.nixosModules.home-manager
       {
-        home-manager.useGlobalPkgs = true;
+        home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
-        home-manager.backupFileExtension = "bk";
+        home-manager.backupFileExtension = "bak";
         home-manager.extraSpecialArgs = {
           inherit inputs user system;
           host = {
@@ -31,7 +31,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            inputs.hyprlock.homeManagerModules.hyprlock
+#            inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];
         };
@@ -53,7 +53,7 @@ in
       (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.nixosModules.home-manager
       {
-        home-manager.useGlobalPkgs = true;
+        home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
         home-manager.backupFileExtension = "bk";
         home-manager.extraSpecialArgs = {
@@ -64,7 +64,7 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-            inputs.hyprlock.homeManagerModules.hyprlock
+#            inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];
         };

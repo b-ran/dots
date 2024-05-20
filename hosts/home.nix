@@ -1,4 +1,4 @@
-{ lib, pkgs, user, ... }:
+{ lib, inputs, pkgs, user, ... }:
 
 {
   imports =
@@ -10,6 +10,16 @@
 
   programs = {
     home-manager.enable = true;
+  };
+
+  nixpkgs = {
+    overlays = [
+      inputs.nix-vscode-extensions.overlays.default
+    ];
+    # Configure home manager nixpkgs instance
+    config = {
+      allowUnfree = true;
+    };
   };
 
   services = {
