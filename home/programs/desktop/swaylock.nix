@@ -34,8 +34,4 @@
         indicator = true;
       };
     };
-
-  home.packages = with pkgs; [
-    swayidle
-  ];
 }

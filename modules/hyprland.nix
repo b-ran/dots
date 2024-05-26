@@ -15,6 +15,7 @@ in
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     hyprpicker
+    swayidle
     imagemagick
     wl-clipboard
     slurp
