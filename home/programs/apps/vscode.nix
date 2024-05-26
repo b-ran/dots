@@ -15,7 +15,7 @@
       "window.commandCenter" = false;
 
       "editor.fontFamily" = "JetBrainsMono Nerd Font";
-      "editor.fontSize" = 14;
+      "editor.fontSize" = 12;
       "editor.tabSize" = 1.5;
       "editor.wordWrap" = "on";
       "editor.fontLigatures" = true;
@@ -37,6 +37,7 @@
       "workbench.activityBar.location" = "hidden";
       "workbench.startupEditor" = "none";
       "workbench.editor.labelFormat" = "short";
+      "workbench.colorTheme" = "Tokyo Night";
 
       # Linked editing
       "editor.linkedEditing" = true;
@@ -67,6 +68,46 @@
       "gitlens.codeLens.enabled" = false;
       "gitlens.currentLine.enabled" = false;
       "gitlens.statusBar.enabled" = false;
+
+      # Tokyo Night JDoc
+      "editor.tokenColorCustomizations" = {
+        "[Tokyo Night]" = {
+          "textMateRules" = [
+            {
+              "scope" = [
+                "comment keyword.codetag.notation"
+                "comment.block.documentation keyword"
+                "comment.block.documentation storage.type.class"
+              ];
+              "settings" = {
+                "foreground" = "#bb9af7";
+              };
+            }
+            {
+              "scope" = ["comment.block.documentation entity.name.type.instance"];
+              "settings" = {
+                "foreground" = "#73daca";
+                "fontStyle" = "italic";
+              };
+            }
+            {
+              "scope" = [
+                "comment.block.documentation entity.name.type punctuation.definition.bracket"
+              ];
+              "settings" = {
+                "foreground" = "#bb9af7";
+              };
+            }
+            {
+              "scope" = ["comment.block.documentation variable"];
+              "settings" = {
+                "foreground" = "#e0af68";
+                "fontStyle" = "italic";
+              };
+            }
+          ];
+        };
+      };
     };
      extensions = with pkgs.open-vsx; [
       # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/open-vsx-latest.json
@@ -117,12 +158,15 @@
 
       # Nix
       jnoortheen.nix-ide
+
+      # Theme
+      enkia.tokyo-night
     ]
     ++ (with pkgs.vscode-marketplace; [
       # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
       # Interface
       amodio.toggle-excluded-files
-
+      eliverlara.andromeda
       # Remote
       ms-vscode-remote.vscode-remote-extensionpack
       ms-vscode.remote-explorer
