@@ -14,3 +14,6 @@ selected_theme=$(printf '%s\n' "${sorted_themes[@]}" | rofi -dmenu -theme-str 'e
 
 selected_theme_path=${themes["$selected_theme"]}
 wal -f "$selected_theme_path"
+
+# Reload themed software that doesn't auto reload
+systemctl --user restart dunst.service
