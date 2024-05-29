@@ -27,6 +27,7 @@
         gap_size = 10;
         frame_width = 2;
         corner_radius = 10;
+        idle_threshold = 15;
         format = "<b>%s</b> %b";
         alignment = "left";
         vertical_alignment = "center";

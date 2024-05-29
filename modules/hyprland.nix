@@ -88,7 +88,6 @@ in
         bind = $mod, H, togglesplit
         bind = $mod, C, killactive,
 
-
         bind = $mod, B, exec, ~/.config/rofi/menus/background-select.sh
         bind = $mod, N, exec, networkmanager_dmenu
         bind = $mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi
@@ -109,6 +108,9 @@ in
         bind = $mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap
         bind = $mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i "$temp" "OCR:" "Text has been copied to the clipboard." && rm "$temp"
 
+        bind = $mod, SHIFT, C, exec, dunstctl close-all
+        bind = $mod, SHIFT, P, exec, dunstctl history-pop
+
         # Move focus with mod + arrow keys
         bind = $mod, left, movefocus, l
         bind = $mod, right, movefocus, r
@@ -124,7 +126,6 @@ in
         bind = $mod, tab, togglespecialworkspace
         bind = $mod, minus, movetoworkspacesilent, special
         bind = $mod, escape, movetoworkspace, m+0
-
 
         # Move workspace with mod + SHIFT + arrow keys
         bind = $mod alt, right, workspace, m+1
