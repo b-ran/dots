@@ -1,11 +1,11 @@
 base00: "1a1b26" # background
-base01: "1a1b26" # alt background
+base01: "414868" # alt background
 base02: "7aa2f7" # selection/progress bar - blue
-base03: "1a1b26" # unfocused window border
+base03: "414868" # unfocused window border
 base04: "9aa5ce" # alt dark foreground
 base05: "a9b1d6" # window title text -  foreground
 base06: "c0caf5" # low urgency background - alt light foreground
-base07: "1a1b26" # alt background 2
+base07: "565f89" # alt background 2
 base08: "f7768e" # urgent window border - red
 base09: "ff9e64" # orange
 base0A: "e0af68" # yellow
