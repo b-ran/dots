@@ -1,15 +1,7 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, ... }:
 
+with config.lib.stylix.colors.withHashtag;
 {
-
-  home.file.".config/dunst/dunstrc.d/99-colors-dunst.conf" = {
-    source =  config.lib.file.mkOutOfStoreSymlink "/home/${user}/.cache/wal/colors-dunst.conf";
-  };
-
-  systemd.user.services.dunst = lib.mkIf config.services.dunst.enable {
-    Service.ExecStart = lib.mkForce "${pkgs.dunst}/bin/dunst";
-  };
-
   services.dunst = {
     enable = true;
     settings = {
@@ -20,7 +12,6 @@
 
         origin = "top-right";
         follow = "mouse";
-        font = "JetBrainsMono Nerd Font 12";
         offset = "15x15";
         line_height = 10;
         separator_height = 0;
@@ -57,6 +48,7 @@
       };
       urgency_normal = {
         timeout = 5;
+        frame_color = lib.mkForce base0D;
       };
       urgency_critical = {
         timeout = 5;

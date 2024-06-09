@@ -64,16 +64,4 @@
     gvfs.enable = true;
     gnome.sushi.enable = true;
   };
-
-  fonts.enableDefaultPackages = true;
-  fonts.packages = with pkgs; [
-    carlito
-    vegur
-    source-code-pro
-    jetbrains-mono
-    font-awesome
-    # corefonts
-    winePackages.fonts
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
-  ];
 }

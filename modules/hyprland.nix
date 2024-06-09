@@ -1,8 +1,9 @@
-{ inputs, pkgs, home-manager, user, ... }:
+{ inputs, pkgs, config, home-manager, user, ... }:
 
 let
   wl-record = (pkgs.callPackage ../pkgs/wl-record { });
 in
+with config.lib.stylix.colors;
 {
   programs = {
     xwayland.enable = true;
@@ -34,7 +35,6 @@ in
 
       extraConfig = ''
         source=~/.config/hypr/monitors.conf
-        source=~/.cache/wal/colors-hyprland.conf
 
         env = HYPRCURSOR_THEME,rose-pine-hyprcursor
 
@@ -108,8 +108,8 @@ in
         bind = $mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap
         bind = $mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i "$temp" "OCR:" "Text has been copied to the clipboard." && rm "$temp"
 
-        bind = $mod, SHIFT, C, exec, dunstctl close-all
-        bind = $mod, SHIFT, P, exec, dunstctl history-pop
+        bind = $mod SHIFT, C, exec, dunstctl close-all
+        bind = $mod SHIFT, P, exec, dunstctl history-pop
 
         # Move focus with mod + arrow keys
         bind = $mod, left, movefocus, l
@@ -193,8 +193,8 @@ in
           gaps_in = 5
           gaps_out = 10
           border_size = 2
-          col.active_border = $primary
-          col.inactive_border = $background
+          col.active_border = rgb(${base0D})
+          col.inactive_border = rgb(${base03})
 
           layout = dwindle
         }
@@ -205,8 +205,6 @@ in
           drop_shadow = true
           shadow_range = 4
           shadow_render_power = 3
-          col.shadow = $background
-          col.shadow_inactive = $background
         }
 
         animations {

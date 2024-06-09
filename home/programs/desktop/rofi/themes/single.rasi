@@ -1,4 +1,4 @@
-@theme "~/.cache/wal/colors-rofi-dark.rasi"
+@theme "~/.local/share/rofi/themes/custom.rasi"
 
 configuration {
     modi: "drun,run";
@@ -10,7 +10,7 @@ configuration {
 
 * {
     text-color: @foreground;
-    border-color: @active-background;
+    border-color: @active-text;
 }
 
 window {
@@ -50,7 +50,7 @@ entry {
     border-radius: 12px;
     border: 2px;
     background-color: transparent;
-    border-color: @active-background;
+    border-color: @active-text;
     text-color: inherit;
     cursor: text;
     placeholder: "  Search";
@@ -112,27 +112,27 @@ element normal.normal {
 }
 
 element normal.urgent {
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @foreground;
 }
 
 element normal.active {
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @background;
 }
 
 element selected.normal {
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @background;
 }
 
 element selected.urgent {
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @background;
 }
 
 element selected.active {
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @background;
 }
 
@@ -177,7 +177,7 @@ message {
 textbox {
     padding: 12px;
     border-radius: 10px;
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @foreground;
     vertical-align: 0.5;
     horizontal-align: 0.0;
@@ -185,6 +185,6 @@ textbox {
 error-message {
     padding: 12px;
     border-radius: 20px;
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @foreground;
 }

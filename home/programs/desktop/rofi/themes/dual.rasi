@@ -1,4 +1,4 @@
-@theme "~/.cache/wal/colors-rofi-dark.rasi"
+@theme "~/.local/share/rofi/themes/custom.rasi"
 
 configuration {
     modi: "drun,filebrowser,run";
@@ -27,7 +27,7 @@ window {
     anchor: center;
     width: 55%;
     background-color:#00000088;
-    border-color: @active-background;
+    border-color: @active-text;
 }
 
 mainbox {
@@ -107,7 +107,7 @@ button {
 }
 
 button selected {
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @background;
 }
 
@@ -157,6 +157,31 @@ element selected {
 
 
 element selected normal {
+    text-color: @background;
+}
+
+element normal.urgent {
+    background-color: @active-text;
+    text-color: @foreground;
+}
+
+element normal.active {
+    background-color: @active-text;
+    text-color: @background;
+}
+
+element selected.normal {
+    background-color: @active-text;
+    text-color: @background;
+}
+
+element selected.urgent {
+    background-color: @active-text;
+    text-color: @background;
+}
+
+element selected.active {
+    background-color: @active-text;
     text-color: @background;
 }
 

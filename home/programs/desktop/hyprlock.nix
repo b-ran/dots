@@ -1,12 +1,10 @@
-{ user, ... }:
+{ config, user, ... }:
 
+with config.lib.stylix.colors;
 {
   programs.hyprlock = { 
     enable = true;
     settings = {
-      source = [
-        "/home/${user}/.cache/wal/colors-hyprland.conf"
-      ];
 
       general = {
         no_fade_in = true;
@@ -30,7 +28,7 @@
       label = [
         {
           text = "cmd[update:1000] echo \"<b><big> $(date '+%H:%M') </big></b>\"";
-          color = "$foreground";
+          color = "rgb(${base05})";
           font_size = 64;
           font_family = "JetBrains Mono Nerd Font 10";
           position = "0, 80";
@@ -55,9 +53,9 @@
           dots_size = 0.2;
           dots_spacing = 0.64;
           dots_center = true;
-          outer_color = "$primary";
-          inner_color = "$background";
-          font_color = "$foreground";
+          outer_color = "rgb(${base0D})";
+          inner_color = "rgb(${base00})";
+          font_color = "rgb(${base05})";
           fade_on_empty = true;
           placeholder_text = "<i>Password...</i>";
           hide_input = false;

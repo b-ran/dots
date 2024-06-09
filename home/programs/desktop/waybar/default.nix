@@ -1,4 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+
+with config.lib.stylix.colors.withHashtag;
 {
 
   home = {
@@ -88,21 +90,27 @@
     };
   };
 
+  stylix.targets.waybar.enable = false;
+
   programs = {
     waybar = {
       enable = true;
       style = ''
-        @import '../../.cache/wal/colors-waybar.css';
+        @define-color base00 ${base00}; @define-color base01 ${base01}; @define-color base02 ${base02}; @define-color base03 ${base03};
+        @define-color base04 ${base04}; @define-color base05 ${base05}; @define-color base06 ${base06}; @define-color base07 ${base07};
+
+        @define-color base08 ${base08}; @define-color base09 ${base09}; @define-color base0A ${base0A}; @define-color base0B ${base0B};
+        @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
 
         * {
-         font-family: JetBrainsMono Nerd Font, sans-serif;
+         font-family: ${config.stylix.fonts.serif.name};
          font-size: 17px;
          min-height: 0;
         }
 
         .modules-left, .modules-center, .modules-right {
-          background: @background;
-          color: @foreground;
+          background: @base00;
+          color: @base05;
           border-radius: 1rem;
           margin: 5px 0 0 5px;
         }
@@ -117,15 +125,15 @@
 
         #workspaces {
           border-radius: 1rem;
-          background-color: @background;
+          background-color: @base00;
         }
 
         #workspaces button {
-         color: @color14;
+         color: @base05;
         }
 
         #workspaces button.active {
-         color: @color14;
+         color:  @base0D;
         }
 
         #workspaces button:hover {
@@ -142,42 +150,42 @@
         #pulseaudio,
         #memory,
         #cpu {
-          background-color: @background;
+          background-color: @base00;
           padding: 0.5rem 0.75rem;
           border-radius: 1rem;
         }
 
         #pulseaudio {
-         color: @color13;
+         color: @base0E;
         }
 
         #pulseaudio.muted {
-          color: @color1;
+          color: @base0F;
         }
 
         #cpu {
-         color: @color10;
+         color: @base0B;
         }
 
         #memory {
-         color: @color11;
+         color: @base09;
         }
 
         #network {
-          color: @color3;
+          color: @base0A;
         }
 
         #clock {
-          color: @color14;
+          color: @base0C;
         }
 
         tooltip {
-         background: @color0;
-         border: 1px solid @color13;
+         background: @base00;
+         border: 1px solid @base0D;
         }
 
         tooltip label {
-         color: @foreground;
+         color: @base05;
         }
       '';
     };

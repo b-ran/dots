@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  stylix.targets.waybar.enable = false;
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
@@ -14,7 +15,6 @@
       "window.menuBarVisibility" = "toggle";
       "window.commandCenter" = false;
 
-      "editor.fontFamily" = "JetBrainsMono Nerd Font";
       "editor.fontSize" = 12;
       "editor.tabSize" = 1.5;
       "editor.wordWrap" = "on";
@@ -37,7 +37,6 @@
       "workbench.activityBar.location" = "hidden";
       "workbench.startupEditor" = "none";
       "workbench.editor.labelFormat" = "short";
-      "workbench.colorTheme" = "Tokyo Night";
 
       # Linked editing
       "editor.linkedEditing" = true;
@@ -99,6 +98,7 @@
               };
             }
             {
+              "workbench.colorTheme" = "Tokyo Night";
               "scope" = ["comment.block.documentation variable"];
               "settings" = {
                 "foreground" = "#e0af68";
@@ -125,6 +125,7 @@
       christian-kohler.path-intellisense
       usernamehw.errorlens
       formulahendry.code-runner
+      enkia.tokyo-night
 
       # Markdown
       yzhang.markdown-all-in-one
@@ -138,7 +139,6 @@
 
       # Python
       batisteo.vscode-django
-
 
       # Web
       rangav.vscode-thunder-client
@@ -158,15 +158,12 @@
 
       # Nix
       jnoortheen.nix-ide
-
-      # Theme
-      enkia.tokyo-night
     ]
     ++ (with pkgs.vscode-marketplace; [
       # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
       # Interface
       amodio.toggle-excluded-files
-      eliverlara.andromeda
+
       # Remote
       ms-vscode-remote.vscode-remote-extensionpack
       ms-vscode.remote-explorer

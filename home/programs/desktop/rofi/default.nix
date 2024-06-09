@@ -64,9 +64,5 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    font = "JetBrainsMono Nerd Font 12";
-    plugins = with pkgs; [
-      rofi-calc
-    ];
   };
 }

@@ -26,10 +26,6 @@
     };
 
     initExtra = ''
-      if [ -f ~/.cache/wal/fzf.sh ]; then
-        source ~/.cache/wal/fzf.sh
-      fi
-
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       rand=$(($RANDOM % 2))
 
@@ -113,16 +109,6 @@
       {
         name = "zsh-completions";
         src = pkgs.zsh-completions;
-      }
-      {
-        name = "catppuccin-zsh-syntax-hightlighting";
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "zsh-syntax-highlighting";
-          rev = "06d519c20798f0ebe275fc3a8101841faaeee8ea";
-          sha256 = "Q7KmwUd9fblprL55W0Sf4g7lRcemnhjh4/v+TacJSfo=";
-        };
-        file = "themes/catppuccin_mocha-zsh-syntax-highlighting.zsh";
       }
       {
         name = "zsh-syntax-highlighting";

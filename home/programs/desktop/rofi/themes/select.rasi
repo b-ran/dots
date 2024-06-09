@@ -1,4 +1,4 @@
-@theme "~/.cache/wal/colors-rofi-dark.rasi"
+@theme "~/.local/share/rofi/themes/custom.rasi"
 
 configuration {
     modi: "drun";
@@ -11,7 +11,7 @@ configuration {
 * {
     text-selected: @background;
     text-color: @foreground;
-    border-color: @selected;
+    border-color: @active-text;
 }
 
 window {
@@ -22,7 +22,7 @@ window {
     cursor: "default";
     spacing: 0px;
     border: 2px;
-    border-color: @active-background;
+    border-color: @active-text;
     border-radius: 30px;
     location: center;
     anchor: center;
@@ -76,7 +76,7 @@ element.alternate.normal {
 }
 
 element selected.normal {
-    background-color: @active-background;
+    background-color: @active-text;
     text-color: @background;
 }
 

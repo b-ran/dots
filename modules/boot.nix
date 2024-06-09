@@ -5,7 +5,6 @@
     loader = {
       grub = {
         enable = true;
-        splashImage = null;
         devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;

@@ -1,4 +1,5 @@
 [
+  ./stylix
   ./1password.nix
   ./boot.nix
   ./discord.nix

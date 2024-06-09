@@ -64,6 +64,7 @@
       killall
       glow
       nix-prefetch-git
+      gource
 
       # gui apps
       keepassxc
@@ -76,6 +77,7 @@
       nwg-displays
       gimp
       filezilla
+      shotcut
 
       # gnome
       loupe
@@ -101,6 +103,7 @@
       openvpn
       polkit-kde-agent
       wl-clipboard
+      ffmpeg-full
 
       # dev
       gcc

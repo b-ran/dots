@@ -21,8 +21,8 @@
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-#    hyprlock.url = "github:hyprwm/Hyprlock";
     secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, darwin, hyprland-contrib, ... }:

@@ -17,6 +17,7 @@ in
     modules = [
       ./configuration.nix
       ./desktop
+      inputs.stylix.nixosModules.stylix
       (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.nixosModules.home-manager
       {
@@ -31,7 +32,6 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-#            inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];
         };
@@ -50,6 +50,7 @@ in
     modules = [
       ./configuration.nix
       ./work
+      inputs.stylix.nixosModules.stylix
       (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; })
       home-manager.nixosModules.home-manager
       {
@@ -64,7 +65,6 @@ in
         };
         home-manager.users.${user} = {
           imports = [
-#            inputs.hyprlock.homeManagerModules.hyprlock
             ./home.nix
           ];
         };
