@@ -34,10 +34,6 @@
       executable = true;
       source = ./menus/windows.sh;
     };
-    file.".config/rofi/menus/pywal.sh" = {
-      executable = true;
-      source = ./menus/pywal.sh;
-    };
     file.".config/rofi/menus/waybar.sh" = {
       executable = true;
       source = ./menus/waybar.sh;

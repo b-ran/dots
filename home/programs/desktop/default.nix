@@ -1,5 +1,4 @@
 [
-  ./pywal
   ./rofi
   ./waybar
   ./hyprlock.nix

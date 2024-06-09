@@ -96,7 +96,6 @@ with config.lib.stylix.colors;
         bind = $mod, W, exec, ~/.config/rofi/menus/windows.sh
         bind = $mod, V, exec, ~/.config/rofi/menus/clipboard.sh
         bind = $mod, X, exec, ~/.config/rofi/menus/power.sh
-        bind = $mod, T, exec, ~/.config/rofi/menus/pywal.sh
         bind = $mod, Y, exec, ~/.config/rofi/menus/waybar.sh
         bind = $mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh
 
