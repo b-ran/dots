@@ -1,4 +1,4 @@
-{ user, public-key, ... }:
+{ inputs, user, ... }:
 
 {
   services.openssh = {
@@ -9,9 +9,7 @@
     settings.KbdInteractiveAuthentication = false;
   };
 
-  users.users.${user}.openssh.authorizedKeys.keys = [
-    "${public-key}"
-  ];
+  users.users.${user}.openssh.authorizedKeys.keyFiles = [ inputs.ssh-keys.outPath ];
 
   programs.ssh = {
     startAgent = true;

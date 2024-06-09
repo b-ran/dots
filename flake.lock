@@ -495,6 +495,7 @@
         "nixpkgs": "nixpkgs",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "secrets": "secrets",
+        "ssh-keys": "ssh-keys",
         "stylix": "stylix"
       }
     },
@@ -538,6 +539,18 @@
       "original": {
         "type": "git",
         "url": "ssh://git@github.com/b-ran/nixos-secrets"
+      }
+    },
+    "ssh-keys": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-qWmneVxcsgXz7wK074VKnTKfc6mtp1P8yBOLAV0K010=",
+        "type": "file",
+        "url": "https://github.com/b-ran.keys"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/b-ran.keys"
       }
     },
     "stylix": {
