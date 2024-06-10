@@ -60,3 +60,24 @@ Restart your computer
 just switch
 ```
 
+
+
+### Color Schemas Mapping 
+Background - dark background color
+Foreground & Cursor - text readable color on background
+Color0 - Black
+Color1 - Red
+Color2 - Green
+Color3 - Yellow
+Color4 - Blue
+Color5 - Magenta
+Color6 - Cyan
+Color7 - White
+Color8 - Alt Black
+Color9 - Alt Red
+Color10 - Alt Green
+Color11 - Alt Yellow
+Color12 - Alt Blue
+Color13 - Alt Magenta
+Color14 - Alt Cyan
+Color15 - Alt White

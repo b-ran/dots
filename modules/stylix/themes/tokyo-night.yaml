@@ -1,5 +1,5 @@
 base00: "1a1b26" # background
-base01: "414868" # alt background
+base01: "1a1b26" # alt background
 base02: "7aa2f7" # selection/progress bar - blue
 base03: "414868" # unfocused window border
 base04: "9aa5ce" # alt dark foreground
