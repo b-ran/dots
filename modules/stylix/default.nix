@@ -12,6 +12,7 @@
   ];  
 
   stylix = {
+    enable = true;
     base16Scheme = ./themes/tokyo-night.yaml;
     image = ../../wallpapers/aquarium-painting.png;
 

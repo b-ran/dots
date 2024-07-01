@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  stylix.targets.waybar.enable = false;
+  stylix.targets.vscode.enable = false;
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
@@ -21,6 +21,7 @@
       "editor.fontLigatures" = true;
       "editor.formatOnSave" = false;
       "editor.formatOnPaste" = false;
+      "editor.mouseWheelZoom" = true;
       "editor.minimap.enabled" = false;
       "editor.scrollbar.horizontalScrollbarSize" = 4;
       "editor.scrollbar.verticalScrollbarSize" = 4;
@@ -30,13 +31,14 @@
       "breadcrumbs.enabled"= true;
 
       "workbench.tips.enabled" = true;
-      "workbench.statusBar.visible" = true;
+      "workbench.statusBar.visible" = false;
       "workbench.layoutControl.enabled" = false;
       "workbench.editor.enablePreview" = false;
       "workbench.editor.empty.hint" = "hidden";
       "workbench.activityBar.location" = "hidden";
       "workbench.startupEditor" = "none";
       "workbench.editor.labelFormat" = "short";
+      "workbench.editor.editorActionsLocation" = "hidden";
 
       # Linked editing
       "editor.linkedEditing" = true;
@@ -69,6 +71,7 @@
       "gitlens.statusBar.enabled" = false;
 
       # Tokyo Night JDoc
+      "workbench.colorTheme" = "Tokyo Night";
       "editor.tokenColorCustomizations" = {
         "[Tokyo Night]" = {
           "textMateRules" = [
@@ -98,7 +101,6 @@
               };
             }
             {
-              "workbench.colorTheme" = "Tokyo Night";
               "scope" = ["comment.block.documentation variable"];
               "settings" = {
                 "foreground" = "#e0af68";

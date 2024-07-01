@@ -50,16 +50,12 @@ with config.lib.stylix.colors;
         exec-once = waybar
         exec-once = swayidle -w timeout 10 'if pgrep -x hyprlock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
         exec-once = nm-applet
-        exec-once = discord --start-minimized
+        exec-once = webcord --start-minimized
         exec-once = ${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
         exec-once = 1password --silent
         exec-once = swww query || swww-daemon
         exec-once = wl-paste --watch cliphist store
         exec-once = playerctld daemon
-
-        # windowrulev2 = workspace 7, title:Spotify
-        # windowrulev2 = workspace 4, class:jetbrains-idea
-        # windowrulev2 = workspace 3, class:discord
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
@@ -80,61 +76,61 @@ with config.lib.stylix.colors;
 
         $mod = SUPER
 
+        # Hyprland actions
+        bind = $mod, C, killactive,
         bind = $mod, F, fullscreen,
-        # bind = SUPER_SHIFT, F, togglefloating,
-        # bind = $mod CTRL, F, exec, hyprctl dispatch workspaceopt allfloat
+        bind = $mod SHIFT, F, togglefloating,
         bind = $mod, P, pseudo,
         bind = $mod, G, togglegroup,b
         bind = $mod, H, togglesplit
-        bind = $mod, C, killactive,
 
+        # Rofi menus
         bind = $mod, B, exec, ~/.config/rofi/menus/background-select.sh
         bind = $mod, N, exec, networkmanager_dmenu
         bind = $mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi
-        bind = $mod, A, exec, rofi -show filebrowser -theme ~/.config/rofi/themes/dual.rasi
-        bind = $mod, Q, exec, rofi -show run -theme ~/.config/rofi/themes/dual.rasi
         bind = $mod, W, exec, ~/.config/rofi/menus/windows.sh
         bind = $mod, V, exec, ~/.config/rofi/menus/clipboard.sh
         bind = $mod, X, exec, ~/.config/rofi/menus/power.sh
         bind = $mod, Y, exec, ~/.config/rofi/menus/waybar.sh
         bind = $mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh
 
+        # Apps
         bind = $mod, Return, exec, alacritty
 
+        # Scripts
+        bind = $mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap
         bind = $mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i "$temp" "Screenshot:" "Captured selected area" && rm "$temp"
         bind = $mod, R, exec, wl-record
         bind = $mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:"$color" /tmp/color_notification.png && notify-send "Picked Color:" "$color" -i /tmp/color_notification.png
-        bind = $mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap
         bind = $mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i "$temp" "OCR:" "Text has been copied to the clipboard." && rm "$temp"
 
-        bind = $mod SHIFT, C, exec, dunstctl close-all
-        bind = $mod SHIFT, P, exec, dunstctl history-pop
-
-        # Move focus with mod + arrow keys
+        # Move focus
         bind = $mod, left, movefocus, l
         bind = $mod, right, movefocus, r
         bind = $mod, up, movefocus, u
         bind = $mod, down, movefocus, d
 
-        # Move windows with mod + SHIFT + arrow keys
+        # Move windows
         bind = $mod SHIFT, left, movewindow, l
         bind = $mod SHIFT, right, movewindow, r
         bind = $mod SHIFT, up, movewindow, u
         bind = $mod SHIFT, down, movewindow, d
 
+        # Special workspace
         bind = $mod, tab, togglespecialworkspace
         bind = $mod, minus, movetoworkspacesilent, special
-        bind = $mod, escape, movetoworkspace, m+0
+        bind = $mod, equal, movetoworkspace, m+0
 
-        # Move workspace with mod + SHIFT + arrow keys
+        # Move to workspace
         bind = $mod alt, right, workspace, m+1
         bind = $mod alt, left, workspace, m-1
-
-        # Scroll through existing workspaces with mod + scroll
         bind = $mod, mouse_down, workspace, m+1
         bind = $mod, mouse_up, workspace, m-1
 
-        # Switch workspaces with mod + [0-9]
+        # Move to the first empty workspace
+        bind = $mod, Down, workspace, empty
+
+        # Switch workspaces
         bind = $mod, 1, workspace, 1
         bind = $mod, 2, workspace, 2
         bind = $mod, 3, workspace, 3
@@ -146,7 +142,7 @@ with config.lib.stylix.colors;
         bind = $mod, 9, workspace, 9
         bind = $mod, 0, workspace, 10
 
-        # Move active window to a workspace with mod + SHIFT + [0-9]
+        # Move focus to a workspace
         bind = $mod SHIFT, 1, movetoworkspace, 1
         bind = $mod SHIFT, 2, movetoworkspace, 2
         bind = $mod SHIFT, 3, movetoworkspace, 3
@@ -158,7 +154,7 @@ with config.lib.stylix.colors;
         bind = $mod SHIFT, 9, movetoworkspace, 9
         bind = $mod SHIFT, 0, movetoworkspace, 10
 
-        # Move/resize windows with mod + LMB/RMB and dragging
+        # Move/Resize windows
         bindm = $mod, mouse:272, movewindow
         bindm = $mod, mouse:273, resizewindow
 
@@ -187,8 +183,11 @@ with config.lib.stylix.colors;
           }
         }
 
+        cursor {
+          inactive_timeout = 10
+        }
+
         general {
-          cursor_inactive_timeout = 10
           gaps_in = 5
           gaps_out = 10
           border_size = 2

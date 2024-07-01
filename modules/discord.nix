@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    webcord
+    webcord-vencord
     discord
   ];
 

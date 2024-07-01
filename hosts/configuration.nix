@@ -30,7 +30,6 @@
     pathsToLink = [ "/share/zsh" ];
     sessionVariables = {
       FLAKE = "/home/${user}/workspace/nixos-config";
-      NIXOS_OZONE_WL = "1";  # Use wayland for electron apps if supported
     };
     variables = {
       PIP_NO_BINARY = "ruff"; # Don't use prebuilt ruff wheels (they don't work on nixos)
