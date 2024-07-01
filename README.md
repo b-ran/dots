@@ -73,7 +73,7 @@
 
 This setup assume modern hardware with UEFI support. 
 
-## Initial
+## 🗒️ Initial
 
 Download NixOS minimal unstable ISO from [here](https://releases.nixos.org/nixos/unstable).
 
@@ -84,7 +84,7 @@ Boot into the USB drive using UEFI mode, else the grub installation will fail ne
 You are logged in automatically as nixos in terminal. nixos has empty password with sudo access. 
 Switch to root with `sudo su`.
 
-## Partitioning
+## 🗄️ Partitioning
 
 Assume `/dev/nvme0n1` is the target drive, replace it with your drive, found with `lsblk`.
 
@@ -111,7 +111,7 @@ Assume `/dev/nvme0n1` is the target drive, replace it with your drive, found wit
     parted /dev/nvme0n1 -- print
     ```
 
-## Filesystems
+## 🗃️ Filesystems
 
 Labels and names are important for NixOS configuration to work properly. found in `hardware-configuration.nix.`
 
@@ -130,7 +130,7 @@ Labels and names are important for NixOS configuration to work properly. found i
     mkfs.ext4 -L nixos /dev/nvme0n1p3
     ```
 
-## Installing
+## 🖨️ Installing
 
 Time to install NixOS with this flake configuration.
 
