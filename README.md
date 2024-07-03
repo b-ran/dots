@@ -26,9 +26,32 @@
 
 # 🗺️ Overview
 
+This my personal NixOS flake configuration, for my daily driver. It uses a mix of NixOS, Home-Manager, Agenix, and 
+Stylix to manage the system. Note it's not recommended to use this configuration as is, as it's tailored to my needs.
+Feels free to use it as a reference or a starting point for your own configuration.
+
 # 🌌 Screenshots
 
+![](./.assests/screenshot1-desktop1.png)
+
 # 🩻 Components
+
+|                       | NixOS Wayland                                                  |
+|-----------------------|----------------------------------------------------------------|
+| **Window Manager**    | [Hyprland](https://hyprland.org/)                              |
+| **Terminal Emulator** | [Alacritty](https://github.com/alacritty/alacritty)            |
+| **Bar**               | [Waybar](https://github.com/alexays/waybar)                    |
+| **Launcher**          | [Rofi Wayland](https://github.com/lbonn/rofi)                  |
+| **Display Manager**   | [SDDM](https://github.com/sddm/sddm)                           |
+| **Theme Manager**     | [Stylix](https://github.com/danth/stylix)                      |
+| **Wallpaper Manager** | [Swww](https://github.com/LGFae/swww)                          |
+| **Notifications**     | [Dunst](https://github.com/dunst-project/dunst)                |
+| **Lock Screen**       | [Hyprlock](https://github.com/hyprwm/hyprlock)                 |
+| **File Manager**      | [Nautilus](https://apps.gnome.org/Nautilus/)                   |
+| **USB Mounting**      | [Udiskie](https://github.com/coldfix/udiskie)                  |
+| **Shell**             | [Zsh](https://www.zsh.org/) + [Starship](https://starship.rs/) |
+| **Media Player**      | [MPV](https://mpv.io/)                                         |
+| **Web Browser**       | [Firefox](https://www.mozilla.org/en-US/firefox/new/)          |
 
 # ⌨️ Keybindings
 
@@ -71,7 +94,7 @@
 
 # 🧑‍🔧 Setup
 
-This setup assume modern hardware with UEFI support. 
+This setup assume modern hardware with UEFI support.
 
 ## 🗒️ Initial
 
@@ -81,14 +104,14 @@ Create a bootable USB drive with the ISO, Ventoy is recommended.
 
 Boot into the USB drive using UEFI mode, else the grub installation will fail near the end.
 
-You are logged in automatically as nixos in terminal. nixos has empty password with sudo access. 
+You are logged in automatically as nixos in terminal. nixos has empty password with sudo access.
 Switch to root with `sudo su`.
 
 ## 🗄️ Partitioning
 
 Assume `/dev/nvme0n1` is the target drive, replace it with your drive, found with `lsblk`.
 
-1. Create a GPT partition table. 
+1. Create a GPT partition table.
     ```
     parted /dev/nvme0n1 -- mklabel gpt
     ```
@@ -98,7 +121,8 @@ Assume `/dev/nvme0n1` is the target drive, replace it with your drive, found wit
     parted /dev/nvme0n1 -- mkpart ESP fat32 1MiB 1024MiB
     parted /dev/nvme0n1 -- set 1 esp on
     ```
-3. Create swap partition. Depending on your RAM size, you can adjust the size. 32GB*1024 plus boot partition size = final number.
+3. Create swap partition. Depending on your RAM size, you can adjust the size. 32GB*1024 plus boot partition size =
+   final number.
     ```
     parted /dev/nvme0n1 -- mkpart primary linux-swap 1024MiB 33792MiB
     ```
@@ -138,7 +162,7 @@ Time to install NixOS with this flake configuration.
     ```
     mount /dev/disk/by-label/nixos /mnt
     ```
-   
+
 2. Mount boot partition.
     ```
     mkdir -p /mnt/boot
@@ -150,13 +174,13 @@ Time to install NixOS with this flake configuration.
     nix-env -iA nixos.git
     git clone https://github.com/b-ran/dots /mnt/etc/nixos
     ```
-   
+
 4. Do the installation.
     ```
     cd /mnt/etc/nixos
     nixos-install --flake .#desktop
     ```
-   
+
 5. If everything goes well, reboot. You should be greeted with the login screen. May need to remove the USB drive.
     ```
     reboot
