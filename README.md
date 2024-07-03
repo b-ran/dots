@@ -1,13 +1,13 @@
-<div style="text-align: center;">
-    <img alt="Profiles Pictures" style="border-radius: 50%;" src="https://raw.githubusercontent.com/b-ran/dots/main/.assests/profile1.png" width="200" height="200">
+<div align="center">
+    <img alt="Profiles Pictures" src="https://raw.githubusercontent.com/b-ran/dots/main/.assests/profile1.png" width="200" height="200">
 </div>
 
-<div style="text-align: center;">
+<div align="center">
     <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=73DACA&center=true&vCenter=true&repeat=false&random=false&width=435&lines=%E2%9D%84%EF%B8%8F+Bran's+Dots+%E2%9D%84%EF%B8%8F" alt="Typing SVG"></a>
 </div>
 
 
-<p style="text-align: center;">
+<p align="center">
     <a href="https://nixos.org/">
         <img alt="nixos unstable" src="https://img.shields.io/badge/NixOS-unstable-informational.svg?style=flat&logo=nixos&logoColor=5178C4&colorA=1A1B26&colorB=7FBBE5">
     </a>
@@ -22,7 +22,7 @@
     </a>
 </p>
 
-<hr style="margin-top: 65px; border: 0; height: 2px; background: linear-gradient(to right, #5178C4, #8AADF4, #73DACA);">
+<hr>
 
 # 🗺️ Overview
 
@@ -68,8 +68,6 @@ Feels free to use it as a reference or a starting point for your own configurati
 
 # ⌨️ Keybindings
 
-<div style="text-align: center;">
-
 | Keys                                                                                                                         | Action                                             |
 |------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
 | <kbd>Super</kbd> + <kbd>C</kbd>                                                                                              | Close focused window                               |
@@ -102,8 +100,6 @@ Feels free to use it as a reference or a starting point for your own configurati
 | <kbd>Super</kbd> + <kbd>Tab</kbd>                                                                                            | Open special workspace                             |
 | <kbd>Super</kbd> + <kbd>=</kbd>                                                                                              | Move focus to special workspace                    |
 | <kbd>Super</kbd> + <kbd>+</kbd>                                                                                              | Move special workspace focus in relative workspace |
-
-</div>
 
 # 🧑‍🔧 Setup
 
