@@ -32,7 +32,20 @@ Feels free to use it as a reference or a starting point for your own configurati
 
 # 🌌 Screenshots
 
-![](./.assests/screenshot1-desktop1.png)
+![](./.assests/screenshot-desktop1.png)
+![](./.assests/screenshot-lockscreen1.png)
+![](./.assests/screenshot-rofi1.png)
+
+
+![](./.assests/screenshot-desktop2.png)
+![](./.assests/screenshot-lockscreen2.png)
+![](./.assests/screenshot-rofi2.png)
+
+
+![](./.assests/screenshot-desktop3.png)
+![](./.assests/screenshot-lockscreen3.png)
+![](./.assests/screenshot-rofi3.png)
+
 
 # 🩻 Components
 
