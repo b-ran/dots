@@ -72,7 +72,7 @@
       freerdp
       slack
       ventoy-full
-      transmission-gtk
+#      transmission
       spotify
       nwg-displays
       gimp

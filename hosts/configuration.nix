@@ -29,7 +29,7 @@
     shells = [ pkgs.zsh ];
     pathsToLink = [ "/share/zsh" ];
     sessionVariables = {
-      FLAKE = "/home/${user}/workspace/nixos-config";
+      FLAKE = "/home/${user}/workspace/dots";
     };
     variables = {
       PIP_NO_BINARY = "ruff"; # Don't use prebuilt ruff wheels (they don't work on nixos)

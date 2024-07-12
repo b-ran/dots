@@ -219,7 +219,7 @@ with config.lib.stylix.colors;
         }
 
         master {
-          new_is_master = true
+          new_status = master
         }
 
         xwayland {
