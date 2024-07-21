@@ -10,14 +10,16 @@ in
 {
   mac = darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = { inherit lib inputs pkgs secrets user; };
+    specialArgs = { inherit lib inputs pkgs user; };
     modules = [
       ./configuration.nix
+      inputs.stylix.darwinModules.stylix
       home-manager.darwinModules.home-manager {
-        home-manager.useGlobalPkgs = true;
+        home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "bak";
         home-manager.extraSpecialArgs = {
-          inherit user;
+          inherit inputs user;
           host = {
             name = "mac";
           };

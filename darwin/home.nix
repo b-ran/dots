@@ -1,4 +1,4 @@
-{ lib, pkgs, user, ... }:
+{ lib, inputs, pkgs, user, ... }:
 
 {
     imports =
@@ -6,23 +6,20 @@
       (import ../home/programs/cli);
 
     programs = {
-      alacritty.enable = true;
-      mpv.enable = true;
+      cava.enable = lib.mkForce false;
+      mpv.enable = lib.mkForce false;
+      firefox.enable = lib.mkForce false;
+      chromium.enable = lib.mkForce false;
+    };
 
-      home-manager.enable = true;
-      bat.enable = true;
-      btop.enable = true;
-      cava.enable = false;
-      eza.enable = true;
-      fzf.enable = true;
-      git.enable = true;
-      htop.enable = true;
-      k9s.enable = true;
-      lazygit.enable = true;
-      ripgrep.enable = true;
-      starship.enable = true;
-      tmux.enable = true;
-      zsh.enable = true;
+    nixpkgs = {
+      overlays = [
+        inputs.nix-vscode-extensions.overlays.default
+      ];
+      # Configure home manager nixpkgs instance
+      config = {
+        allowUnfree = true;
+      };
     };
 
     home = {
@@ -57,7 +54,7 @@
         gcc
         gnumake
         postgresql
-        nodejs_21
+        nodejs
         yarn
 
         slack
