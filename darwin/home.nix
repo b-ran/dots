@@ -50,6 +50,7 @@
         feh
         bfg-repo-cleaner
         soco-cli
+        supabase-cli
 
         gcc
         gnumake
