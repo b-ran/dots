@@ -24,12 +24,12 @@ with lib;
         package = pkgs.skhd;
         skhdConfig = ''
           # Shortcuts
-          ctrl - l : pmset displaysleepnow
-          ctrl + shift - s : open -a "Screenshot"
-          ctrl - s : screencapture -ci
-          ctrl - e : open -a "Pika"
-          ctrl - return : open -a "Alacritty" -n
-          ctrl - d : open -a "Raycast"
+          cmd - l : pmset displaysleepnow
+          cmd + shift - s : open -a "Screenshot"
+          cmd - s : screencapture -ci
+          cmd - e : open -a "Pika"
+          cmd - return : open -a "Alacritty" -n
+          cmd - d : open -a "Raycast"
 
           # Toggle Window
           ctrl - q : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
