@@ -65,6 +65,7 @@
       glow
       nix-prefetch-git
       gource
+      supabase-cli
 
       # gui apps
       keepassxc
@@ -72,7 +73,7 @@
       freerdp
       slack
       ventoy-full
-#      transmission
+      transmission_4-gtk
       spotify
       nwg-displays
       gimp
