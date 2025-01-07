@@ -53,9 +53,9 @@ with config.lib.stylix.colors;
         exec-once = webcord --start-minimized
         exec-once = ${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
         exec-once = 1password --silent
-        exec-once = swww query || swww-daemon
         exec-once = wl-paste --watch cliphist store
         exec-once = playerctld daemon
+        exec-once = sleep 1 && swww-daemon
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
@@ -199,10 +199,6 @@ with config.lib.stylix.colors;
 
         decoration {
           rounding = 10
-
-          drop_shadow = true
-          shadow_range = 4
-          shadow_render_power = 3
         }
 
         animations {
@@ -230,6 +226,7 @@ with config.lib.stylix.colors;
           force_default_wallpaper = 0
           disable_hyprland_logo = true
           disable_splash_rendering = true
+          disable_hyprland_qtutils_check = true
         }
       '';
     };
