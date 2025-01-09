@@ -18,7 +18,6 @@
       automatic = true;
       dates = "weekly";
     };
-    package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
 }

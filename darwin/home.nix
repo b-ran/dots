@@ -57,7 +57,7 @@
         gnumake
         postgresql
         nodejs
-        yarn
+        corepack
 
         slack
         spotify

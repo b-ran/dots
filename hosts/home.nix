@@ -65,6 +65,7 @@
       glow
       nix-prefetch-git
       gource
+      supabase-cli
 
       # gui apps
       keepassxc
@@ -72,24 +73,25 @@
       freerdp
       slack
       ventoy-full
-#      transmission
+      transmission_4-gtk
       spotify
       nwg-displays
       gimp
       filezilla
       shotcut
+      libsForQt5.kdenlive
 
       # gnome
       loupe
-      gnome.gnome-system-monitor
-      gnome.gnome-disk-utility
-      gnome.gnome-clocks
-      gnome.gnome-calculator
-      gnome.nautilus
-      gnome.seahorse
+      gnome-system-monitor
+      gnome-disk-utility
+      gnome-clocks
+      gnome-calculator
+      nautilus
+      seahorse
 
       # system
-      xdg_utils
+      xdg-utils
       libnotify
       pavucontrol
       playerctl
@@ -110,9 +112,10 @@
       gnumake
       postgresql
       nodejs
-      yarn
+      corepack
       pkg-config
       cpio
+      redis
     ];
   };
 }

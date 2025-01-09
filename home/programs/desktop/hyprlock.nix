@@ -1,4 +1,4 @@
-{ config, user, ... }:
+{ config, lib, user, ... }:
 
 with config.lib.stylix.colors;
 {
@@ -12,7 +12,7 @@ with config.lib.stylix.colors;
         ignore_empty_input = true;
       };
 
-      background = [
+      background = lib.mkForce [
         {
           path = "/home/${user}/.config/current-wallpaper";
           blur_size = 2;
@@ -46,7 +46,7 @@ with config.lib.stylix.colors;
         }
       ];
 
-      input-field = [
+      input-field = lib.mkForce [
         {
           size = "250, 50";
           outline_thickness = 3;
