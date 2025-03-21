@@ -20,8 +20,7 @@ with config.lib.stylix.colors;
     imagemagick
     wl-clipboard
     slurp
-    cliphist
-    xwaylandvideobridge
+    kdePackages.xwaylandvideobridge
     tesseract
     wf-recorder
     wl-record
@@ -43,7 +42,7 @@ with config.lib.stylix.colors;
         env = WLR_NO_HARDWARE_CURSORS,1
         env = XDG_SESSION_DESKTOP,Hyprland
         env = QT_QPA_PLATFORM=wayland
-        env = BROWSER,firefox-developer-edition
+        env = BROWSER,zen
         env = MOZ_ENABLE_WAYLAND,1
         env = _JAVA_AWT_WM_NONREPARENTING,1
 
@@ -51,9 +50,8 @@ with config.lib.stylix.colors;
         exec-once = swayidle -w timeout 10 'if pgrep -x hyprlock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
         exec-once = nm-applet
         exec-once = webcord --start-minimized
-        exec-once = ${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+        exec-once = systemctl --user start hyprpolkitagent
         exec-once = 1password --silent
-        exec-once = wl-paste --watch cliphist store
         exec-once = playerctld daemon
         exec-once = sleep 1 && swww-daemon
 
@@ -89,7 +87,6 @@ with config.lib.stylix.colors;
         bind = $mod, N, exec, networkmanager_dmenu
         bind = $mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi
         bind = $mod, W, exec, ~/.config/rofi/menus/windows.sh
-        bind = $mod, V, exec, ~/.config/rofi/menus/clipboard.sh
         bind = $mod, X, exec, ~/.config/rofi/menus/power.sh
         bind = $mod, Y, exec, ~/.config/rofi/menus/waybar.sh
         bind = $mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh
@@ -128,7 +125,7 @@ with config.lib.stylix.colors;
         bind = $mod, mouse_up, workspace, m-1
 
         # Move to the first empty workspace
-        bind = $mod, Down, workspace, empty
+        bind = $mod alt, down, workspace, empty
 
         # Switch workspaces
         bind = $mod, 1, workspace, 1
@@ -223,10 +220,18 @@ with config.lib.stylix.colors;
         }
 
         misc {
+          focus_on_activate = true
+          initial_workspace_tracking = 2
+
           force_default_wallpaper = 0
           disable_hyprland_logo = true
           disable_splash_rendering = true
           disable_hyprland_qtutils_check = true
+        }
+
+        ecosystem {
+          no_update_news = false
+          no_donation_nag = true
         }
       '';
     };

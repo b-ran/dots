@@ -2,7 +2,7 @@
 # to check on portal status - nix run nixpkgs#door-knocker
 # check desktop file names find / -name "feh.desktop"
 let
-  browser = [ "firefox-developer-edition.desktop" ];
+  browser = [ "userapp-Zen-MV9B32.desktop" ];
   media = [ "mpv.desktop" ];
   image = [ "feh.desktop" ];
   torrent = [ "transmission-gtk.desktop" ];

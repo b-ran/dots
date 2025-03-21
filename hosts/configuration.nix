@@ -30,6 +30,15 @@
     pathsToLink = [ "/share/zsh" ];
     sessionVariables = {
       FLAKE = "/home/${user}/workspace/dots";
+      GOOGLE_CHROME_PATH = "${pkgs.google-chrome}";
+    };
+    etc = {
+      "1password/custom_allowed_browsers" = {
+        text = ''
+          .zen-wrapped
+        '';
+        mode = "0755";
+      };
     };
     variables = {
       PIP_NO_BINARY = "ruff"; # Don't use prebuilt ruff wheels (they don't work on nixos)

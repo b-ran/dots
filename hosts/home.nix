@@ -1,4 +1,4 @@
-{ lib, inputs, pkgs, user, ... }:
+{ lib, inputs, system, pkgs, user, ... }:
 
 {
   imports =
@@ -80,6 +80,8 @@
       filezilla
       shotcut
       libsForQt5.kdenlive
+      google-chrome
+      inputs.zen-browser.packages."${system}".default
 
       # gnome
       loupe
@@ -103,7 +105,7 @@
       networkmanagerapplet
       networkmanager-openvpn
       openvpn
-      polkit-kde-agent
+      hyprpolkitagent
       wl-clipboard
       ffmpeg-full
 
