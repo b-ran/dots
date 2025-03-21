@@ -9,13 +9,20 @@
     jetbrains-mono
     font-awesome
     winePackages.fonts
-  ];  
+  ];
 
   stylix = {
     enable = true;
     base16Scheme = ./themes/tokyo-night.yaml;
     image = ../../wallpapers/aquarium-painting.png;
-
+    targets = {
+      chromium = {
+        enable = false;
+      };
+      qt = {
+        enable = true;
+      };
+    };
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;

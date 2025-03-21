@@ -18,10 +18,6 @@
          fi
       '';
     };
-    file.".config/rofi/menus/clipboard.sh" = {
-      executable = true;
-      source = ./menus/clipboard.sh;
-    };
     file.".config/rofi/menus/power.sh" = {
       executable = true;
       source = ./menus/power.sh;

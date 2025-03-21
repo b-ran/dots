@@ -61,6 +61,7 @@
       reload = "source ~/.zshrc";
       lg = "lazygit";
       neo = "neofetch";
+      chrome = "${pkgs.google-chrome}/bin/google-chrome-stable";
 
       # Git
       g = "git";

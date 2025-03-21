@@ -5,6 +5,7 @@
       settings = {
         promptToReturnFromSubprocess = false;
         notARepository = "skip";
+        disableStartupPopups = true;
       };
     };
   };
