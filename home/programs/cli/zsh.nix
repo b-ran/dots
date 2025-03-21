@@ -51,6 +51,8 @@
       extraConfig = ''
         zstyle :omz:plugins:ssh-agent quiet yes
         zstyle :omz:plugins:ssh-agent lazy yes
+        zstyle :omz:plugins:ssh-agent agent-forwarding yes
+        zstyle :omz:plugins:ssh-agent ssh-add-args --apple-load-keychain
         zstyle ':completion:*' menu no
         zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
         zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'els --color $realpath'
