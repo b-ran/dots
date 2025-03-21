@@ -54,6 +54,7 @@ with config.lib.stylix.colors;
         exec-once = 1password --silent
         exec-once = playerctld daemon
         exec-once = sleep 1 && swww-daemon
+        exec-once = ssh-agent
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
