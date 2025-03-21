@@ -12,6 +12,7 @@ with lib;
       "homebrew/cask-versions"
     ];
     brews = [
+      "redis"
     ];
     casks = [
       "firefox-developer-edition"

@@ -24,7 +24,7 @@ with lib;
         package = pkgs.skhd;
         skhdConfig = ''
           # Shortcuts
-          cmd - l : pmset displaysleepnow
+          cmd - l : osascript -e 'tell application \"System Events\" to keystroke \"q\" using {command down,control down}'
           cmd + shift - s : open -a "Screenshot"
           cmd - s : screencapture -ci
           cmd - e : open -a "Pika"

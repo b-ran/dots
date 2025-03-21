@@ -51,6 +51,7 @@
         bfg-repo-cleaner
         soco-cli
         supabase-cli
+        corepack
 
         gcc
         gnumake
