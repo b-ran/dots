@@ -12,11 +12,13 @@
           "privacy.trackingprotection.enabled" = true;
           "devtools.toolbox.host" = "right";
         };
-        bookmarks = [];
+        bookmarks = {
+          force = true;
+        };
         search = {
           force = true;
-          default = "Google";
-          order = [ "Google" ];
+          default = "google";
+          order = [ "google" ];
           engines = {
             "Nix Packages" = {
               urls = [{
@@ -29,8 +31,8 @@
               icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@np" ];
             };
-            "Bing".metaData.hidden = true;
-            "Google".metaData.alias = "@g";
+            "bing".metaData.hidden = true;
+            "google".metaData.alias = "@g";
           };
         };
       };
