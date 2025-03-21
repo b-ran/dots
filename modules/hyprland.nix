@@ -60,6 +60,8 @@ with config.lib.stylix.colors;
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
         windowrulev2 = float, class:1Password
         windowrulev2 = center, class:1Password
+        windowrulev2 = float, class:org.pulseaudio.pavucontrol
+        windowrulev2 = center, class:org.pulseaudio.pavucontrol
         windowrulev2 = float, class:org.kde.polkit-kde-authentication-agent-1
         windowrulev2 = center, class:org.kde.polkit-kde-authentication-agent-1
 
