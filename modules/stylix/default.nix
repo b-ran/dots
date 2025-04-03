@@ -22,6 +22,9 @@
       qt = {
         enable = true;
       };
+      grub = {
+        enable = false;
+      };
     };
     fonts = {
       monospace = {

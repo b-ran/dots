@@ -12,9 +12,6 @@
           "privacy.trackingprotection.enabled" = true;
           "devtools.toolbox.host" = "right";
         };
-        bookmarks = {
-          force = true;
-        };
         search = {
           force = true;
           default = "google";

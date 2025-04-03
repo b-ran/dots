@@ -6,7 +6,7 @@
     enable = true;
     mutableExtensionsDir = false;
 
-    profiles.default = {
+    profiles.dev = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
       userSettings = {
