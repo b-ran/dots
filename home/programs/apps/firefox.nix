@@ -1,6 +1,7 @@
-{ pkgs, user, ... }:
+{ pkgs, user, stylix,  ... }:
 
 {
+  stylix.targets.firefox.profileNames = [ "dev-edition-default" ];
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-devedition-bin;

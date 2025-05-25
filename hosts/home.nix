@@ -50,7 +50,6 @@
       kubectl
       awscli2
       kubernetes-helm
-      ventoy-full
       kubectx
       kops
       dive
@@ -72,7 +71,6 @@
       remmina
       freerdp
       slack
-      ventoy-full
       transmission_4-gtk
       spotify
       nwg-displays

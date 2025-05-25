@@ -29,7 +29,7 @@
     shells = [ pkgs.zsh ];
     pathsToLink = [ "/share/zsh" ];
     sessionVariables = {
-      FLAKE = "/home/${user}/workspace/dots";
+      NH_FLAKE = "/home/${user}/workspace/dots";
       GOOGLE_CHROME_PATH = "${pkgs.google-chrome}";
     };
     etc = {

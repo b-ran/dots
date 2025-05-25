@@ -1,20 +1,16 @@
 { lib, inputs, nixpkgs, home-manager, user, system }:
-let
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
-in
+
 {
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs inputs home-manager user system;
+      inherit inputs home-manager user system;
       host = {
         name = "desktop";
       };
     };
     modules = [
+      { nixpkgs.config.allowUnfree = true; }
       ./configuration.nix
       ./desktop
       inputs.stylix.nixosModules.stylix
@@ -42,12 +38,13 @@ in
   work = nixpkgs.lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit pkgs inputs home-manager user system;
+      inherit inputs home-manager user system;
       host = {
         name = "work";
       };
     };
     modules = [
+      { nixpkgs.config.allowUnfree = true; }
       ./configuration.nix
       ./work
       inputs.stylix.nixosModules.stylix

@@ -1,14 +1,20 @@
 { pkgs, ... }:
 
 {
-
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false;
 
-    profiles.dev = {
+    profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
+    };
+
+    profiles.dev = {
+      # Remove these two lines - they're not valid for custom profiles
+      # enableUpdateCheck = false;
+      # enableExtensionUpdateCheck = false;
+
       userSettings = {
         "window.title" = "\${activeEditorShort}";
         "window.titleBarStyle" = "native";

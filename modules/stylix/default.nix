@@ -22,6 +22,9 @@
       qt = {
         enable = true;
       };
+#      firefox = {
+#        enable = false;
+#      };
       grub = {
         enable = false;
       };
