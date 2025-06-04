@@ -64,6 +64,7 @@
       glow
       nix-prefetch-git
       gource
+      hours
       supabase-cli
 
       # gui apps

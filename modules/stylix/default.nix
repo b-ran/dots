@@ -1,6 +1,10 @@
 { pkgs, config, ... }:
 
 {
+  environment.sessionVariables = {
+    HOURS_THEME = "tokyonight";
+  };
+
   fonts.enableDefaultPackages = true;
   fonts.packages = with pkgs; [
     carlito
