@@ -11,19 +11,16 @@
     };
 
     profiles.dev = {
-      # Remove these two lines - they're not valid for custom profiles
-      # enableUpdateCheck = false;
-      # enableExtensionUpdateCheck = false;
-
       userSettings = {
         "window.title" = "\${activeEditorShort}";
         "window.titleBarStyle" = "native";
-        "window.zoomLevel" = 2;
+        "window.zoomLevel" = 1;
         "window.menuBarVisibility" = "toggle";
         "window.commandCenter" = false;
 
-        "editor.fontSize" = 12;
+        "editor.fontSize" = 14;
         "editor.tabSize" = 1.5;
+        "debug.console.fontSize" = 12;
         "editor.wordWrap" = "on";
         "editor.fontLigatures" = true;
         "editor.formatOnSave" = false;
@@ -42,10 +39,10 @@
         "workbench.layoutControl.enabled" = false;
         "workbench.editor.enablePreview" = false;
         "workbench.editor.empty.hint" = "hidden";
-        "workbench.activityBar.location" = "hidden";
+        "workbench.activityBar.location" = "default";
         "workbench.startupEditor" = "none";
         "workbench.editor.labelFormat" = "short";
-        "workbench.editor.editorActionsLocation" = "hidden";
+        "workbench.editor.editorActionsLocation" = "default";
 
         # Linked editing
         "editor.linkedEditing" = true;
@@ -71,11 +68,6 @@
           "**/*.code-search" = true;
           "**/.svelte-kit" =  true;
         };
-
-        # GitLens
-        "gitlens.codeLens.enabled" = false;
-        "gitlens.currentLine.enabled" = false;
-        "gitlens.statusBar.enabled" = false;
 
         # Tokyo Night JDoc
         "workbench.colorTheme" = "Tokyo Night";
@@ -131,7 +123,6 @@
       skellock.just
 
       # Interface
-      eamodio.gitlens
       christian-kohler.path-intellisense
       usernamehw.errorlens
       formulahendry.code-runner
@@ -158,7 +149,6 @@
       dbaeumer.vscode-eslint
       bradlc.vscode-tailwindcss
       pflannery.vscode-versionlens
-      csstools.postcss
 
       # Testing
       vitest.explorer
