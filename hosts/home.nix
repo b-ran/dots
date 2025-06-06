@@ -66,6 +66,7 @@
       gource
       hours
       supabase-cli
+      claude-code
 
       # gui apps
       keepassxc

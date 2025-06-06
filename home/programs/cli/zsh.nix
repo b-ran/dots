@@ -86,6 +86,7 @@
       wt = "hyprctl clients";
       copyfile="wl-copy <";
       cava = "cava -p ~/.cache/wal/colors-cava";
+      c = "claude";
 
       dsize = "du -hs";
       l = "eza --icons  -a --group-directories-first -1";
@@ -98,6 +99,7 @@
       kp = "kubectl get pods";
       kc = "kubectx";
       kn = "kubens";
+      ksecret="f() { kubectl get secret -o name | fzf --prompt='Select secret: ' | xargs -r kubectl get -o json | jq -r '.data | to_entries[] | \"\(.key): \(.value | @base64d)\"'; }; f";
 
       # Python
       piv = "python -m venv .venv";
