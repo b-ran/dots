@@ -82,6 +82,7 @@
       libsForQt5.kdenlive
       google-chrome
       inputs.zen-browser.packages."${system}".default
+      teams-for-linux
 
       # gnome
       loupe
