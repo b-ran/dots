@@ -42,7 +42,7 @@ with config.lib.stylix.colors;
         env = WLR_NO_HARDWARE_CURSORS,1
         env = XDG_SESSION_DESKTOP,Hyprland
         env = QT_QPA_PLATFORM=wayland
-        env = BROWSER,zen
+        env = BROWSER,firefox-developer-edition
         env = MOZ_ENABLE_WAYLAND,1
         env = _JAVA_AWT_WM_NONREPARENTING,1
 
@@ -55,6 +55,7 @@ with config.lib.stylix.colors;
         exec-once = playerctld daemon
         exec-once = sleep 1 && swww-daemon
         exec-once = ssh-agent
+        exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
         windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
         windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
@@ -65,11 +66,13 @@ with config.lib.stylix.colors;
         windowrulev2 = float, class:org.kde.polkit-kde-authentication-agent-1
         windowrulev2 = center, class:org.kde.polkit-kde-authentication-agent-1
 
-        windowrulev2 = opacity 0.0 override,class:^(xwaylandvideobridge)$
-        windowrulev2 = noanim,class:^(xwaylandvideobridge)$
-        windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
-        windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
-        windowrulev2 = noblur,class:^(xwaylandvideobridge)$pipewire
+        windowrule = opacity 0.0 override, class:^(xwaylandvideobridge)$
+        windowrule = noanim, class:^(xwaylandvideobridge)$
+        windowrule = noinitialfocus, class:^(xwaylandvideobridge)$
+        windowrule = maxsize 1 1, class:^(xwaylandvideobridge)$
+        windowrule = noblur, class:^(xwaylandvideobridge)$
+        windowrule = nofocus, class:^(xwaylandvideobridge)$
+        windowrule = center, floating:1
 
         layerrule = unset, rofi
         layerrule = blur, rofi

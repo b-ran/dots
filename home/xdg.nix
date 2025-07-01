@@ -2,7 +2,7 @@
 # to check on portal status - nix run nixpkgs#door-knocker
 # check desktop file names find / -name "feh.desktop"
 let
-  browser = [ "userapp-Zen-MV9B32.desktop" ];
+  browser = [ "firefox-developer-edition.desktop" ];
   media = [ "mpv.desktop" ];
   image = [ "feh.desktop" ];
   torrent = [ "transmission-gtk.desktop" ];
@@ -41,7 +41,6 @@ in
     portal = {
       enable = true;
       config.common.default = "*";
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome ];
     };
     mimeApps = {
       enable = true;
