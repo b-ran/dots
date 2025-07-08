@@ -24,6 +24,7 @@
 
   services = {
     gnome-keyring.enable = true;
+    mpris-proxy.enable = true;
   };
 
   home = {
@@ -81,8 +82,9 @@
       shotcut
       libsForQt5.kdenlive
       google-chrome
-      inputs.zen-browser.packages."${system}".default
       teams-for-linux
+      vscode
+      thunderbird
 
       # gnome
       loupe
@@ -119,6 +121,7 @@
       pkg-config
       cpio
       redis
+      nixfmt-rfc-style
     ];
   };
 }

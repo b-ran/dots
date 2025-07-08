@@ -1,4 +1,11 @@
-{ inputs, pkgs, config, home-manager, user, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  home-manager,
+  user,
+  ...
+}:
 
 let
   wl-record = (pkgs.callPackage ../pkgs/wl-record { });
@@ -9,6 +16,7 @@ with config.lib.stylix.colors;
     xwayland.enable = true;
     hyprland = {
       enable = true;
+      withUWSM = true;
     };
   };
 
@@ -30,216 +38,228 @@ with config.lib.stylix.colors;
 
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd.enable = true;
+      systemd.enable = false;
 
-      extraConfig = ''
-        source=~/.config/hypr/monitors.conf
+      settings = {
+        source = [ "~/.config/hypr/monitors.conf" ];
 
-        env = HYPRCURSOR_THEME,rose-pine-hyprcursor
+        env = [
+          "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+          "LIBVA_DRIVER_NAME,nvidia"
+          "XDG_SESSION_TYPE,x11"
+          "WLR_NO_HARDWARE_CURSORS,1"
+          "XDG_SESSION_DESKTOP,Hyprland"
+          "QT_QPA_PLATFORM=wayland"
+          "BROWSER,firefox-developer-edition"
+          "MOZ_ENABLE_WAYLAND,1"
+          "_JAVA_AWT_WM_NONREPARENTING,1"
+        ];
 
-        env = LIBVA_DRIVER_NAME,nvidia
-        env = XDG_SESSION_TYPE,x11
-        env = WLR_NO_HARDWARE_CURSORS,1
-        env = XDG_SESSION_DESKTOP,Hyprland
-        env = QT_QPA_PLATFORM=wayland
-        env = BROWSER,firefox-developer-edition
-        env = MOZ_ENABLE_WAYLAND,1
-        env = _JAVA_AWT_WM_NONREPARENTING,1
+        "exec-once" = [
+          "waybar"
+          "swayidle -w timeout 10 'if pgrep -x hyprlock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'"
+          "nm-applet"
+          "uwsm app -- webcord --start-minimized"
+          "systemctl --user start hyprpolkitagent"
+          "uwsm app -- 1password --silent"
+          "uwsm app -- playerctld daemon"
+          "sleep 1 && uwsm app -- swww-daemon"
+          "ssh-agent"
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        ];
 
-        exec-once = waybar
-        exec-once = swayidle -w timeout 10 'if pgrep -x hyprlock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'
-        exec-once = nm-applet
-        exec-once = webcord --start-minimized
-        exec-once = systemctl --user start hyprpolkitagent
-        exec-once = 1password --silent
-        exec-once = playerctld daemon
-        exec-once = sleep 1 && swww-daemon
-        exec-once = ssh-agent
-        exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+        windowrulev2 = [
+          "noinitialfocus, class:^jetbrains-(?!toolbox), floating:1"
+          "workspace special silent, title:^(Firefox).*\\s(Sharing Indicator)$"
+          "float, class:1Password"
+          "center, class:1Password"
+          "float, class:org.pulseaudio.pavucontrol"
+          "center, class:org.pulseaudio.pavucontrol"
+          "float, class:org.kde.polkit-kde-authentication-agent-1"
+          "center, class:org.kde.polkit-kde-authentication-agent-1"
+          "center, class:^(Code)$, title:^(Visual Studio Code)$, floating:1"
+          "center, class:^(Electron)$, title:^(Warning: Opening link in external app)$, floating:1"
+        ];
 
-        windowrulev2 = noinitialfocus, class:^jetbrains-(?!toolbox), floating:1
-        windowrulev2 = workspace special silent, title:^(Firefox).*\s(Sharing Indicator)$
-        windowrulev2 = float, class:1Password
-        windowrulev2 = center, class:1Password
-        windowrulev2 = float, class:org.pulseaudio.pavucontrol
-        windowrulev2 = center, class:org.pulseaudio.pavucontrol
-        windowrulev2 = float, class:org.kde.polkit-kde-authentication-agent-1
-        windowrulev2 = center, class:org.kde.polkit-kde-authentication-agent-1
+        windowrule = [
+          "opacity 0.0 override, class:^(xwaylandvideobridge)$"
+          "noanim, class:^(xwaylandvideobridge)$"
+          "noinitialfocus, class:^(xwaylandvideobridge)$"
+          "maxsize 1 1, class:^(xwaylandvideobridge)$"
+          "noblur, class:^(xwaylandvideobridge)$"
+          "nofocus, class:^(xwaylandvideobridge)$"
+          "center, floating:1, class:Xdg-desktop-portal-gtk"
+        ];
 
-        windowrule = opacity 0.0 override, class:^(xwaylandvideobridge)$
-        windowrule = noanim, class:^(xwaylandvideobridge)$
-        windowrule = noinitialfocus, class:^(xwaylandvideobridge)$
-        windowrule = maxsize 1 1, class:^(xwaylandvideobridge)$
-        windowrule = noblur, class:^(xwaylandvideobridge)$
-        windowrule = nofocus, class:^(xwaylandvideobridge)$
-        windowrule = center, floating:1
+        layerrule = [
+          "unset, rofi"
+          "blur, rofi"
+          "ignorezero, rofi"
+        ];
 
-        layerrule = unset, rofi
-        layerrule = blur, rofi
-        layerrule = ignorezero, rofi
+        "$mod" = "SUPER";
 
-        $mod = SUPER
+        bind = [
+          # Hyprland actions
+          "$mod, C, killactive,"
+          "$mod, F, fullscreen,"
+          "$mod SHIFT, F, togglefloating,"
+          "$mod, P, pseudo,"
+          "$mod, G, togglegroup,"
+          "$mod, H, togglesplit"
 
-        # Hyprland actions
-        bind = $mod, C, killactive,
-        bind = $mod, F, fullscreen,
-        bind = $mod SHIFT, F, togglefloating,
-        bind = $mod, P, pseudo,
-        bind = $mod, G, togglegroup,b
-        bind = $mod, H, togglesplit
+          # Rofi menus
+          "$mod, B, exec, ~/.config/rofi/menus/background-select.sh"
+          "$mod, N, exec, networkmanager_dmenu"
+          "$mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi"
+          "$mod, W, exec, ~/.config/rofi/menus/windows.sh"
+          "$mod, X, exec, ~/.config/rofi/menus/power.sh"
+          "$mod, Y, exec, ~/.config/rofi/menus/waybar.sh"
+          "$mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh"
 
-        # Rofi menus
-        bind = $mod, B, exec, ~/.config/rofi/menus/background-select.sh
-        bind = $mod, N, exec, networkmanager_dmenu
-        bind = $mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi
-        bind = $mod, W, exec, ~/.config/rofi/menus/windows.sh
-        bind = $mod, X, exec, ~/.config/rofi/menus/power.sh
-        bind = $mod, Y, exec, ~/.config/rofi/menus/waybar.sh
-        bind = $mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh
+          # Apps
+          "$mod, Return, exec, alacritty"
 
-        # Apps
-        bind = $mod, Return, exec, alacritty
+          # Scripts
+          "$mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap"
+          "$mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i \"$temp\" \"Screenshot:\" \"Captured selected area\" && rm \"$temp\""
+          "$mod, R, exec, wl-record"
+          "$mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:\"$color\" /tmp/color_notification.png && notify-send \"Picked Color:\" \"$color\" -i /tmp/color_notification.png"
+          "$mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i \"$temp\" \"OCR:\" \"Text has been copied to the clipboard.\" && rm \"$temp\""
 
-        # Scripts
-        bind = $mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap
-        bind = $mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i "$temp" "Screenshot:" "Captured selected area" && rm "$temp"
-        bind = $mod, R, exec, wl-record
-        bind = $mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:"$color" /tmp/color_notification.png && notify-send "Picked Color:" "$color" -i /tmp/color_notification.png
-        bind = $mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i "$temp" "OCR:" "Text has been copied to the clipboard." && rm "$temp"
+          # Move focus
+          "$mod, left, movefocus, l"
+          "$mod, right, movefocus, r"
+          "$mod, up, movefocus, u"
+          "$mod, down, movefocus, d"
 
-        # Move focus
-        bind = $mod, left, movefocus, l
-        bind = $mod, right, movefocus, r
-        bind = $mod, up, movefocus, u
-        bind = $mod, down, movefocus, d
+          # Move windows
+          "$mod SHIFT, left, movewindow, l"
+          "$mod SHIFT, right, movewindow, r"
+          "$mod SHIFT, up, movewindow, u"
+          "$mod SHIFT, down, movewindow, d"
 
-        # Move windows
-        bind = $mod SHIFT, left, movewindow, l
-        bind = $mod SHIFT, right, movewindow, r
-        bind = $mod SHIFT, up, movewindow, u
-        bind = $mod SHIFT, down, movewindow, d
+          # Special workspace
+          "$mod, tab, togglespecialworkspace"
+          "$mod, minus, movetoworkspacesilent, special"
+          "$mod, equal, movetoworkspace, m+0"
 
-        # Special workspace
-        bind = $mod, tab, togglespecialworkspace
-        bind = $mod, minus, movetoworkspacesilent, special
-        bind = $mod, equal, movetoworkspace, m+0
+          # Move to workspace
+          "$mod alt, right, workspace, m+1"
+          "$mod alt, left, workspace, m-1"
+          "$mod, mouse_down, workspace, m+1"
+          "$mod, mouse_up, workspace, m-1"
 
-        # Move to workspace
-        bind = $mod alt, right, workspace, m+1
-        bind = $mod alt, left, workspace, m-1
-        bind = $mod, mouse_down, workspace, m+1
-        bind = $mod, mouse_up, workspace, m-1
+          # Move to the first empty workspace
+          "$mod alt, down, workspace, empty"
 
-        # Move to the first empty workspace
-        bind = $mod alt, down, workspace, empty
+          # Switch workspaces
+          "$mod, 1, workspace, 1"
+          "$mod, 2, workspace, 2"
+          "$mod, 3, workspace, 3"
+          "$mod, 4, workspace, 4"
+          "$mod, 5, workspace, 5"
+          "$mod, 6, workspace, 6"
+          "$mod, 7, workspace, 7"
+          "$mod, 8, workspace, 8"
+          "$mod, 9, workspace, 9"
+          "$mod, 0, workspace, 10"
 
-        # Switch workspaces
-        bind = $mod, 1, workspace, 1
-        bind = $mod, 2, workspace, 2
-        bind = $mod, 3, workspace, 3
-        bind = $mod, 4, workspace, 4
-        bind = $mod, 5, workspace, 5
-        bind = $mod, 6, workspace, 6
-        bind = $mod, 7, workspace, 7
-        bind = $mod, 8, workspace, 8
-        bind = $mod, 9, workspace, 9
-        bind = $mod, 0, workspace, 10
+          # Move focus to a workspace
+          "$mod SHIFT, 1, movetoworkspace, 1"
+          "$mod SHIFT, 2, movetoworkspace, 2"
+          "$mod SHIFT, 3, movetoworkspace, 3"
+          "$mod SHIFT, 4, movetoworkspace, 4"
+          "$mod SHIFT, 5, movetoworkspace, 5"
+          "$mod SHIFT, 6, movetoworkspace, 6"
+          "$mod SHIFT, 7, movetoworkspace, 7"
+          "$mod SHIFT, 8, movetoworkspace, 8"
+          "$mod SHIFT, 9, movetoworkspace, 9"
+          "$mod SHIFT, 0, movetoworkspace, 10"
 
-        # Move focus to a workspace
-        bind = $mod SHIFT, 1, movetoworkspace, 1
-        bind = $mod SHIFT, 2, movetoworkspace, 2
-        bind = $mod SHIFT, 3, movetoworkspace, 3
-        bind = $mod SHIFT, 4, movetoworkspace, 4
-        bind = $mod SHIFT, 5, movetoworkspace, 5
-        bind = $mod SHIFT, 6, movetoworkspace, 6
-        bind = $mod SHIFT, 7, movetoworkspace, 7
-        bind = $mod SHIFT, 8, movetoworkspace, 8
-        bind = $mod SHIFT, 9, movetoworkspace, 9
-        bind = $mod SHIFT, 0, movetoworkspace, 10
+          # Function keys
+          ",XF86AudioMute,exec,pamixer -t && notify-send -t 1000 \"ﱝ Audio\" \"Muted\""
+          ",XF86AudioPlay,exec,playerctl play-pause && notify-send -t 1000 \"󰐎 Audio\" \"$(playerctl metadata artist) - $(playerctl metadata title)\""
+          ",XF86AudioNext,exec,playerctl next"
+          ",XF86AudioPrev,exec,playerctl previous"
+        ];
 
-        # Move/Resize windows
-        bindm = $mod, mouse:272, movewindow
-        bindm = $mod, mouse:273, resizewindow
+        binde = [
+          ",XF86AudioRaiseVolume,exec,pamixer -i 5 && notify-send -t 1000 \" Audio\" \"$(pamixer --get-volume-human)\" --hint=\"int:value:$(pamixer --get-volume)\""
+          ",XF86AudioLowerVolume,exec,pamixer -d 5 && notify-send -t 1000 \" Audio\" \"$(pamixer --get-volume-human)\" --hint=\"int:value:$(pamixer --get-volume)\""
+          ",XF86MonBrightnessUp,exec,brightnessctl s +5% && notify-send -t 1000 \" Brightness\" \"$(light)%\" --hint=\"int:value:$(light)\""
+          ",XF86MonBrightnessDown,exec,brightnessctl s 5%- && notify-send -t 1000 \" Brightness\" \"$(light)%\" --hint=\"int:value:$(light)\""
+        ];
 
-        # Function keys
-        binde = ,XF86AudioRaiseVolume,exec,pamixer -i 5 && notify-send -t 1000 " Audio" "$(pamixer --get-volume-human)" --hint="int:value:$(pamixer --get-volume)"
-        binde = ,XF86AudioLowerVolume,exec,pamixer -d 5 && notify-send -t 1000 " Audio" "$(pamixer --get-volume-human)" --hint="int:value:$(pamixer --get-volume)"
-        bind = ,XF86AudioMute,exec,pamixer -t && notify-send -t 1000 "ﱝ Audio" "Muted"
+        bindm = [
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizewindow"
+        ];
 
-        bind =, XF86AudioPlay,exec,playerctl play-pause && notify-send -t 1000 "󰐎 Audio" "$(playerctl metadata artist) - $(playerctl metadata title)"
-        bind = ,XF86AudioNext,exec,playerctl next
-        bind = ,XF86AudioPrev,exec,playerctl previous
+        input = {
+          follow_mouse = 1;
+          repeat_delay = 300;
+          repeat_rate = 50;
 
-        binde = ,XF86MonBrightnessUp,exec,brightnessctl s +5% && notify-send -t 1000 " Brightness" "$(light)%" --hint="int:value:$(light)"
-        binde = ,XF86MonBrightnessDown,exec,brightnessctl s 5%- && notify-send -t 1000 " Brightness" "$(light)%" --hint="int:value:$(light)"
+          touchpad = {
+            middle_button_emulation = true;
+            tap-to-click = true;
+            tap-and-drag = true;
+          };
+        };
 
-        # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
-        input {
-          follow_mouse = 1
-          repeat_delay = 300
-          repeat_rate = 50
+        cursor = {
+          inactive_timeout = 10;
+        };
 
-          touchpad {
-            middle_button_emulation = true
-            tap-to-click = true
-            tap-and-drag = true
-          }
-        }
+        general = {
+          gaps_in = 5;
+          gaps_out = 10;
+          border_size = 2;
+          "col.active_border" = "rgb(${base0D})";
+          "col.inactive_border" = "rgb(${base03})";
+          layout = "dwindle";
+        };
 
-        cursor {
-          inactive_timeout = 10
-        }
+        decoration = {
+          rounding = 10;
+        };
 
-        general {
-          gaps_in = 5
-          gaps_out = 10
-          border_size = 2
-          col.active_border = rgb(${base0D})
-          col.inactive_border = rgb(${base03})
+        animations = {
+          enabled = true;
+        };
 
-          layout = dwindle
-        }
+        gestures = {
+          workspace_swipe = true;
+        };
 
-        decoration {
-          rounding = 10
-        }
+        dwindle = {
+          pseudotile = true;
+          preserve_split = true;
+        };
 
-        animations {
-          enabled = yes
-        }
+        master = {
+          new_status = "master";
+        };
 
-        gestures {
-          workspace_swipe = true
-        }
+        xwayland = {
+          force_zero_scaling = true;
+        };
 
-        dwindle {
-          pseudotile = true
-          preserve_split = true
-        }
+        misc = {
+          focus_on_activate = true;
+          initial_workspace_tracking = 2;
+          force_default_wallpaper = 0;
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+          disable_hyprland_qtutils_check = true;
+        };
 
-        master {
-          new_status = master
-        }
-
-        xwayland {
-          force_zero_scaling = true
-        }
-
-        misc {
-          focus_on_activate = true
-          initial_workspace_tracking = 2
-
-          force_default_wallpaper = 0
-          disable_hyprland_logo = true
-          disable_splash_rendering = true
-          disable_hyprland_qtutils_check = true
-        }
-
-        ecosystem {
-          no_update_news = false
-          no_donation_nag = true
-        }
-      '';
+        ecosystem = {
+          no_update_news = false;
+          no_donation_nag = true;
+        };
+      };
     };
   };
 }

@@ -27,7 +27,6 @@
     };
     secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
     stylix.url = "github:danth/stylix";
-    zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, darwin, ... }:

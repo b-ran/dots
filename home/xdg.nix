@@ -5,7 +5,7 @@ let
   browser = [ "firefox-developer-edition.desktop" ];
   media = [ "mpv.desktop" ];
   image = [ "feh.desktop" ];
-  torrent = [ "transmission-gtk.desktop" ];
+  torrent = [ "transmission.desktop" ];
   associations = {
     "application/x-extension-htm" = browser;
     "application/x-extension-html" = browser;
@@ -18,21 +18,30 @@ let
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
+    "x-scheme-handler/chrome" = browser;
 
     "audio/*" = media;
     "video/*" = media;
     "image/*" = image;
     "image/jpeg" = image;
     "application/json" = browser;
-    "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+    "application/pdf" = browser;
     "application/x-bittorrent" = torrent;
-    "application/x-bittorrent;x-scheme-handler/magnet" = torrent;
+    "x-scheme-handler/magnet" = torrent;
     "x-scheme-handler/discord" = [ "discord.desktop" ];
     "x-scheme-handler/spotify" = [ "spotify.desktop" ];
+    "x-scheme-handler/msteams" = [ "teams-for-linux.desktop" ];
+  };
+  entries = {
+    transmission = {
+      name = "transmission-gtk";
+      exec = "${pkgs.transmission_4-gtk}/bin/transmission-gtk %U";
+    };
   };
 in
 {
   xdg = {
+    desktopEntries = entries;
     enable = true;
     userDirs = {
       enable = true;
@@ -40,6 +49,9 @@ in
     };
     portal = {
       enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-hyprland
+      ];
       config.common.default = "*";
     };
     mimeApps = {

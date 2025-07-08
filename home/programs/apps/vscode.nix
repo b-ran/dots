@@ -13,7 +13,6 @@
     profiles.dev = {
       userSettings = {
         "window.title" = "\${activeEditorShort}";
-        "window.titleBarStyle" = "native";
         "window.zoomLevel" = 1;
         "window.menuBarVisibility" = "toggle";
         "window.commandCenter" = false;
@@ -22,13 +21,13 @@
         "editor.tabSize" = 1.5;
         "debug.console.fontSize" = 12;
         "editor.wordWrap" = "on";
-        "editor.fontLigatures" = true;
+        "editor.fontLigatures" = false;
         "editor.formatOnSave" = false;
         "editor.formatOnPaste" = false;
         "editor.mouseWheelZoom" = true;
         "editor.minimap.enabled" = false;
-        "editor.scrollbar.horizontalScrollbarSize" = 4;
-        "editor.scrollbar.verticalScrollbarSize" = 4;
+        "editor.scrollbar.horizontalScrollbarSize" = 8;
+        "editor.scrollbar.verticalScrollbarSize" = 8;
 
         "explorer.compactFolders" = false;
         "explorer.autoReveal"= false;
@@ -47,16 +46,12 @@
         # Linked editing
         "editor.linkedEditing" = true;
 
-        # Telemetry
-        "telemetry.telemetryLevel" = "off";
-
         # Plugins
         "svelte.enable-ts-plugin" = true;
 
         # Files
         "files.autoSave" = "afterDelay";
         "files.autoSaveDelay" = 1000;
-
 
         # File Types
         "[nix]"."editor.tabSize" = 2;
@@ -124,9 +119,7 @@
 
       # Interface
       christian-kohler.path-intellisense
-      usernamehw.errorlens
       formulahendry.code-runner
-      enkia.tokyo-night
 
       # Markdown
       yzhang.markdown-all-in-one
@@ -142,7 +135,6 @@
       batisteo.vscode-django
 
       # Web
-      rangav.vscode-thunder-client
       yoavbls.pretty-ts-errors
       svelte.svelte-vscode
       esbenp.prettier-vscode
@@ -156,8 +148,9 @@
       firefox-devtools.vscode-firefox-debug
       ms-vscode.test-adapter-converter
 
-      # Nix
+      # Syntax
       jnoortheen.nix-ide
+      tamasfe.even-better-toml
     ]
       ++ (with pkgs.vscode-marketplace; [
         # https://raw.githubusercontent.com/nix-community/nix-vscode-extensions/master/data/cache/vscode-marketplace-latest.json
@@ -173,9 +166,6 @@
         # Python
         ms-python.vscode-pylance
         ms-python.python
-
-        # Git
-        github.vscode-pull-request-github
 
         # AI
         github.copilot

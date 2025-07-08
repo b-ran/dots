@@ -4,6 +4,7 @@
   ./boot.nix
   ./discord.nix
   ./docker.nix
+  ./greetd.nix
   ./hyprland.nix
   ./jetbrains.nix
   ./nix.nix
@@ -12,6 +13,5 @@
   ./pipewire.nix
   ./printing.nix
   ./python.nix
-  ./sddm.nix
   ./wallpaper.nix
 ]

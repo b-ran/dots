@@ -7,7 +7,7 @@ with config.lib.stylix.colors.withHashtag;
     settings = {
       global = {
 
-        browser = "${pkgs.firefox-devedition-bin}/bin/firefox-developer-edition ";
+        browser = "${pkgs.firefox-devedition}/bin/firefox-developer-edition ";
         dmenu = "${pkgs.dmenu}/bin/dmenu -p dunst";
 
         origin = "top-right";
