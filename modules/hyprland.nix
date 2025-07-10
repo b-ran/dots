@@ -121,7 +121,7 @@ with config.lib.stylix.colors;
           "$mod, Return, exec, alacritty"
 
           # Scripts
-          "$mod, L, exec, pamixer --mute & amixer set Capture nocap & playerctl pause & hyprlock && pamixer --unmute && amixer set Capture cap"
+          "$mod, L, exec, amixer sset Master mute & playerctl pause & hyprlock && amixer sset Master unmute"
           "$mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i \"$temp\" \"Screenshot:\" \"Captured selected area\" && rm \"$temp\""
           "$mod, R, exec, wl-record"
           "$mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:\"$color\" /tmp/color_notification.png && notify-send \"Picked Color:\" \"$color\" -i /tmp/color_notification.png"

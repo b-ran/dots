@@ -4,7 +4,7 @@
   ./boot.nix
   ./discord.nix
   ./docker.nix
-  ./greetd.nix
+  ./gdm.nix
   ./hyprland.nix
   ./jetbrains.nix
   ./nix.nix

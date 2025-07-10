@@ -7,8 +7,6 @@ with config.lib.stylix.colors;
     settings = {
 
       general = {
-        no_fade_in = true;
-        no_fade_out = true;
         ignore_empty_input = true;
       };
 
@@ -37,7 +35,7 @@ with config.lib.stylix.colors;
         }
         {
           text = "Hey <span text_transform=\"capitalize\">$USER</span>";
-          color = "$foreground";
+          color = "rgb(${base04})";
           font_size = 20;
           font_family = "JetBrains Mono Nerd Font 10";
           position = "0, 0";

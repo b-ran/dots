@@ -111,6 +111,7 @@
       hyprpolkitagent
       wl-clipboard
       ffmpeg-full
+      alsa-utils
 
       # dev
       gcc

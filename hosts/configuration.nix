@@ -46,7 +46,7 @@
     rtkit.enable = true;
     polkit.enable = true;
     pam.services.hyprlock.text = "auth include login"; # Allow wayland to unlock the screen
-    pam.services.greetd.enableGnomeKeyring = true;
+    pam.services.gdm.enableGnomeKeyring = true;
   };
 
   hardware = {
