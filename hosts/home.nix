@@ -1,12 +1,19 @@
-{ lib, inputs, system, pkgs, user, ... }:
+{
+  lib,
+  inputs,
+  system,
+  pkgs,
+  user,
+  ...
+}:
 
 {
   imports =
-    (import ../home) ++
-    (import ../home/services) ++
-    (import ../home/programs/apps) ++
-    (import ../home/programs/desktop) ++
-    (import ../home/programs/cli);
+    (import ../home)
+    ++ (import ../home/services)
+    ++ (import ../home/programs/apps)
+    ++ (import ../home/programs/desktop)
+    ++ (import ../home/programs/cli);
 
   programs = {
     home-manager.enable = true;
@@ -68,6 +75,11 @@
       hours
       supabase-cli
       claude-code
+      xh
+      dust
+      dua
+      yazi
+      ncspot
 
       # gui apps
       keepassxc

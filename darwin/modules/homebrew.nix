@@ -15,7 +15,7 @@ with lib;
       "redis"
     ];
     casks = [
-      "firefox-developer-edition"
+      "firefox"
       "google-chrome"
       "displaylink"
       "alacritty"

@@ -2,7 +2,7 @@
 # to check on portal status - nix run nixpkgs#door-knocker
 # check desktop file names find / -name "feh.desktop"
 let
-  browser = [ "firefox-developer-edition.desktop" ];
+  browser = [ "firefox.desktop" ];
   media = [ "mpv.desktop" ];
   image = [ "feh.desktop" ];
   torrent = [ "transmission.desktop" ];
@@ -13,6 +13,7 @@ let
     "application/x-extension-xht" = browser;
     "application/x-extension-xhtml" = browser;
     "application/xhtml+xml" = browser;
+    "default-web-browser" = browser;
     "text/html" = browser;
     "x-scheme-handler/about" = browser;
     "x-scheme-handler/http" = browser;
@@ -52,7 +53,6 @@ in
       extraPortals = [
         pkgs.xdg-desktop-portal-hyprland
       ];
-      config.common.default = "*";
     };
     mimeApps = {
       enable = true;
