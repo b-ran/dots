@@ -16,6 +16,7 @@ with config.lib.stylix.colors;
     xwayland.enable = true;
     hyprland = {
       enable = true;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
       withUWSM = true;
     };
   };
@@ -28,7 +29,7 @@ with config.lib.stylix.colors;
     imagemagick
     wl-clipboard
     slurp
-    kdePackages.xwaylandvideobridge
+    grim
     tesseract
     wf-recorder
     wl-record
@@ -50,13 +51,15 @@ with config.lib.stylix.colors;
           "WLR_NO_HARDWARE_CURSORS,1"
           "XDG_SESSION_DESKTOP,Hyprland"
           "QT_QPA_PLATFORM=wayland"
-          "BROWSER,firefox-developer-edition"
+          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+          "BROWSER,firefox"
           "MOZ_ENABLE_WAYLAND,1"
+          "MOZ_WEBRENDER,1"
           "_JAVA_AWT_WM_NONREPARENTING,1"
         ];
 
         "exec-once" = [
-          "waybar"
+          "hyprpanel"
           "swayidle -w timeout 10 'if pgrep -x hyprlock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'"
           "nm-applet"
           "uwsm app -- webcord --start-minimized"
@@ -66,10 +69,16 @@ with config.lib.stylix.colors;
           "sleep 1 && uwsm app -- swww-daemon"
           "ssh-agent"
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         ];
 
         windowrulev2 = [
-          "noinitialfocus, class:^jetbrains-(?!toolbox), floating:1"
+          "noinitialfocus, class:jetbrains-toolbox, floating:1"
+          "noinitialfocus, class:(jetbrains-)(.*), title:^$, initialTitle:^$, floating:1"
+          "noinitialfocus, class:(jetbrains-)(.*), floating:1"
+          "noinitialfocus, class:(jetbrains-studio), title:^win(.*)"
+          "center, class:(jetbrains-)(.*), title:^$, initialTitle:^$, floating:1"
+          "center, class:(jetbrains-)(.*), initialTitle:(.+), floating:1"
           "workspace special silent, title:^(Firefox).*\\s(Sharing Indicator)$"
           "float, class:1Password"
           "center, class:1Password"
@@ -77,18 +86,11 @@ with config.lib.stylix.colors;
           "center, class:org.pulseaudio.pavucontrol"
           "float, class:org.kde.polkit-kde-authentication-agent-1"
           "center, class:org.kde.polkit-kde-authentication-agent-1"
-          "center, class:^(Code)$, title:^(Visual Studio Code)$, floating:1"
+          "center, class:^(Code)$, floating:1"
           "center, class:^(Electron)$, title:^(Warning: Opening link in external app)$, floating:1"
         ];
 
         windowrule = [
-          "opacity 0.0 override, class:^(xwaylandvideobridge)$"
-          "noanim, class:^(xwaylandvideobridge)$"
-          "noinitialfocus, class:^(xwaylandvideobridge)$"
-          "maxsize 1 1, class:^(xwaylandvideobridge)$"
-          "noblur, class:^(xwaylandvideobridge)$"
-          "nofocus, class:^(xwaylandvideobridge)$"
-          "center, floating:1, class:Xdg-desktop-portal-gtk"
         ];
 
         layerrule = [
@@ -114,7 +116,7 @@ with config.lib.stylix.colors;
           "$mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi"
           "$mod, W, exec, ~/.config/rofi/menus/windows.sh"
           "$mod, X, exec, ~/.config/rofi/menus/power.sh"
-          "$mod, Y, exec, ~/.config/rofi/menus/waybar.sh"
+          "$mod, Y, exec, ~/.config/rofi/menus/hyprpanel.sh"
           "$mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh"
 
           # Apps
@@ -126,6 +128,7 @@ with config.lib.stylix.colors;
           "$mod, R, exec, wl-record"
           "$mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:\"$color\" /tmp/color_notification.png && notify-send \"Picked Color:\" \"$color\" -i /tmp/color_notification.png"
           "$mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i \"$temp\" \"OCR:\" \"Text has been copied to the clipboard.\" && rm \"$temp\""
+          # "$mod, SHIFT, P, exec, 1password --quick-access"
 
           # Move focus
           "$mod, left, movefocus, l"
