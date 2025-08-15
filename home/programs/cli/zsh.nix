@@ -78,6 +78,10 @@
       gce = "git config user.email";
       gcn = "git config user.name";
 
+      # Js
+      p = "pnpm";
+      pi = "pnpm install";
+      pd = "pnpm dev";
 
       # Unix
       b = "bat";
