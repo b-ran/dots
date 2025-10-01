@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     dwt1-shell-color-scripts
     krabby
-    woof
+    pnpm-shell-completion
     nano
   ];
 
@@ -35,6 +35,8 @@
       else
         colorscript random
       fi
+
+      eval "$(pnpm completion zsh)"
     '';
 
     oh-my-zsh = {
@@ -86,7 +88,6 @@
       # Unix
       b = "bat";
       watch = "viddy";
-      share = "woof";
       wt = "hyprctl clients";
       copyfile="wl-copy <";
       cava = "cava -p ~/.cache/wal/colors-cava";
