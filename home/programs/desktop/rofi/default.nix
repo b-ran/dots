@@ -7,15 +7,16 @@
     file.".config/rofi/themes/select.rasi".source = ./themes/select.rasi;
     file.".config/rofi/themes/single.rasi".source = ./themes/single.rasi;
     file.".config/rofi/themes/single-wide.rasi".source = ./themes/single-wide.rasi;
-
+    file.".config/rofi/themes/drun.rasi".source = ./themes/drun.rasi;
+    file.".config/rofi/themes/powermenu.rasi".source = ./themes/powermenu.rasi;
 
     file.".config/rofi/menus/background-select.sh" = {
       executable = true;
       source = ./menus/background-select.sh;
       onChange = ''
-         if [ ! -f ~/.config/current-wallpaper ]; then
-            cp ~/wallpapers/astronaut-moonlight-serenity.png ~/.config/current-wallpaper
-         fi
+        if [ ! -f ~/.config/current-wallpaper ]; then
+           cp ~/wallpapers/astronaut-moonlight-serenity.png ~/.config/current-wallpaper
+        fi
       '';
     };
     file.".config/rofi/menus/power.sh" = {
@@ -55,6 +56,6 @@
   };
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
   };
 }

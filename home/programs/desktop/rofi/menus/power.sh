@@ -1,28 +1,26 @@
-get_options() {
-  echo -en "Shutdown\0icon\x1fsystem-shutdown\n"
-  echo -en "Reboot\0icon\x1fsystem-reboot\n"
-  echo -en "Suspend\0icon\x1fsystem-suspend\n"
-  echo -en "Logout\0icon\x1fsystem-log-out\n"
-  echo -en "Hibernate\0icon\x1fsystem-hibernate\n"
-  echo -en "Lock\0icon\x1fsystem-lock-screen\n"
-}
+# Menu options
+shutdown="$(printf '\uf16f')"
+reboot="$(printf '\ue5d5')"
+suspend="$(printf '\uef44')"
+logout="$(printf '\ue9ba')"
 
-if [ x"$*" = x"Shutdown" ]; then
-  systemctl poweroff
-elif [ x"$*" = x"Reboot" ]; then
-  systemctl reboot
-elif [ x"$*" = x"Suspend" ]; then
-   systemctl suspend & playerctl pause & hyprlock -f
-elif [ x"$*" = x"Logout" ]; then
-  loginctl terminate-session $XDG_SESSION_ID
-elif [ x"$*" = x"Hibernate" ]; then
-  systemctl hibernate & playerctl pause & hyprlock -f
-elif [ x"$*" = x"Lock" ]; then
-  playerctl pause & hyprlock -f  && exit
-else
-  option=$(get_options | rofi -dmenu -i -theme ~/.config/rofi/themes/single-wide.rasi -theme-str "listview {lines: 6;}" \ -theme-str 'entry { placeholder: " Search"; }')
-  if [ -z "$option" ]; then
+# Give options to rofi and save choice
+chosen="$(echo -e "$shutdown\n$reboot\n$suspend\n$logout" | rofi -dmenu -config ~/.config/rofi/themes/powermenu.rasi )"
+
+case "$chosen" in
+  "$shutdown")
+    poweroff
+    ;;
+  "$reboot")
+    reboot
+    ;;
+  "$suspend")
+    systemctl suspend & playerctl pause & hyprlock -f
+    ;;
+  "$logout")
+    loginctl terminate-session $XDG_SESSION_ID
+    ;;
+  *)
     exit 0
-  fi
-  $0 "$option"
-fi
+    ;;
+esac

@@ -1,0 +1,68 @@
+* {
+    background-color: transparent;
+    text-color: rgba(255, 255, 255, 1);
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+configuration {
+    modes: [drun];
+    drun-display-format: "{name}";
+    matching: "fuzzy";
+    sort: true;
+    sorting-method: "fzf";
+    icon-theme: "Papirus";
+    display-drun: " ";
+}
+
+window {
+    fullscreen: true;
+    border-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+mainbox {
+    padding: 10%;
+    spacing: 4em;
+}
+
+inputbar {
+    background-color: rgba(32,32,32,0.85);
+    children: ["prompt", "entry"];
+    border-radius: 5px;
+    margin: 0 30%;
+    padding: 0.9em;
+    spacing: 0.5em;
+}
+
+entry {
+    placeholder: "Search";
+    placeholder-color: rgba(255,255,255,0.5);
+}
+
+listview {
+    columns: 8;
+    fixed-columns: true;
+    flow: horizontal;
+    border-color: transparent;
+}
+
+element {
+    border-radius: 5px;
+    orientation: vertical;
+    padding: 2em;
+    children: [element-icon, element-text];
+    spacing: 0.5em;
+}
+
+element-icon {
+    size: 2em;
+}
+
+element-text {
+    highlight: none;
+    horizontal-align: 0.5;
+}
+
+element.selected {
+    background-color: rgba(32,32,32,0.85);
+}
