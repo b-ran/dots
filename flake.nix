@@ -27,6 +27,7 @@
     };
     secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
     stylix.url = "github:danth/stylix";
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, darwin, ... }:
