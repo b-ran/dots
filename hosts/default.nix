@@ -19,7 +19,7 @@
       {
         home-manager.useGlobalPkgs = false;
         home-manager.useUserPackages = true;
-        home-manager.backupFileExtension = "bak";
+        home-manager.backupFileExtension = "bk";
         home-manager.extraSpecialArgs = {
           inherit inputs user system;
           host = {

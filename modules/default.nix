@@ -7,6 +7,7 @@
   ./gdm.nix
   ./hyprland.nix
   ./jetbrains.nix
+  ./niri.nix
   ./nix.nix
   ./nvidia.nix
   ./openssh.nix

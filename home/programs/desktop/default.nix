@@ -4,4 +4,5 @@
   ./hyprlock.nix
   ./swaylock.nix
   ./swww.nix
+  ./waybar.nix
 ]

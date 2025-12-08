@@ -92,7 +92,7 @@
       gimp
       filezilla
       shotcut
-      libsForQt5.kdenlive
+      kdePackages.kdenlive
       google-chrome
       teams-for-linux
       vscode
@@ -106,6 +106,11 @@
       gnome-calculator
       nautilus
       seahorse
+      file-roller
+      gnome-usage
+      gnome-logs
+      gnome-screenshot
+      networkmanagerapplet
 
       # system
       xdg-utils
@@ -115,9 +120,7 @@
       brightnessctl
       pamixer
       qt6.qtwayland
-      qt6.full
       speechd
-      networkmanagerapplet
       networkmanager-openvpn
       openvpn
       hyprpolkitagent
@@ -130,7 +133,8 @@
       gnumake
       postgresql
       nodejs
-      corepack
+      pnpm
+      yarn
       pkg-config
       cpio
       redis

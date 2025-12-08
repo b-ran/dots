@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     dwt1-shell-color-scripts
     krabby
-    pnpm-shell-completion
     nano
   ];
 
@@ -81,9 +80,10 @@
       gcn = "git config user.name";
 
       # Js
-      p = "pnpm";
-      pi = "pnpm install";
-      pd = "pnpm dev";
+      pnpm = "corepack pnpm";
+      p = "corepack pnpm";
+      pi = "corepack pnpm install";
+      pd = "corepack pnpm dev";
 
       # Unix
       b = "bat";

@@ -57,8 +57,6 @@
         gnumake
         postgresql
         nodejs
-        corepack
-
         slack
         spotify
         pika

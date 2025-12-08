@@ -3,7 +3,7 @@
 with config.lib.stylix.colors.withHashtag;
 {
   programs.hyprpanel = {
-    enable = true;
+    enable = false;
     systemd.enable = true;
 
     settings = {

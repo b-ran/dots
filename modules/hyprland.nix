@@ -59,7 +59,6 @@ with config.lib.stylix.colors;
         ];
 
         "exec-once" = [
-          "hyprpanel"
           "swayidle -w timeout 10 'if pgrep -x hyprlock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'"
           "nm-applet"
           "uwsm app -- webcord --start-minimized"
@@ -70,6 +69,7 @@ with config.lib.stylix.colors;
           "ssh-agent"
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "waybar"
         ];
 
         windowrulev2 = [
@@ -113,7 +113,7 @@ with config.lib.stylix.colors;
           # Rofi menus
           "$mod, B, exec, ~/.config/rofi/menus/background-select.sh"
           "$mod, N, exec, networkmanager_dmenu"
-          "$mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/dual.rasi"
+          "$mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/drun.rasi"
           "$mod, W, exec, ~/.config/rofi/menus/windows.sh"
           "$mod, X, exec, ~/.config/rofi/menus/power.sh"
           "$mod, Y, exec, ~/.config/rofi/menus/hyprpanel.sh"
@@ -216,24 +216,20 @@ with config.lib.stylix.colors;
         };
 
         general = {
-          gaps_in = 5;
-          gaps_out = 10;
-          border_size = 2;
+          gaps_in = 0;
+          gaps_out = 0;
+          border_size = 0;
           "col.active_border" = "rgb(${base0D})";
           "col.inactive_border" = "rgb(${base03})";
           layout = "dwindle";
         };
 
         decoration = {
-          rounding = 10;
+          rounding = 0;
         };
 
         animations = {
           enabled = true;
-        };
-
-        gestures = {
-          workspace_swipe = true;
         };
 
         dwindle = {
@@ -255,7 +251,6 @@ with config.lib.stylix.colors;
           force_default_wallpaper = 0;
           disable_hyprland_logo = true;
           disable_splash_rendering = true;
-          disable_hyprland_qtutils_check = true;
         };
 
         ecosystem = {
