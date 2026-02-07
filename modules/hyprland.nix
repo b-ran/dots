@@ -16,23 +16,21 @@ with config.lib.stylix.colors;
     xwayland.enable = true;
     hyprland = {
       enable = true;
-      portalPackage = pkgs.xdg-desktop-portal-hyprland;
       withUWSM = true;
     };
   };
 
   environment.systemPackages = with pkgs; [
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    hyprcursor
     hyprpicker
-    swayidle
-    imagemagick
-    wl-clipboard
+    imagemagick # used in color picker
+    wl-clip-persist
     slurp
     grim
     tesseract
-    wf-recorder
     wl-record
+
   ];
 
   home-manager.users.${user} = {
@@ -46,6 +44,8 @@ with config.lib.stylix.colors;
 
         env = [
           "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+          "HYPRCURSOR_SIZE,24"
+          "XCURSOR_SIZE,24"
           "LIBVA_DRIVER_NAME,nvidia"
           "XDG_SESSION_TYPE,x11"
           "WLR_NO_HARDWARE_CURSORS,1"
@@ -59,44 +59,32 @@ with config.lib.stylix.colors;
         ];
 
         "exec-once" = [
-          "swayidle -w timeout 10 'if pgrep -x hyprlock; then hyprctl dispatch dpms off; fi' resume 'hyprctl dispatch dpms on'"
+          "waybar"
           "nm-applet"
+          "wl-clip-persist --clipboard regular"
           "uwsm app -- webcord --start-minimized"
-          "systemctl --user start hyprpolkitagent"
+          "systemctl --user enable --now hyprpolkitagent.service"
+          "systemctl --user enable --now hypridle.service"
           "uwsm app -- 1password --silent"
           "uwsm app -- playerctld daemon"
-          "sleep 1 && uwsm app -- swww-daemon"
+          "uwsm app -- swww-daemon"
           "ssh-agent"
-          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "waybar"
-        ];
-
-        windowrulev2 = [
-          "noinitialfocus, class:jetbrains-toolbox, floating:1"
-          "noinitialfocus, class:(jetbrains-)(.*), title:^$, initialTitle:^$, floating:1"
-          "noinitialfocus, class:(jetbrains-)(.*), floating:1"
-          "noinitialfocus, class:(jetbrains-studio), title:^win(.*)"
-          "center, class:(jetbrains-)(.*), title:^$, initialTitle:^$, floating:1"
-          "center, class:(jetbrains-)(.*), initialTitle:(.+), floating:1"
-          "workspace special silent, title:^(Firefox).*\\s(Sharing Indicator)$"
-          "float, class:1Password"
-          "center, class:1Password"
-          "float, class:org.pulseaudio.pavucontrol"
-          "center, class:org.pulseaudio.pavucontrol"
-          "float, class:org.kde.polkit-kde-authentication-agent-1"
-          "center, class:org.kde.polkit-kde-authentication-agent-1"
-          "center, class:^(Code)$, floating:1"
-          "center, class:^(Electron)$, title:^(Warning: Opening link in external app)$, floating:1"
         ];
 
         windowrule = [
-        ];
-
-        layerrule = [
-          "unset, rofi"
-          "blur, rofi"
-          "ignorezero, rofi"
+          "match:class 1Password, float on"
+          "match:class 1Password, center on"
+          "match:class org.pulseaudio.pavucontrol, float on"
+          "match:class org.pulseaudio.pavucontrol, center on"
+          "no_initial_focus on, match:class jetbrains-toolbox, match:float 1"
+          "no_initial_focus on, center on, match:class (jetbrains-)(.*), match:title ^$, match:initial_title ^$, match:float 1"
+          "no_initial_focus on, match:class (jetbrains-)(.*), match:float 1"
+          "no_initial_focus on, match:class (jetbrains-studio), match:title ^win(.*)"
+          "center on, match:class (jetbrains-)(.*), match:initial_title (.+), match:float 1"
+          "workspace special silent, match:title ^(Firefox).*\s(Sharing Indicator)$"
+          "float on, center on, match:class org.pulseaudio.pavucontrol"
+          "center on, match:class ^(Code)$, match:float 1"
+          "center on, match:class ^(Electron)$, match:title ^(Warning: Opening link in external app)$, match:float 1"
         ];
 
         "$mod" = "SUPER";
@@ -111,24 +99,21 @@ with config.lib.stylix.colors;
           "$mod, H, togglesplit"
 
           # Rofi menus
-          "$mod, B, exec, ~/.config/rofi/menus/background-select.sh"
-          "$mod, N, exec, networkmanager_dmenu"
           "$mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/drun.rasi"
-          "$mod, W, exec, ~/.config/rofi/menus/windows.sh"
+          "$mod, N, exec, networkmanager_dmenu"
+          "$mod, B, exec, ~/.config/rofi/menus/background-select.sh"
           "$mod, X, exec, ~/.config/rofi/menus/power.sh"
-          "$mod, Y, exec, ~/.config/rofi/menus/hyprpanel.sh"
           "$mod SHIFT, S, exec, ~/.config/rofi/menus/screenshot.sh"
 
           # Apps
           "$mod, Return, exec, alacritty"
 
           # Scripts
-          "$mod, L, exec, amixer sset Master mute & playerctl pause & hyprlock && amixer sset Master unmute"
+          "$mod, L, exec, hyprlock"
           "$mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i \"$temp\" \"Screenshot:\" \"Captured selected area\" && rm \"$temp\""
           "$mod, R, exec, wl-record"
           "$mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:\"$color\" /tmp/color_notification.png && notify-send \"Picked Color:\" \"$color\" -i /tmp/color_notification.png"
           "$mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i \"$temp\" \"OCR:\" \"Text has been copied to the clipboard.\" && rm \"$temp\""
-          # "$mod, SHIFT, P, exec, 1password --quick-access"
 
           # Move focus
           "$mod, left, movefocus, l"
@@ -187,11 +172,11 @@ with config.lib.stylix.colors;
           ",XF86AudioPrev,exec,playerctl previous"
         ];
 
-        binde = [
-          ",XF86AudioRaiseVolume,exec,pamixer -i 5 && notify-send -t 1000 \" Audio\" \"$(pamixer --get-volume-human)\" --hint=\"int:value:$(pamixer --get-volume)\""
-          ",XF86AudioLowerVolume,exec,pamixer -d 5 && notify-send -t 1000 \" Audio\" \"$(pamixer --get-volume-human)\" --hint=\"int:value:$(pamixer --get-volume)\""
-          ",XF86MonBrightnessUp,exec,brightnessctl s +5% && notify-send -t 1000 \" Brightness\" \"$(light)%\" --hint=\"int:value:$(light)\""
-          ",XF86MonBrightnessDown,exec,brightnessctl s 5%- && notify-send -t 1000 \" Brightness\" \"$(light)%\" --hint=\"int:value:$(light)\""
+        bindel = [
+          ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
+          ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
+          ", XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
+          ", XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
         ];
 
         bindm = [
@@ -226,6 +211,20 @@ with config.lib.stylix.colors;
 
         decoration = {
           rounding = 0;
+          rounding_power = 2;
+
+          shadow = {
+            enabled = true;
+            range = 4;
+            render_power = 3;
+          };
+
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 2;
+            vibrancy = 0.1696;
+          };
         };
 
         animations = {
@@ -254,7 +253,7 @@ with config.lib.stylix.colors;
         };
 
         ecosystem = {
-          no_update_news = false;
+          no_update_news = true;
           no_donation_nag = true;
         };
       };

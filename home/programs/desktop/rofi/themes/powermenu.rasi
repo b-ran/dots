@@ -1,83 +1,61 @@
 @theme "~/.local/share/rofi/themes/custom.rasi"
 
 * {
-    font: "Material Symbols Rounded 48";
     background-color: transparent;
-    text-color: @foreground;
+    text-color: rgba(255, 255, 255, 1);
 }
 
 window {
-    fullscreen: true;
-    border-color: transparent;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 40%;
+    background-color: rgba(32, 32, 32, 0.95);
+    border-radius: 10px;
+    border: 2px;
+    border-color: rgba(60, 60, 60, 1);
+    location: center;
+    anchor: center;
 }
 
 mainbox {
-    enabled: true;
-    padding: 40% 13%;
-    border-color: transparent;
+    padding: 3em;
+    background-color: transparent;
     children: ["listview"];
 }
 
-
 listview {
     columns: 4;
-    spacing: 13%;
+    lines: 1;
+    spacing: 2em;
     flow: horizontal;
+    background-color: transparent;
+    border: 0px;
 }
 
 element {
-    padding: 1em;
-    border-radius: 0px;
+    padding: 2em;
+    border-radius: 2px;
+    background-color: transparent;
+    orientation: vertical;
 }
 
 element-text {
+    font: "Material Symbols Rounded 48";
     background-color: transparent;
+    text-color: inherit;
     horizontal-align: 0.5;
     vertical-align: 0.5; 
 }
 
-element.selected {
-    background-color: rgba(32,32,32,0.5);
+element normal.normal {
+    background-color: transparent;
+    text-color: rgba(255, 255, 255, 1);
 }
 
-element selected {
-    border-radius: 0px;
-    background-color: transparent;
+element selected.normal {
+    background-color: rgba(60, 60, 60, 1);
+    text-color: rgba(255, 255, 255, 1);
 }
 
 element alternate.normal {
     background-color: transparent;
-    text-color:  @foreground;
+    text-color: rgba(255, 255, 255, 1);
 }
-
-element alternate.active {
-    background-color: transparent;
-    text-color:  @foreground;
-}
-
-button selected {
-    background-color: transparent;
-    text-color:  @foreground;
-}
-
-element normal.active {
-    background-color: transparent;
-    text-color: @foreground;
-}
-
-element normal.normal {
-    background-color: transparent;
-}
-
-element selected.active {
-    background-color: transparent;
-    text-color:  @foreground;
-}
-
-element selected.normal {
-    background-color: rgba(32,32,32,0.6);
-    text-color:  @foreground;
-}
-
-

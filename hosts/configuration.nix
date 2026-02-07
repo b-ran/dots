@@ -22,19 +22,14 @@
     shell = pkgs.zsh;
   };
 
-
-  services.desktopManager.gnome.enable = true;
-
-  # To disable installing GNOME's suite of applications
-  # and only be left with GNOME shell.
-  services.gnome.core-apps.enable = false;
-  services.gnome.core-developer-tools.enable = false;
-  services.gnome.games.enable = false;
-  environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
-
   networking = {
     enableIPv6 = false;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openvpn
+      ];
+    };
     firewall = {
       enable = true;
       allowedTCPPortRanges = [
@@ -62,9 +57,6 @@
       GOOGLE_CHROME_PATH = "${pkgs.google-chrome}";
       NIXOS_OZONE_WL = "1";
     };
-    variables = {
-      PIP_NO_BINARY = "ruff"; # Don't use prebuilt ruff wheels (they don't work on nixos)
-    };
   };
 
   programs = {
@@ -76,44 +68,20 @@
     polkit.enable = true;
     pam.services.hyprlock.text = "auth include login"; # Allow wayland to unlock the screen
     pam.services.gdm.enableGnomeKeyring = true;
+    pam.services.hyprlock.enableGnomeKeyring = true;
+    pam.services.gdm-password.enableGnomeKeyring = true;
+    pam.services.login.enableGnomeKeyring = true;
   };
 
   xdg.portal = {
     enable = true;
-
-    config = {
-      common = {
-        # Use xdg-desktop-portal-gtk for every portal interface...
-        default = [
-          "gtk"
-          "hyprland"
-        ];
-        # except for the secret portal, which is handled by gnome-keyring
-        "org.freedesktop.impl.portal.Secret" = [
-          "gnome-keyring"
-        ];
-      };
-    };
-
-    # Sets environment variable NIXOS_XDG_OPEN_USE_PORTAL to 1
-    # This will make xdg-open use the portal to open programs,
-    # which resolves bugs involving programs opening inside FHS envs or with unexpected env vars set from wrappers.
-    # xdg-open is used by almost all programs to open a unknown file/uri
-    # alacritty as an example, it use xdg-open as default, but you can also custom this behavior
-    # and vscode has open like `External Uri Openers`
-    xdgOpenUsePortal = true;
-    # ls /etc/profiles/per-user/ryan/share/xdg-desktop-portal/portals
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk # for provides file picker / OpenURI
-      # xdg-desktop-portal-wlr
-      xdg-desktop-portal-hyprland # for Hyprland
-    ];
   };
 
   hardware = {
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+      # Bluetooth settings for wireless controllers
       settings = {
         General = {
           Enable = "Source,Sink,Media,Socket";
@@ -139,7 +107,7 @@
     geoclue2.enable = true; # Allow location services
     localtimed.enable = true;
     gvfs.enable = true;
-    gnome.sushi.enable = true;
+    gnome.sushi.enable = true; # File previewer for Nautilus
     gnome.gnome-keyring.enable = true;
   };
 }

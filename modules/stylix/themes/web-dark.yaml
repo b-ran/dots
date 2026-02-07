@@ -1,0 +1,16 @@
+base00: "1F1F1F" # background
+base01: "323232" # alt background
+base02: "33467c" # blue - selection/progress bar/submit buttons
+base03: "3C3C3C" # comments/unfocused - lighter gray
+base04: "B0B0B0" # alt dark foreground
+base05: "FFFFFF" # window title text -  foreground
+base06: "F5F5F5" # low urgency background - alt light foreground
+base07: "565f89" # alt background 2
+base08: "FB2C36" # red - urgent window border
+base09: "FE9A00" # orange
+base0A: "FFDF20" # yellow
+base0B: "05DF72" # green
+base0C: "7dcfff" # cyan
+base0D: "46ECD5" # blue - focused window border
+base0E: "C27AFF" # purple
+base0F: "FB2C36" # brown

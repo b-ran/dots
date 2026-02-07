@@ -21,6 +21,7 @@
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
       gamescopeSession.enable = true;
     };
     gamemode = {
@@ -30,7 +31,8 @@
 
   hardware.steam-hardware.enable = true;
 
-  systemd.services.ratbagd = {
+  # Logitech mouse settings with Piper
+  systemd.services.ratbagd = { 
     description = "Ratbagd";
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {

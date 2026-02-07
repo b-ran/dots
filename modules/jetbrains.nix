@@ -2,9 +2,9 @@
 
 {
 #  environment.systemPackages = with pkgs; [
-#    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [ "github-copilot" ])
+#    (jetbrains.plugins.addPlugins jetbrains.idea [ "github-copilot" ])
 #  ];
    environment.systemPackages = with pkgs; [
-     jetbrains.idea-ultimate
+     jetbrains.idea
    ];
 }

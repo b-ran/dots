@@ -3,21 +3,14 @@
 {
   home = {
 
-    file.".config/rofi/themes/dual.rasi".source = ./themes/dual.rasi;
-    file.".config/rofi/themes/select.rasi".source = ./themes/select.rasi;
-    file.".config/rofi/themes/single.rasi".source = ./themes/single.rasi;
-    file.".config/rofi/themes/single-wide.rasi".source = ./themes/single-wide.rasi;
     file.".config/rofi/themes/drun.rasi".source = ./themes/drun.rasi;
     file.".config/rofi/themes/powermenu.rasi".source = ./themes/powermenu.rasi;
+    file.".config/rofi/themes/select.rasi".source = ./themes/select.rasi;
+    file.".config/rofi/themes/single.rasi".source = ./themes/single.rasi;
 
     file.".config/rofi/menus/background-select.sh" = {
       executable = true;
       source = ./menus/background-select.sh;
-      onChange = ''
-        if [ ! -f ~/.config/current-wallpaper ]; then
-           cp ~/wallpapers/astronaut-moonlight-serenity.png ~/.config/current-wallpaper
-        fi
-      '';
     };
     file.".config/rofi/menus/power.sh" = {
       executable = true;
@@ -27,18 +20,10 @@
       executable = true;
       source = ./menus/screenshot.sh;
     };
-    file.".config/rofi/menus/windows.sh" = {
-      executable = true;
-      source = ./menus/windows.sh;
-    };
-    file.".config/rofi/menus/waybar.sh" = {
-      executable = true;
-      source = ./menus/waybar.sh;
-    };
 
     file.".config/networkmanager-dmenu/config.ini".text = ''
       [dmenu]
-      dmenu_command = rofi -dmenu -i -theme ~/.config/rofi/themes/single.rasi -theme-str 'entry { placeholder: "󰈀 Search"; }'
+      dmenu_command = rofi -dmenu -i -theme ~/.config/rofi/themes/single.rasi -theme-str 'entry { placeholder: "Search"; }'
       rofi_highlight = True
       compact = True
       wifi_chars = 󰤟󰤢󰤥󰤨

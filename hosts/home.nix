@@ -20,17 +20,12 @@
   };
 
   nixpkgs = {
-    overlays = [
-      inputs.nix-vscode-extensions.overlays.default
-    ];
-    # Configure home manager nixpkgs instance
     config = {
       allowUnfree = true;
     };
   };
 
   services = {
-    gnome-keyring.enable = true;
     mpris-proxy.enable = true;
   };
 
@@ -67,12 +62,10 @@
       feh
       wlr-randr
       bfg-repo-cleaner
-      distrobox
       killall
       glow
       nix-prefetch-git
       gource
-      hours
       supabase-cli
       claude-code
       xh
@@ -92,11 +85,10 @@
       gimp
       filezilla
       shotcut
-      kdePackages.kdenlive
-      google-chrome
+      # google-chrome
       teams-for-linux
       vscode
-      thunderbird
+      firefox-bin
 
       # gnome
       loupe
@@ -109,8 +101,8 @@
       file-roller
       gnome-usage
       gnome-logs
-      gnome-screenshot
       networkmanagerapplet
+      simple-scan
 
       # system
       xdg-utils
@@ -121,7 +113,6 @@
       pamixer
       qt6.qtwayland
       speechd
-      networkmanager-openvpn
       openvpn
       hyprpolkitagent
       wl-clipboard
@@ -138,7 +129,7 @@
       pkg-config
       cpio
       redis
-      nixfmt-rfc-style
+      nixfmt
     ];
   };
 }

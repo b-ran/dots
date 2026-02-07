@@ -23,7 +23,7 @@ edit=' Edit Screenshot'
 # Rofi CMD
 rofi_cmd() {
   rofi \
-    -theme ~/.config/rofi/themes/single-wide.rasi \
+    -theme ~/.config/rofi/themes/single.rasi \
     -theme-str "listview {lines: 5;}" \
     -dmenu
 }

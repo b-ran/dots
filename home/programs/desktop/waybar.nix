@@ -9,30 +9,42 @@ with config.lib.stylix.colors.withHashtag;
       settings = {
         mainBar = {
           modules-left = [
-            "clock"
-            "pulseaudio"
-          ];
-          modules-center = [
             "hyprland/workspaces"
           ];
+          modules-center = [
+            "clock"
+          ];
           modules-right = [
-            "tray"
+            "group/expand"
+            "bluetooth"
+            "network"
+            "pulseaudio"
+            "battery"
           ];
           reload_style_on_change = true;
           layer = "bottom";
-          clock = {
-            actions = {
-              on-click-right = "mode";
+
+          "group/expand" = {
+            orientation = "horizontal";
+            drawer = {
+              transition-duration = 600;
+              transition-to-left = true;
+              click-to-reveal = true;
             };
-            format = "󰅐 {:%I:%M}";
-            format-alt = "󰅐 {:%A, %B %d, %Y (%R)}";
-            tooltip = false;
-            tooltip-format = "<tt><small>{calendar}</small></tt>";
+            modules = [
+              "custom/expand"
+              "cpu"
+              "memory"
+              "temperature"
+              "tray"
+              "custom/endpoint"
+            ];
           };
 
-          cpu = {
-            format = "󰘚 {usage}%";
-            tooltip = true;
+          clock = {
+            format = "{:%H:%M %a, %b %d}";
+            interval = 1;
+            tooltip-format = "<tt>{calendar}</tt>";
           };
 
           "hyprland/workspaces" = {
@@ -49,26 +61,9 @@ with config.lib.stylix.colors.withHashtag;
               "7" = "7";
               "8" = "8";
               "9" = "9";
-              default = "";
-              urgent = "";
             };
             on-click = "activate";
             sort-by-number = true;
-          };
-
-          memory = {
-            format = " {}%";
-            tooltip = true;
-          };
-
-          network = {
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
-            format-disconnected = "⚠";
-            format-ethernet = "󰈀";
-            format-linked = "{ifname} (No IP)";
-            format-wifi = "  {signalStrength}%";
-            on-click-right = "nm-connection-editor";
-            tooltip-format = "{ifname} via {gwaddr}";
           };
 
           pulseaudio = {
@@ -85,10 +80,87 @@ with config.lib.stylix.colors.withHashtag;
             };
             format-source = " {volume}%";
             format-source-muted = "";
-            on-click = "pavucontrol";
+            on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+            on-click-right = "pavucontrol";
+          };
+
+          "custom/notification" = {
+            tooltip = false;
+            format = "";
+            on-click = "swaync-client -t -sw";
+            escape = true;
+          };
+
+          network = {
+            format-wifi = "";
+            format-ethernet = "󰈀";
+            format-disconnected = "";
+            tooltip-format-disconnected = "Error";
+            tooltip-format-wifi = "{essid} ({signalStrength}%)  ";
+            tooltip-format-ethernet = "{ifname} 󰈀 ";
+            on-click = "nm-connection-editor";
+          };
+
+          bluetooth = {
+            format-on = "";
+            format-off = "󰂲";
+            format-disabled = "󰂲";
+            format-connected-battery = "󰂯 {device_battery_percentage}% ";
+            format-alt = "󰂯 {device_alias}";
+            tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+            tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+            tooltip-format-enumerate-connected = "{device_alias}\n{device_address}";
+            tooltip-format-enumerate-connected-battery = "{device_alias}\n{device_address}\n{device_battery_percentage}%";
+            on-click-right = "blueman-manager";
+          };
+
+          battery = {
+            interval = 30;
+            states = {
+              good = 95;
+              warning = 30;
+              critical = 20;
+            };
+            format = "{capacity}% {icon}";
+            format-charging = "{capacity}% 󰂄";
+            format-plugged = "{capacity}% 󰂄 ";
+            format-alt = "{time} {icon}";
+            format-icons = [
+              "󰁻"
+              "󰁼"
+              "󰁾"
+              "󰂀"
+              "󰂂"
+              "󰁹"
+            ];
+          };
+
+          "custom/expand" = {
+            format = "";
+            tooltip = false;
+          };
+
+          "custom/endpoint" = {
+            format = "|";
+            tooltip = false;
+          };
+
+          cpu = {
+            format = "󰻠";
+            tooltip = true;
+          };
+
+          memory = {
+            format = "";
+          };
+
+          temperature = {
+            critical-threshold = 80;
+            format = "";
           };
 
           tray = {
+            icon-size = 14;
             spacing = 10;
           };
         };
@@ -101,87 +173,112 @@ with config.lib.stylix.colors.withHashtag;
         @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
 
         * {
-         font-family: ${config.stylix.fonts.serif.name};
-         font-size: 17px;
-         min-height: 0;
+          font-size:15px;
+          font-family: ${config.stylix.fonts.serif.name};
         }
 
-        .modules-left, .modules-center, .modules-right {
-          background: transparent;
-          color: @base05;
-          border-radius: 1rem;
-          margin: 1px 0 0 1px;
+        window#waybar{
+            all: unset;
+        }
+
+        .modules-left {
+            padding: 7px;
+            margin: 3 0 3 3;
+            border-radius: 10px;
+            background: alpha(@base00,.6);
+        }
+
+        .modules-center {
+            padding: 7px;
+            margin: 3 0 3 0;
+            border-radius: 10px;
+            background: alpha(@base00,.6);
         }
 
         .modules-right {
-          margin-right: 10px;
+            padding: 7px;
+            margin: 3 3 3 0;
+            border-radius: 10px;
+            background: alpha(@base00,.6);
         }
 
-        #waybar {
-         background: transparent;
+        tooltip {
+            background: @base00;
+            color: @base05;
         }
 
         #workspaces {
-          background-color: transparent;
+            padding: 0px 5px;
         }
 
         #workspaces button {
-         color: @base05;
+            all: unset;
+            padding: 0px 5px;
+            color: alpha(@base05,.4);
+            transition: all .2s ease;
         }
 
         #workspaces button.active {
-         color:  @base0D;
+            color: @base05;
+            border: none;
+            text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
         }
 
-        #workspaces button:hover {
-         background: transparent;
-         border-color: rgba(0, 0, 0, 0.3);
-         box-shadow: none;
+        #workspaces button.empty {
+            border: none;
+            text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+        }
+
+        #workspaces button.empty:hover {
+            border: none;
+            text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+            transition: all 1s ease;
+        }
+
+        #workspaces button.empty.active {
+            color: @base05;
+            border: none;
+            text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
         }
 
         #tray,
         #network,
-        #backlight,
         #clock,
         #battery,
+        #bluetooth,
         #pulseaudio,
+        #temperature,
         #memory,
-        #cpu {
+        #cpu,
+        #custom-expand,
+        #group-expand,
+        #custom-endpoint,
+        workspaces {
+          color: @base05;
           background-color: transparent;
-          padding: 0.5rem 0.75rem;
+          padding: 0px 5px;
+          transition: all .3s ease; 
         }
 
         #pulseaudio {
-         color: @base05;
-        }
-
-        #pulseaudio.muted {
-          color: @base05;
-        }
-
-        #cpu {
-         color: @base05;
-        }
-
-        #memory {
-         color: @base05;
+          padding-left: 10px;
         }
 
         #network {
-          color: @base05;
+          margin-right: 5px;
         }
 
-        #clock {
-          color: @base05;
+        #battery.critical:not(.charging) {
+            color: @base08;
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
         }
 
-        tooltip {
-         background: @base00;
-         border: 0px solid @base0D;
-        }
-
-        tooltip label {
-         color: @base05;
+        #custom-expand:hover {
+            color: rgba(255,255,255,.2);
         }
       '';
     };

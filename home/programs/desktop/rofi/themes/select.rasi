@@ -3,95 +3,76 @@
 configuration {
     modi: "drun";
     show-icons: true;
-	drun-display-format: "{name}";
+    drun-display-format: "{name}";
     hover-select: true;
     font: "JetBrains Mono Nerd Font 14";
 }
 
 * {
-    text-selected: @background;
-    text-color: @foreground;
-    border-color: @active-text;
+    text-color: rgba(255, 255, 255, 1);
+    border-color: rgba(60, 60, 60, 1);
 }
 
 window {
-    // Default
-    enabled: true;
-    fullscreen: false;
-    transparency: "real";
-    cursor: "default";
-    spacing: 0px;
+    width: 85%;
+    background-color: rgba(32, 32, 32, 0.95);
+    border-radius: 10px;
     border: 2px;
-    border-color: @active-text;
-    border-radius: 30px;
+    border-color: rgba(60, 60, 60, 1);
     location: center;
     anchor: center;
-    width: 75%;
-    background-color: #00000088;
 }
 
 mainbox {
-    enabled: true;
-    children: [ "listview" ];
+    padding: 3em;
     background-color: transparent;
+    children: ["listview"];
 }
 
 listview {
-    enabled: true;
     columns: 4;
     lines: 2;
-    padding: 26px 36px;
+    spacing: 2em;
     cycle: true;
     dynamic: true;
     scrollbar: false;
     layout: vertical;
-    reverse: false;
-    fixed-height: true;
-    fixed-columns: true;
     background-color: transparent;
-    spacing: 20px;
     border: 0px;
-
 }
 
 element {
-    enabled: true;
-    orientation: vertical;
-    expand: false;
-    spacing: 0px;
-    padding: 5px 10px;
-    border-radius: 26px;
-    cursor: pointer;
+    padding: 2em;
+    border-radius: 10px;
     background-color: transparent;
+    orientation: vertical;
+    spacing: 1.5em;
 }
 
 element normal.normal {
-    background-color: inherit;
-}
-
-
-element.alternate.normal {
-    background-color: inherit;
-    text-color: inherit;
+    background-color: transparent;
+    text-color: rgba(255, 255, 255, 1);
 }
 
 element selected.normal {
-    background-color: @active-text;
-    text-color: @background;
+    background-color: rgba(60, 60, 60, 1);
+    text-color: rgba(255, 255, 255, 1);
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: rgba(255, 255, 255, 1);
 }
 
 element-icon {
-    size: 30%;
-    cursor: inherit;
-    expand: false;
-    padding: 0px;
-    background-color: inherit;
+    size: 18em;
+    background-color: transparent;
+    horizontal-align: 0.5;
 }
 
 element-text {
-    vertical-align: 0.5;
-    horizontal-align: 0.5;
-    cursor: inherit;
     background-color: transparent;
     text-color: inherit;
-}
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+} 

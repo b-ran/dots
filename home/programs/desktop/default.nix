@@ -1,8 +1,6 @@
-[
+[ 
   ./rofi
-  ./hyprpanel.nix
   ./hyprlock.nix
-  ./swaylock.nix
-  ./swww.nix
+  ./wallpaper.nix
   ./waybar.nix
 ]

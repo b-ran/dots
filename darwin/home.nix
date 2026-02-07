@@ -49,7 +49,6 @@
         tree
         feh
         bfg-repo-cleaner
-        soco-cli
         supabase-cli
         corepack
 
@@ -62,7 +61,7 @@
         pika
         raycast
         keepassxc
-        jetbrains.idea-ultimate
+        jetbrains.idea
       ];
     };
 }

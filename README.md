@@ -116,81 +116,46 @@ Boot into the USB drive using UEFI mode, else the grub installation will fail ne
 You are logged in automatically as nixos in terminal. nixos has empty password with sudo access.
 Switch to root with `sudo su`.
 
-## 🗄️ Partitioning
-
-Assume `/dev/nvme0n1` is the target drive, replace it with your drive, found with `lsblk`.
-
-1. Create a GPT partition table.
-    ```
-    parted /dev/nvme0n1 -- mklabel gpt
-    ```
-2. Create boot partition. Note I personally make my boot partition larger than 512MiB works better for \
-   NixOS config switching to avoid running out of space.
-    ```
-    parted /dev/nvme0n1 -- mkpart ESP fat32 1MiB 1024MiB
-    parted /dev/nvme0n1 -- set 1 esp on
-    ```
-3. Create swap partition. Depending on your RAM size, you can adjust the size. 32GB*1024 plus boot partition size =
-   final number.
-    ```
-    parted /dev/nvme0n1 -- mkpart primary linux-swap 1024MiB 33792MiB
-    ```
-4. Create root partition. The rest of the drive.
-    ```
-    parted /dev/nvme0n1 -- mkpart primary ext4 33792MiB 100%
-    ```
-5. Check your lovely work.
-    ```
-    parted /dev/nvme0n1 -- print
-    ```
-
-## 🗃️ Filesystems
-
-Labels and names are important for NixOS configuration to work properly. found in `hardware-configuration.nix.`
-
-1. Format boot partition.
-    ```
-    mkfs.fat -F32 -n boot /dev/nvme0n1p1
-    ```
-
-2. Format swap partition.
-    ```
-    mkswap -L swap /dev/nvme0n1p2
-    swapon /dev/nvme0n1p2
-    ```
-3. Format root partition.
-    ```
-    mkfs.ext4 -L nixos /dev/nvme0n1p3
-    ```
-
 ## 🖨️ Installing
 
-Time to install NixOS with this flake configuration.
+This configuration uses [disko](https://github.com/nix-community/disko) for declarative disk partitioning. Disko will automatically partition, format, mount, and install NixOS in one command.
 
-1. Mount root partition.
-    ```
-    mount /dev/disk/by-label/nixos /mnt
-    ```
+### Available Hosts
 
-2. Mount boot partition.
-    ```
-    mkdir -p /mnt/boot
-    mount /dev/disk/by-label/boot /mnt/boot
-    ```
+- **desktop**: Desktop system with 32GB swap (for systems with 32GB+ RAM)
+- **framework**: Framework 13 laptop with 16GB swap (for 16GB RAM)
 
-3. Clone repo.
-    ```
-    nix-env -iA nixos.git
-    git clone https://github.com/b-ran/dots /mnt/etc/nixos
-    ```
+Both configurations create:
+- **Boot partition (ESP)**: 1024 MiB FAT32 mounted at `/boot` (unencrypted)
+- **LUKS encrypted partition** containing LVM with:
+  - **Swap LV**: 32GB (desktop) or 16GB (framework)
+  - **Root LV**: Remaining space (ext4, encrypted) mounted at `/`
 
-4. Do the installation.
+1. Clone repo.
     ```
-    cd /mnt/etc/nixos
-    nixos-install --flake .#desktop
+    nix-shell -p git
+    git clone https://github.com/b-ran/dots /tmp/nixos-config
+    cd /tmp/nixos-config
     ```
 
-5. If everything goes well, reboot. You should be greeted with the login screen. May need to remove the USB drive.
+2. **(Optional)** Customize partitioning. Find your target drive with `lsblk`. Default is `/dev/nvme0n1`.
+   If you need a different drive or swap size, edit the appropriate config:
+    ```
+    nano hosts/desktop/disko-config.nix    # For desktop
+    nano hosts/framework/disko-config.nix  # For framework
+    ```
+
+3. Run disko to partition, format, mount, and install in one command. Replace `desktop` with `framework` if installing on Framework.
+    ```
+    sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- \
+      --mode disko --flake .#desktop
+    ```
+    **⚠️ WARNING**: This will erase all data on the target drive!
+
+    You'll be prompted to enter your disk encryption password during the process. Remember this password - you'll need it every time you boot.
+
+4. If everything goes well, reboot. You should be greeted with the login screen. May need to remove the USB drive.
     ```
     reboot
     ```
+    You'll be prompted for your disk encryption password at boot.

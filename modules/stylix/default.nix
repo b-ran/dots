@@ -19,6 +19,7 @@
       chromium.enable = false;
       qt.enable = true;
       grub.enable = false;
+      console.enable = false;
     };
     fonts = {
       monospace = {

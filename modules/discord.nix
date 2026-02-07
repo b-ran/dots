@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     webcord-vencord
-    vesktop
     discord
   ];
 

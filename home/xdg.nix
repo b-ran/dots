@@ -36,7 +36,7 @@ let
   entries = {
     transmission = {
       name = "transmission-gtk";
-      exec = "${pkgs.transmission_4-gtk}/bin/transmission-gtk %U";
+      exec = "transmission-gtk %U";
     };
   };
 in
@@ -47,12 +47,6 @@ in
     userDirs = {
       enable = true;
       createDirectories = true;
-    };
-    portal = {
-      enable = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-hyprland
-      ];
     };
     mimeApps = {
       enable = true;

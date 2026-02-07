@@ -9,10 +9,9 @@
 
 with config.lib.stylix.colors;
 {
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs = {
     niri = {
-      package = pkgs.niri-stable;
+      package = pkgs.niri;
       enable = true;
     };
   };

@@ -13,24 +13,21 @@
       url = "https://github.com/b-ran.keys";
       flake = false;
     };
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    rose-pine-hyprcursor = {
-      url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
     stylix.url = "github:danth/stylix";
     niri.url = "github:sodiboo/niri-flake";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, secrets ? null, ... }:
     let
       user = "brandon";
       system = "x86_64-linux";

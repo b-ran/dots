@@ -11,25 +11,26 @@ configuration {
     sort: true;
     sorting-method: "fzf";
     icon-theme: "Papirus";
-    display-drun: " ";
+    display-drun: " ";
 }
 
 window {
-    fullscreen: true;
-    border-color: transparent;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 30%;
+    background-color: rgba(32, 32, 32, 0.95);
+    border-radius: 10px;
+    border: 2px;
+    border-color: rgba(60, 60, 60, 1);
 }
 
 mainbox {
-    padding: 10%;
-    spacing: 4em;
+    padding: 2em;
+    spacing: 2em;
 }
 
 inputbar {
-    background-color: rgba(32,32,32,0.85);
+    background-color: rgba(50, 50, 50, 1);
     children: ["prompt", "entry"];
     border-radius: 5px;
-    margin: 0 30%;
     padding: 0.9em;
     spacing: 0.5em;
 }
@@ -40,29 +41,30 @@ entry {
 }
 
 listview {
-    columns: 8;
-    fixed-columns: true;
-    flow: horizontal;
+    columns: 1;
+    lines: 10;
     border-color: transparent;
+    spacing: 0.5em;
 }
 
 element {
     border-radius: 5px;
-    orientation: vertical;
-    padding: 2em;
+    orientation: horizontal;
+    padding: 0.8em 1em;
     children: [element-icon, element-text];
-    spacing: 0.5em;
+    spacing: 1em;
 }
 
 element-icon {
-    size: 2em;
+    size: 1.5em;
 }
 
 element-text {
     highlight: none;
-    horizontal-align: 0.5;
+    horizontal-align: 0;
+    vertical-align: 0.5;
 }
 
 element.selected {
-    background-color: rgba(32,32,32,0.85);
+    background-color: rgba(60, 60, 60, 1);
 }

@@ -1,19 +1,23 @@
-{ pkgs, config, libs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  options.hardware.nvidia.enable = lib.mkEnableOption "NVIDIA GPU support";
+
+  config = lib.mkIf config.hardware.nvidia.enable {
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
+    services.xserver.videoDrivers = ["nvidia"];
+
+    hardware.nvidia.modesetting.enable = true;
+    hardware.nvidia.powerManagement.enable = true;
+    hardware.nvidia.powerManagement.finegrained = false;
+    hardware.nvidia.open = false;
+    hardware.nvidia.nvidiaSettings = true;
+
+    hardware.nvidia.package =
+     config.boot.kernelPackages.nvidiaPackages.beta;
   };
-
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.powerManagement.enable = true;
-  hardware.nvidia.powerManagement.finegrained = false;
-  hardware.nvidia.open = false;
-  hardware.nvidia.nvidiaSettings = true;
-
-  hardware.nvidia.package =
-   config.boot.kernelPackages.nvidiaPackages.beta;
 }

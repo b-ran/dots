@@ -7,7 +7,6 @@
   ./htop.nix
   ./k9s.nix
   ./lazygit.nix
-  ./ripgrep.nix
   ./starship.nix
   ./tmux.nix
   ./zoxide.nix
