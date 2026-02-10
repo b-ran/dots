@@ -26,7 +26,7 @@
       dmenu_command = rofi -dmenu -i -theme ~/.config/rofi/themes/single.rasi -theme-str 'entry { placeholder: "Search"; }'
       rofi_highlight = True
       compact = True
-      wifi_chars = 󰤟󰤢󰤥󰤨
+      wifi_chars = ▂▄▆█
 
       [editor]
       terminal = alacritty
