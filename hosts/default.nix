@@ -1,11 +1,5 @@
 { lib, inputs, nixpkgs, home-manager, user, system }:
 
-let
-  # Helper function to conditionally include secrets module
-  secretsModule = if inputs.secrets != null 
-    then [ (inputs.secrets.nixosModule { user = "${user}"; system = "${system}"; }) ]
-    else [];
-in
 {
   desktop = nixpkgs.lib.nixosSystem {
     inherit system;
@@ -38,7 +32,7 @@ in
           ];
         };
       }
-    ] ++ secretsModule;
+    ];
   };
 
   framework = nixpkgs.lib.nixosSystem {
@@ -53,8 +47,6 @@ in
       { nixpkgs.config.allowUnfree = true; }
       ./configuration.nix
       ./framework
-      ./framework/disko-config.nix
-      inputs.disko.nixosModules.disko
       inputs.stylix.nixosModules.stylix
       home-manager.nixosModules.home-manager
       {
@@ -74,6 +66,6 @@ in
           ];
         };
       }
-    ] ++ secretsModule;
+    ];
   };
 }

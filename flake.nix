@@ -17,7 +17,7 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
+    # secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
     stylix.url = "github:danth/stylix";
     niri.url = "github:sodiboo/niri-flake";
     disko = {
@@ -27,7 +27,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, secrets ? null, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, ... }:
     let
       user = "brandon";
       system = "x86_64-linux";
