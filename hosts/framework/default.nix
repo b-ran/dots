@@ -25,13 +25,9 @@
     "displaylink"
     "modesetting"
   ];
-
-  services.xserver.displayManager.sessionCommands = ''
-    ${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
-  '';
-
-  #  networking.networkmanager.insertNameservers = [ "1.1.1.1" "1.0.0.1"];
-  #  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+  
+  networking.networkmanager.insertNameservers = [ "1.1.1.1" "1.0.0.1"];
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
 }
 
 
