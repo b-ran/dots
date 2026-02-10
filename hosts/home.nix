@@ -114,7 +114,6 @@
       qt6.qtwayland
       speechd
       openvpn
-      hyprpolkitagent
       wl-clipboard
       ffmpeg-full
       alsa-utils
