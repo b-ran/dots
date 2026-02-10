@@ -14,7 +14,7 @@ configuration {
 }
 
 window {
-    width: 85%;
+    width: calc(60% min 1400px);
     background-color: rgba(32, 32, 32, 0.95);
     border-radius: 10px;
     border: 2px;
@@ -24,15 +24,15 @@ window {
 }
 
 mainbox {
-    padding: 3em;
+    padding: 1.5em;
     background-color: transparent;
     children: ["listview"];
 }
 
 listview {
-    columns: 4;
+    columns: 3;
     lines: 2;
-    spacing: 2em;
+    spacing: 1.2em;
     cycle: true;
     dynamic: true;
     scrollbar: false;
@@ -42,11 +42,11 @@ listview {
 }
 
 element {
-    padding: 2em;
+    padding: 1em;
     border-radius: 10px;
     background-color: transparent;
     orientation: vertical;
-    spacing: 1.5em;
+    spacing: 0.8em;
 }
 
 element normal.normal {
@@ -65,7 +65,7 @@ element alternate.normal {
 }
 
 element-icon {
-    size: 18em;
+    size: 12em;
     background-color: transparent;
     horizontal-align: 0.5;
 }
@@ -75,4 +75,5 @@ element-text {
     text-color: inherit;
     vertical-align: 0.5;
     horizontal-align: 0.5;
-} 
+    font: "JetBrains Mono Nerd Font 12";
+}

@@ -14,7 +14,9 @@ configuration {
 }
 
 window {
-    width: 30%;
+    /* Narrower since no icons, with min/max constraints */
+    width: calc(30% max 450px min 600px);
+    height: calc(70% min 800px);
     background-color: rgba(32, 32, 32, 0.95);
     border-radius: 10px;
     border: 2px;
@@ -24,8 +26,8 @@ window {
 }
 
 mainbox {
-    padding: 2em;
-    spacing: 2em;
+    padding: 1.5em;
+    spacing: 1.5em;
     background-color: transparent;
 }
 
@@ -52,14 +54,22 @@ entry {
 
 listview {
     columns: 1;
-    lines: 10;
+    lines: 8;
     cycle: true;
     dynamic: true;
-    scrollbar: false;
+    scrollbar: true;
     layout: vertical;
     spacing: 0.5em;
     background-color: transparent;
     border: 0px;
+}
+
+scrollbar {
+    width: 4px;
+    border: 0;
+    handle-width: 4px;
+    handle-color: rgba(60, 60, 60, 1);
+    padding: 0;
 }
 
 element {

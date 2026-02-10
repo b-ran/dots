@@ -15,7 +15,9 @@ configuration {
 }
 
 window {
-    width: 30%;
+    /* Ensure minimum width, but allow scaling on larger screens */
+    width: calc(30% max 450px min 600px);
+    height: calc(70% min 800px);
     background-color: rgba(32, 32, 32, 0.95);
     border-radius: 10px;
     border: 2px;
@@ -23,8 +25,8 @@ window {
 }
 
 mainbox {
-    padding: 2em;
-    spacing: 2em;
+    padding: 1.5em;
+    spacing: 1.5em;
 }
 
 inputbar {
@@ -42,9 +44,20 @@ entry {
 
 listview {
     columns: 1;
-    lines: 10;
+    /* Reduced from 10 to 8 lines to prevent excessive height */
+    lines: 8;
     border-color: transparent;
     spacing: 0.5em;
+    /* Enable scrolling for more items */
+    scrollbar: true;
+}
+
+scrollbar {
+    width: 4px;
+    border: 0;
+    handle-width: 4px;
+    handle-color: rgba(60, 60, 60, 1);
+    padding: 0;
 }
 
 element {
