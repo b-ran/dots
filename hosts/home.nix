@@ -129,6 +129,8 @@
       cpio
       redis
       nixfmt
+      adb
+      android-studio-full
     ];
   };
 }
