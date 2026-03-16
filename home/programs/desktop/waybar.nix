@@ -121,10 +121,12 @@ with config.lib.stylix.colors.withHashtag;
               warning = 30;
               critical = 20;
             };
-            format = "{capacity}% {icon}";
-            format-charging = "{capacity}% 󰂄";
-            format-plugged = "{capacity}% 󰂄 ";
-            format-alt = "{time} {icon}";
+            full-at = 99;
+            tooltip-format = "{time} ({capacity}%)";
+            format = "{icon} {capacity}%";
+            format-charging = "󰂄 {capacity}% ";
+            format-plugged = "󰂄";
+            format-alt = "{icon} {time}";
             format-icons = [
               "󰁻"
               "󰁼"
