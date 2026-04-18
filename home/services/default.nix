@@ -1,4 +1,6 @@
-[ 
-  ./dunst.nix
-  ./udiskie.nix
-]
+{
+  imports = [
+    ./dunst.nix
+    ./udiskie.nix
+  ];
+}

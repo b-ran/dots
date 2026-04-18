@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -30,12 +31,13 @@
 outputs =
     inputs@{
       self,
-      catppuccin,
       disko,
       home-manager,
       nixpkgs,
-      nixpkgs-unstable,
-      sops-nix,
+      nixpkgs-stable,
+      hyprland-contrib,
+      niri,
+      ssh-keys,
       ...
     }:
     let
@@ -57,13 +59,13 @@ outputs =
             ./hosts/${host}/configuration.nix
           ];
           specialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs user system;
           };
         };
     in
     {
       nixosConfigurations = {
-        desktop = mkSystem { host = "desktop"; };
+        workstation = mkSystem { host = "workstation"; };
         laptop = mkSystem { host = "framework"; };
       };
 

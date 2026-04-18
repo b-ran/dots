@@ -1,4 +1,0 @@
-[
-  ./homebrew.nix
-  ./system.nix
-]

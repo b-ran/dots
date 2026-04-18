@@ -57,7 +57,7 @@ Feels free to use it as a reference or a starting point for your own configurati
 | **Launcher**          | [Rofi Wayland](https://github.com/lbonn/rofi)                  |
 | **Display Manager**   | [SDDM](https://github.com/sddm/sddm)                           |
 | **Theme Manager**     | [Stylix](https://github.com/danth/stylix)                      |
-| **Wallpaper Manager** | [Swww](https://github.com/LGFae/swww)                          |
+| **Wallpaper Manager** | [Awww](https://codeberg.org/LGFae/awww)                          |
 | **Notifications**     | [Dunst](https://github.com/dunst-project/dunst)                |
 | **Lock Screen**       | [Hyprlock](https://github.com/hyprwm/hyprlock)                 |
 | **File Manager**      | [Nautilus](https://apps.gnome.org/Nautilus/)                   |

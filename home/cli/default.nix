@@ -1,0 +1,16 @@
+{
+  imports = [
+    ./bat.nix
+    ./btop.nix
+    ./cava.nix
+    ./eza.nix
+    ./git.nix
+    ./htop.nix
+    ./k9s.nix
+    ./lazygit.nix
+    ./starship.nix
+    ./tmux.nix
+    ./zoxide.nix
+    ./zsh.nix
+  ];
+}
