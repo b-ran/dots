@@ -14,6 +14,7 @@
     inputs.home-manager.nixosModules.home-manager
     ../modules/common
     ../modules/desktop
+    ../modules/displaylink.nix
     ../modules/docker.nix
     ../modules/gdm.nix
     ../modules/grub.nix
