@@ -30,7 +30,6 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    android_sdk.accept_license = true;
     packageOverrides = pkgs: {
       stable = import inputs.nixpkgs-stable {
         config = config.nixpkgs.config;
