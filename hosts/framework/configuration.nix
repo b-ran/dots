@@ -19,6 +19,7 @@
     ../modules/gdm.nix
     ../modules/grub.nix
     ../modules/hyprland.nix
+    ../modules/hyprlock.nix
     ../modules/niri.nix
     ../modules/power.nix
   ];
