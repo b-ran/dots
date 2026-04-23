@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   user,
   system,
   ...
@@ -20,7 +21,7 @@
     ../modules/grub.nix
     ../modules/hyprland.nix
     ../modules/hyprlock.nix
-    ../modules/niri.nix
+
     ../modules/nvidia.nix
   ];
 
@@ -48,4 +49,7 @@
 
   system.stateVersion = "23.11";
   networking.hostName = "workstation";
+
+  services.automatic-timezoned.enable = lib.mkForce false;
+  time.timeZone = "Australia/Melbourne";
 }

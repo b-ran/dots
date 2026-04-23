@@ -171,10 +171,10 @@ with config.lib.stylix.colors;
         ];
 
         bindel = [
-          ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
-          ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
-          ", XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
-          ", XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
+          ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+          ", XF86AudioLowerVolume, exec, pamixer -d 5"
+          ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+          ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
         ];
 
         bindm = [
