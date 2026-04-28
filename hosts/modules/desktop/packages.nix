@@ -12,6 +12,8 @@
     sessionVariables = {
       GOOGLE_CHROME_PATH = "${pkgs.google-chrome}";
       NIXOS_OZONE_WL = "1";
+      PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
     };
   };
 
@@ -78,6 +80,7 @@
     alsa-utils
 
     # dev
+    playwright-driver.browsers
     gcc
     gnumake
     postgresql
