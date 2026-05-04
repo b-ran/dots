@@ -15,6 +15,10 @@ in
 
   # Udev rules: start/stop the service on device plug/unplug
   services.udev.extraRules = ''
+    # Disable autosuspend for SMI USB display devices to prevent periodic disconnects
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="090c", \
+      ATTR{power/control}="on"
+
     ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", \
       ATTR{idVendor}=="090c", IMPORT{builtin}="usb_id", \
       ATTR{bDeviceClass}=="ef", \
@@ -36,7 +40,7 @@ in
       ExecStartPre = "${pkgs.kmod}/bin/modprobe evdi";
       ExecStart = "${smi-usb-display}/bin/SMIUSBDisplayManager";
       WorkingDirectory = "${smi-usb-display}/lib/smi-usb-display";
-      Restart = "always";
+      Restart = "on-failure";
       RestartSec = 5;
     };
   };
