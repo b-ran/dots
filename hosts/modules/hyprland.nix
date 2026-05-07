@@ -22,8 +22,8 @@ with config.lib.stylix.colors;
 
   environment.systemPackages = with pkgs; [
     inputs.hyprland-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast
+    inputs.ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default
     hyprcursor
-    hyprpicker
     imagemagick # used in color picker
     wl-clip-persist
     slurp
@@ -67,6 +67,7 @@ with config.lib.stylix.colors;
           "uwsm app -- playerctld daemon"
           "uwsm app -- awww-daemon"
           "ssh-agent"
+          "ie-r"
         ];
 
         windowrule = [
@@ -105,12 +106,13 @@ with config.lib.stylix.colors;
 
           # Apps
           "$mod, Return, exec, alacritty"
+          "$mod, E, exec, pkill -SIGUSR1 ie-r"
+          "$mod SHIFT, E, exec, pkill -SIGUSR2 ie-r"
 
           # Scripts
           "$mod, L, exec, hyprlock"
           "$mod, S, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze copysave area $temp  && notify-send -i \"$temp\" \"Screenshot:\" \"Captured selected area\" && rm \"$temp\""
           "$mod, R, exec, wl-record"
-          "$mod, E, exec, color=$(hyprpicker -nar) && convert -size 100x100 xc:\"$color\" /tmp/color_notification.png && notify-send \"Picked Color:\" \"$color\" -i /tmp/color_notification.png"
           "$mod, O, exec, temp=$(mktemp /tmp/XXXXXX.png) && grimblast --freeze save area $temp | tesseract - - | wl-copy && notify-send -i \"$temp\" \"OCR:\" \"Text has been copied to the clipboard.\" && rm \"$temp\""
 
           # Move focus

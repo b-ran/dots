@@ -20,6 +20,9 @@
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
+    ie-r.url = "github:miaupaw/ie-r";
+    ie-r.inputs.nixpkgs.follows = "nixpkgs";
+
     # Personal Flakes
 
     # secrets.url = "git+ssh://git@github.com/b-ran/nixos-secrets";
@@ -28,7 +31,7 @@
     ssh-keys.flake = false;
   };
 
-outputs =
+  outputs =
     inputs@{
       self,
       disko,
@@ -59,7 +62,12 @@ outputs =
             ./hosts/${host}/configuration.nix
           ];
           specialArgs = {
-            inherit inputs outputs user system;
+            inherit
+              inputs
+              outputs
+              user
+              system
+              ;
           };
         };
     in
