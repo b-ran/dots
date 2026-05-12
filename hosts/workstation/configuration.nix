@@ -37,10 +37,12 @@
     };
     users.${user} = {
       imports = [
+        inputs.niri.homeModules.niri
         ../../home/apps
         ../../home/cli
         ../../home/desktop
         ../../home/services
+        ../../home/niri.nix
       ];
       home.stateVersion = "23.11";
       nixpkgs.config.allowUnfree = true;

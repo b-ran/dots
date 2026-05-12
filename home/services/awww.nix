@@ -1,0 +1,9 @@
+{ ... }:
+
+{
+  services = {
+    awww = {
+      enable = true;
+    };
+  };
+}

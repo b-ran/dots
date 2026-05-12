@@ -60,13 +60,7 @@ with config.lib.stylix.colors;
         "exec-once" = [
           "waybar"
           "nm-applet"
-          "wl-clip-persist --clipboard regular"
-          "uwsm app -- webcord --start-minimized"
-          "systemctl --user enable --now hypridle.service"
           "uwsm app -- 1password --silent"
-          "uwsm app -- playerctld daemon"
-          "uwsm app -- awww-daemon"
-          "ssh-agent"
           "ie-r"
         ];
 
