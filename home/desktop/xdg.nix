@@ -52,5 +52,9 @@ in
       enable = true;
       defaultApplications = associations;
     };
+    portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    };
   };
 }
