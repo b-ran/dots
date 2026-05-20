@@ -22,6 +22,7 @@
     ../modules/grub.nix
     ../modules/hyprland.nix
     ../modules/hyprlock.nix
+    ../modules/niri.nix
     ../modules/nvidia.nix
   ];
 
@@ -37,7 +38,6 @@
     };
     users.${user} = {
       imports = [
-        inputs.niri.homeModules.niri
         ../../home/apps
         ../../home/cli
         ../../home/desktop
