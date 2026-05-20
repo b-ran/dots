@@ -12,6 +12,7 @@
     inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
     inputs.stylix.nixosModules.stylix
     inputs.home-manager.nixosModules.home-manager
+    ./services
     ../modules/common
     ../modules/desktop
     ../modules/android.nix
