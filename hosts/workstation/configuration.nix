@@ -22,7 +22,6 @@
     ../modules/grub.nix
     ../modules/hyprland.nix
     ../modules/hyprlock.nix
-    ../modules/niri.nix
     ../modules/nvidia.nix
   ];
 
@@ -42,7 +41,6 @@
         ../../home/cli
         ../../home/desktop
         ../../home/services
-        ../../home/niri.nix
       ];
       home.stateVersion = "23.11";
       nixpkgs.config.allowUnfree = true;
