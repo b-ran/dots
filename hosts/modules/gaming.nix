@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
     dxvk
     lutris
-    bottles
     wine-wayland
     wine64
     winetricks
