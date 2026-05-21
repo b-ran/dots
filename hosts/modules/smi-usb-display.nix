@@ -11,13 +11,19 @@ in
     options evdi initial_device_count=4
   '';
 
+  # Prevent the kernel from autosuspending the USB display adapter after extended use.
+  # The udev power/control rule alone can be overridden by the kernel hours later,
+  # causing screens to drop and requiring a reboot to re-enumerate the device.
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+
   environment.systemPackages = [ smi-usb-display ];
 
   # Udev rules: start/stop the service on device plug/unplug
   services.udev.extraRules = ''
     # Disable autosuspend for SMI USB display devices to prevent periodic disconnects
-    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="090c", \
-      ATTR{power/control}="on"
+    ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="090c", \
+      ATTR{power/control}="on", \
+      ATTR{power/autosuspend_delay_ms}="-1"
 
     ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", \
       ATTR{idVendor}=="090c", IMPORT{builtin}="usb_id", \
@@ -40,7 +46,7 @@ in
       ExecStartPre = "${pkgs.kmod}/bin/modprobe evdi";
       ExecStart = "${smi-usb-display}/bin/SMIUSBDisplayManager";
       WorkingDirectory = "${smi-usb-display}/lib/smi-usb-display";
-      Restart = "on-failure";
+      Restart = "always";
       RestartSec = 5;
     };
   };
