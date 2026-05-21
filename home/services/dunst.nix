@@ -6,7 +6,7 @@ with config.lib.stylix.colors.withHashtag;
     enable = true;
     settings = {
       global = {
-        browser = "${pkgs.firefox}/bin/firefox";
+        # browser = "${pkgs.firefox}/bin/firefox";
         dmenu = "${pkgs.dmenu}/bin/dmenu -p dunst";
 
         origin = "top-right";

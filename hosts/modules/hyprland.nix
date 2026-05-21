@@ -89,7 +89,7 @@ with config.lib.stylix.colors;
           "$mod SHIFT, F, togglefloating,"
           "$mod, P, pseudo,"
           "$mod, G, togglegroup,"
-          "$mod, H, togglesplit"
+          # "$mod, H, togglesplit"
 
           # Rofi menus
           "$mod, D, exec, rofi -show drun -theme ~/.config/rofi/themes/drun.rasi"
@@ -226,7 +226,7 @@ with config.lib.stylix.colors;
         };
 
         dwindle = {
-          pseudotile = true;
+          # pseudotile = true;
           preserve_split = true;
         };
 

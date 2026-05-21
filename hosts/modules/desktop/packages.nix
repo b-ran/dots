@@ -46,7 +46,6 @@
     gimp
     filezilla
     shotcut
-    # google-chrome
     teams-for-linux
     vscode
     firefox-bin
