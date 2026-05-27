@@ -17,7 +17,6 @@
     ../modules/desktop
     ../modules/android.nix
     ../modules/displaylink.nix
-    ../modules/smi-usb-display.nix
     ../modules/docker.nix
     ../modules/gdm.nix
     ../modules/grub.nix

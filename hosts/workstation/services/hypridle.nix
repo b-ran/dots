@@ -4,6 +4,7 @@
   home-manager.users.${user} = {
     home.packages = with pkgs; [
       wlopm
+      hypridle
     ];
 
     services = {
