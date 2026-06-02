@@ -35,7 +35,8 @@ with config.lib.stylix.colors;
 
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd.enable = false;
+      systemd.enable = true;
+      systemd.enableXdgAutostart = true;
 
       settings = {
         source = [ "~/.config/hypr/monitors.conf" ];
@@ -57,10 +58,10 @@ with config.lib.stylix.colors;
         ];
 
         "exec-once" = [
-          "waybar"
-          "nm-applet"
+          "uwsm app -- waybar"
+          "uwsm app -- nm-applet"
           "uwsm app -- 1password --silent"
-          "ie-r"
+          "uwsm app -- ie-r"
         ];
 
         windowrule = [
