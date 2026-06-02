@@ -14,6 +14,11 @@
       NIXOS_OZONE_WL = "1";
       PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
+      BROWSER = "firefox";
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_WEBRENDER = "1";
+      _JAVA_AWT_WM_NONREPARENTING = "1";
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
     };
   };
 

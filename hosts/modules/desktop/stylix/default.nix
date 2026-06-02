@@ -20,6 +20,7 @@
       qt.enable = true;
       grub.enable = false;
       console.enable = false;
+      plymouth.enable = true;
     };
     fonts = {
       monospace = {

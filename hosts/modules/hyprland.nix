@@ -24,7 +24,6 @@ with config.lib.stylix.colors;
     inputs.hyprland-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast
     inputs.ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default
     hyprcursor
-    imagemagick # used in color picker
     wl-clip-persist
     slurp
     grim

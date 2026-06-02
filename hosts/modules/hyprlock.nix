@@ -10,6 +10,7 @@ with config.lib.stylix.colors;
 {
   security = {
     pam.services.hyprlock.text = "auth include login"; # Allow wayland to unlock the screen
+    pam.services.hyprlock.enableGnomeKeyring = true;
   };
 
   home-manager.users.${user} = {

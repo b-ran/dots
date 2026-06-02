@@ -47,6 +47,7 @@ in
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = false;
     };
     mimeApps = {
       enable = true;
@@ -54,6 +55,7 @@ in
     };
     portal = {
       enable = true;
+      xdgOpenUsePortal = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     };
   };
