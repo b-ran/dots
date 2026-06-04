@@ -11,7 +11,7 @@ hl.config({
         inactive_timeout = 10
     },
     input = {
-        natural_scroll = true,
+        natural_scroll = false,
         special_fallthrough = true,
         touchpad = {
             natural_scroll = true,
@@ -28,7 +28,7 @@ hl.config({
     misc = {
         focus_on_activate = true,
         -- if enabled, windows will open on the workspace they were invoked on. 0 - disabled, 1 - single-shot, 2 - persistent (all children too) --
-        initial_workspace_tracking = 1,
+        initial_workspace_tracking = 2,
         force_default_wallpaper = 0,
         disable_hyprland_logo = true,
         disable_splash_rendering = true

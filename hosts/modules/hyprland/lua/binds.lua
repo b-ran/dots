@@ -34,8 +34,11 @@ hl.bind("SUPER + SHIFT + down",  hl.dsp.window.move({ direction = "down" }))
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind("SUPER + TAB",   hl.dsp.workspace.toggle_special("scratch"))
-hl.bind("SUPER + minus", hl.dsp.window.move({ workspace = "special:scratch" }))
+hl.bind("SUPER + TAB",       hl.dsp.workspace.toggle_special("scratch"))
+hl.bind("SUPER + minus",     hl.dsp.window.move({ workspace = "special:scratch" }))
+
+hl.bind("SUPER + backslash", hl.dsp.workspace.toggle_special("chat"))
+hl.bind("SUPER + SHIFT + backslash", hl.dsp.window.move({ workspace = "special:chat" }))
 
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })

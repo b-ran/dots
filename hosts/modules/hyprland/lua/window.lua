@@ -1,4 +1,4 @@
--- Chat apps — auto-move to special chat workspace, focus on activate
+-- Chat apps — auto-move to special chat workspace, focus on activate, hide from screen share
 hl.window_rule({
     match = {
         class = "^(Slack)$"
@@ -9,7 +9,8 @@ hl.window_rule({
     match = {
         class = "^(Slack)$"
     },
-    focus_on_activate = true
+    focus_on_activate = true,
+    no_screen_share = true
 })
 hl.window_rule({
     match = {
@@ -21,19 +22,8 @@ hl.window_rule({
     match = {
         class = "^(discord)$"
     },
-    focus_on_activate = true
-})
-hl.window_rule({
-    match = {
-        class = "^(discord)$"
-    },
-    workspace = "special:chat"
-})
-hl.window_rule({
-    match = {
-        class = "^(discord)$"
-    },
-    focus_on_activate = true
+    focus_on_activate = true,
+    no_screen_share = true
 })
 hl.window_rule({
     match = {
@@ -47,7 +37,8 @@ hl.window_rule({
         class = "^(electron)$",
         title = ".*Microsoft Teams$"
     },
-    focus_on_activate = true
+    focus_on_activate = true,
+    no_screen_share = true
 })
 hl.window_rule({
     match = {
@@ -61,7 +52,8 @@ hl.window_rule({
         class = "^(electron)$",
         initial_title = "^WebCord$"
     },
-    focus_on_activate = true
+    focus_on_activate = true,
+    no_screen_share = true
 })
 
 -- Firefox -- 
@@ -103,7 +95,8 @@ hl.window_rule({
         title = "^Picture-in-Picture$"
     },
     float = true,
-    center = true
+    center = true,
+    pin = true
 })
 
 hl.window_rule({
