@@ -3,12 +3,7 @@ hl.window_rule({
     match = {
         class = "^(Slack)$"
     },
-    workspace = "special:chat"
-})
-hl.window_rule({
-    match = {
-        class = "^(Slack)$"
-    },
+    workspace = "special:chat",
     focus_on_activate = true,
     no_screen_share = true
 })
@@ -16,42 +11,24 @@ hl.window_rule({
     match = {
         class = "^(discord)$"
     },
-    workspace = "special:chat"
-})
-hl.window_rule({
-    match = {
-        class = "^(discord)$"
-    },
+    workspace = "special:chat",
     focus_on_activate = true,
     no_screen_share = true
 })
 hl.window_rule({
     match = {
-        class = "^(electron)$",
-        title = ".*Microsoft Teams$"
+        initial_class = "^(teams-for-linux)$"
     },
-    workspace = "special:chat"
-})
-hl.window_rule({
-    match = {
-        class = "^(electron)$",
-        title = ".*Microsoft Teams$"
-    },
+    workspace = "special:chat",
     focus_on_activate = true,
     no_screen_share = true
 })
+
 hl.window_rule({
     match = {
-        class = "^(electron)$",
-        initial_title = "^WebCord$"
+        initial_title = "^(WebCord)$"
     },
-    workspace = "special:chat"
-})
-hl.window_rule({
-    match = {
-        class = "^(electron)$",
-        initial_title = "^WebCord$"
-    },
+    workspace = "special:chat",
     focus_on_activate = true,
     no_screen_share = true
 })
@@ -196,4 +173,13 @@ hl.window_rule({
         title = ".*(Friends|Settings|Properties).*"
     },
     float = true
+})
+
+hl.window_rule({
+    match = {
+        initial_title = "^(satty)$"
+    },
+    focus_on_activate = true,
+    float = true,
+    center = true
 })

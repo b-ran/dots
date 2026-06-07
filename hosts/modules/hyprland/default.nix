@@ -7,7 +7,9 @@
   ...
 }:
 let
-  wl-record = (pkgs.callPackage ../../../pkgs/wl-record { });
+  wl-record     = (pkgs.callPackage ../../../pkgs/wl-record { });
+  wl-screenshot = (pkgs.callPackage ../../../pkgs/wl-screenshot { });
+  wl-ocr        = (pkgs.callPackage ../../../pkgs/wl-ocr { });
 in
 {
 
@@ -41,10 +43,9 @@ in
       inputs.ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default
       hyprcursor
       wl-clip-persist
-      slurp
-      grim
-      tesseract
       wl-record
+      wl-screenshot
+      wl-ocr
     ];
 
     wayland.windowManager.hyprland = {

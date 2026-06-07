@@ -16,10 +16,6 @@
       executable = true;
       source = ./menus/power.sh;
     };
-    file.".config/rofi/menus/screenshot.sh" = {
-      executable = true;
-      source = ./menus/screenshot.sh;
-    };
 
     file.".config/networkmanager-dmenu/config.ini".text = ''
       [dmenu]
