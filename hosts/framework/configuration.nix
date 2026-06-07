@@ -18,7 +18,7 @@
     ../modules/android.nix
     ../modules/displaylink.nix
     ../modules/docker.nix
-    ../modules/gdm.nix
+    ../modules/ly.nix
     ../modules/grub.nix
     ../modules/hyprland.nix
     ../modules/hyprlock.nix
