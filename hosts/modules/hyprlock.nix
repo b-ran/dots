@@ -47,7 +47,7 @@ with config.lib.stylix.colors;
         ];
 
         background = {
-          path = "/home/${user}/.config/lock-wallpaper";
+          path = "/home/${user}/.config/current-wallpaper";
           blur_passes = 0;
           contrast = 0.8916;
           brightness = 0.8916;
