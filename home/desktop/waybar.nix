@@ -15,6 +15,7 @@ with config.lib.stylix.colors.withHashtag;
             "clock"
           ];
           modules-right = [
+            "custom/record"
             "group/expand"
             "bluetooth"
             "network"
@@ -147,6 +148,13 @@ with config.lib.stylix.colors.withHashtag;
             tooltip = false;
           };
 
+          "custom/record" = {
+            exec = "[ -f /tmp/wf-recorder.pid ] && echo '{\"text\":\"⏺ REC\",\"class\":\"recording\",\"tooltip\":\"Click to stop recording\"}' || echo '{\"text\":\"\",\"class\":\"\",\"tooltip\":\"\"}'";
+            return-type = "json";
+            interval = 2;
+            on-click = "wl-record";
+          };
+
           cpu = {
             format = "󰻠";
             tooltip = true;
@@ -253,6 +261,7 @@ with config.lib.stylix.colors.withHashtag;
         #memory,
         #cpu,
         #custom-expand,
+        #custom-record,
         #group-expand,
         #custom-endpoint,
         workspaces {
@@ -281,6 +290,19 @@ with config.lib.stylix.colors.withHashtag;
 
         #custom-expand:hover {
             color: rgba(255,255,255,.2);
+        }
+
+        #custom-record {
+            color: @base08;
+            padding: 0px 8px;
+        }
+
+        #custom-record.recording {
+            animation-name: blink;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
         }
       '';
     };
