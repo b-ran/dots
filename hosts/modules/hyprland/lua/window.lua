@@ -79,11 +79,11 @@ hl.window_rule({
 hl.window_rule({
     name = "code-extlink-float",
     match = {
-        class = "code",
-        title = "Warning: Opening link in external app"
+        title = "^Warning: Opening link in external app$"
     },
     float = true,
-    center = true
+    center = true,
+    pin = true
 })
 
 hl.window_rule({
