@@ -14,6 +14,7 @@
 
   stylix = {
     enable = true;
+    polarity = "dark";
     base16Scheme = ./themes/tokyo-night.yaml;
     targets = {
       chromium.enable = false;
