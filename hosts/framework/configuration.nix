@@ -15,12 +15,12 @@
     ./services
     ../modules/common
     ../modules/desktop
+    ../modules/hyprland
     ../modules/android.nix
     ../modules/displaylink.nix
     ../modules/docker.nix
     ../modules/ly.nix
     ../modules/grub.nix
-    ../modules/hyprland.nix
     ../modules/hyprlock.nix
     ../modules/power.nix
   ];
@@ -36,14 +36,14 @@
       };
     };
     users.${user} = {
-        imports = [
-          ../../home/apps
-          ../../home/cli
-          ../../home/desktop
-          ../../home/services
-        ];
-        home.stateVersion = "23.11";
-        nixpkgs.config.allowUnfree = true;
+      imports = [
+        ../../home/apps
+        ../../home/cli
+        ../../home/desktop
+        ../../home/services
+      ];
+      home.stateVersion = "23.11";
+      nixpkgs.config.allowUnfree = true;
     };
   };
 
