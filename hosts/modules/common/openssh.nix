@@ -14,7 +14,6 @@
 
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = true;
   };
 
   users.users.${user}.openssh.authorizedKeys.keyFiles = [ inputs.ssh-keys.outPath ];
