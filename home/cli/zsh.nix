@@ -102,10 +102,7 @@
       gcn = "git config user.name";
 
       # Js
-      pnpm = "corepack pnpm";
-      p = "corepack pnpm";
-      pi = "corepack pnpm install";
-      pd = "corepack pnpm dev";
+      p = "pnpm";
 
       # Unix
       b = "bat";
