@@ -7,7 +7,8 @@ hl.bind("SUPER + D",            hl.dsp.exec_cmd("rofi -show drun -theme ~/.confi
 hl.bind("SUPER + N",            hl.dsp.exec_cmd("networkmanager_dmenu"))
 hl.bind("SUPER + B",            hl.dsp.exec_cmd(" ~/.config/rofi/menus/background-select.sh"))
 hl.bind("SUPER + X",            hl.dsp.exec_cmd("~/.config/rofi/menus/power.sh"))
-hl.bind("SUPER + S",            hl.dsp.exec_cmd("wl-screenshot"))
+hl.bind("SUPER + S",            hl.dsp.exec_cmd("wl-screenshot --copy"))
+hl.bind("SUPER + SHIFT + S",    hl.dsp.exec_cmd("wl-screenshot"))
 hl.bind("SUPER + O",            hl.dsp.exec_cmd("wl-ocr"))
 hl.bind("SUPER + R",            hl.dsp.exec_cmd("wl-record"))
 
