@@ -3,6 +3,10 @@
 {
   virtualisation.docker = {
     enable = true;
+    daemon.settings = {
+      "ipv6" = false;
+      "dns" = [ "8.8.8.8" "1.1.1.1" ];
+    };
   };
   users.users.${user}.extraGroups = [ "docker" ];
   environment.systemPackages = with pkgs; [
