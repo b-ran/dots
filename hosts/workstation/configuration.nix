@@ -16,7 +16,6 @@
     ../modules/common
     ../modules/desktop
     ../modules/hyprland
-    ../modules/android.nix
     ../modules/docker.nix
     ../modules/gaming.nix
     ../modules/ly.nix
