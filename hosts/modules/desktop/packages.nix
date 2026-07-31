@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  unstable = pkgs.unstable;
+in
 
 {
   programs = {
@@ -36,7 +39,7 @@
     bfg-repo-cleaner
     gource
     supabase-cli
-    claude-code
+    unstable.claude-code
     yazi
     ncspot
 

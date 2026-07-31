@@ -32,10 +32,6 @@
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
-      stable = import inputs.nixpkgs-stable {
-        config = config.nixpkgs.config;
-        system = pkgs.stdenv.hostPlatform.system;
-      };
       unstable = import inputs.nixpkgs-unstable {
         config = config.nixpkgs.config;
         system = pkgs.stdenv.hostPlatform.system;

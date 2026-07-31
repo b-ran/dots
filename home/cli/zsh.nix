@@ -1,4 +1,10 @@
-{ pkgs, user, ... }:
+{
+  pkgs,
+  user,
+  inputs,
+  system,
+  ...
+}:
 
 {
 
@@ -33,6 +39,9 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    # Nushell integration in home-manager requires fzf >= 0.73.0, newer than
+    # what's currently in nixpkgs stable.
+    package = inputs.nixpkgs-unstable.legacyPackages.${system}.fzf;
   };
 
   programs.zsh = {

@@ -19,7 +19,7 @@
     ../modules/android.nix
     ../modules/displaylink.nix
     ../modules/docker.nix
-    ../modules/ly.nix
+    ../modules/gdm.nix
     ../modules/grub.nix
     ../modules/hyprlock.nix
     ../modules/power.nix
